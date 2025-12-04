@@ -1,0 +1,60 @@
+﻿using System;
+
+class Program1
+{
+    static void Main()
+    {
+        Console.WriteLine();
+        Console.WriteLine("а) y = 17x² – 6x + 13");
+        Console.Write("Введите x: ");
+        double x = double.Parse(Console.ReadLine());
+        double y = 17 * x * x - 6 * x + 13;
+        Console.WriteLine($"y = {y}");
+
+        Console.WriteLine("\nб) y = 3a² + 5a – 21");
+        Console.Write("Введите a: ");
+        double a = double.Parse(Console.ReadLine());
+        y = 3 * a * a + 5 * a - 21;
+        Console.WriteLine($"y = {y}");
+
+        Console.WriteLine();
+        Console.WriteLine("y = 1/(a + 3)");
+        Console.Write("Введите a (a ≠ -3): ");
+        a = double.Parse(Console.ReadLine());
+        y = 1 / (a + 3);
+        Console.WriteLine($"y = {y}");
+
+        Console.WriteLine();
+        Console.WriteLine("а) y = √(a² + 1)");
+        Console.Write("Введите a: ");
+        a = double.Parse(Console.ReadLine());
+        y = Math.Sqrt(a * a + 1);
+        Console.WriteLine($"y = {y:F2}");
+
+        Console.WriteLine("\nб) y = |x³|");
+        Console.Write("Введите x: ");
+        x = double.Parse(Console.ReadLine());
+        y = Math.Abs(x * x * x);
+        Console.WriteLine($"y = {y}");
+
+        Console.WriteLine();
+        Console.Write("Введите сторону квадрата: ");
+        double side = double.Parse(Console.ReadLine());
+        double perimeter = 4 * side;
+        Console.WriteLine($"Периметр квадрата = {perimeter}");
+
+        Console.WriteLine();
+        Console.Write("Введите радиус окружности: ");
+        double radius = double.Parse(Console.ReadLine());
+        double diameter = 2 * radius;
+        Console.WriteLine($"Диаметр окружности = {diameter}");
+
+        Console.WriteLine();
+        const double R = 6350.0; // км
+        Console.Write("Введите высоту над Землей (км): ");
+        double h = double.Parse(Console.ReadLine());
+        double distance = Math.Sqrt(2 * R * h + h * h);
+        Console.WriteLine($"Расстояние до горизонта = {distance:F2} км");
+        Console.ReadKey();
+    }
+}
