@@ -1,0 +1,194 @@
+﻿
+using System;
+
+namespace FirstCourseTasks
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            // Задача 2.13: Решение линейного уравнения ax + b = 0 (a ≠ 0)
+            Console.Write("Введите коэффициент a (a ≠ 0): ");
+            double a = Convert.ToDouble(Console.ReadLine());
+
+            if (Math.Abs(a) < 0.000001)
+            {
+                Console.WriteLine("Ошибка: коэффициент a не может быть равен 0!");
+            }
+            else
+            {
+                Console.Write("Введите коэффициент b: ");
+                double b = Convert.ToDouble(Console.ReadLine());
+
+                double x = -b / a;
+                Console.WriteLine($"Решение уравнения: x = {x:F2}");
+            }
+            Console.WriteLine();
+
+            // Задача 2.14: Гипотенуза прямоугольного треугольника
+            Console.Write("Введите первый катет: ");
+            double cathet1 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите второй катет: ");
+            double cathet2 = Convert.ToDouble(Console.ReadLine());
+
+            if (cathet1 <= 0 || cathet2 <= 0)
+            {
+                Console.WriteLine("Ошибка: катеты должны быть положительными!");
+            }
+            else
+            {
+                double hypotenuse = Math.Sqrt(cathet1 * cathet1 + cathet2 * cathet2);
+                Console.WriteLine($"Гипотенуза: {hypotenuse:F2}");
+            }
+            Console.WriteLine();
+
+            // Задача 2.15: Площадь кольца
+            Console.Write("Введите внешний радиус: ");
+            double outerRadius = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите внутренний радиус: ");
+            double innerRadius = Convert.ToDouble(Console.ReadLine());
+
+            if (outerRadius <= 0 || innerRadius <= 0)
+            {
+                Console.WriteLine("Ошибка: радиусы должны быть положительными!");
+            }
+            else if (innerRadius >= outerRadius)
+            {
+                Console.WriteLine("Ошибка: внешний радиус должен быть больше внутреннего!");
+            }
+            else
+            {
+                double ringArea = Math.PI * (outerRadius * outerRadius - innerRadius * innerRadius);
+                Console.WriteLine($"Площадь кольца: {ringArea:F2}");
+            }
+            Console.WriteLine();
+
+            // Задача 2.16: Периметр прямоугольного треугольника
+            Console.Write("Введите первый катет: ");
+            double cathetA = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите второй катет: ");
+            double cathetB = Convert.ToDouble(Console.ReadLine());
+
+            if (cathetA <= 0 || cathetB <= 0)
+            {
+                Console.WriteLine("Ошибка: катеты должны быть положительными!");
+            }
+            else
+            {
+                double hyp = Math.Sqrt(cathetA * cathetA + cathetB * cathetB);
+                double perimeter = cathetA + cathetB + hyp;
+                Console.WriteLine($"Периметр треугольника: {perimeter:F2}");
+            }
+            Console.WriteLine();
+
+            // Задача 2.17: Периметр равнобедренной трапеции
+            Console.Write("Введите большее основание: ");
+
+double base1 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите меньшее основание: ");
+            double base2 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите высоту: ");
+            double height = Convert.ToDouble(Console.ReadLine());
+
+            if (base1 <= 0  base2 <= 0  height <= 0)
+            {
+                Console.WriteLine("Ошибка: все значения должны быть положительными!");
+            }
+            else if (base2 >= base1)
+            {
+                Console.WriteLine("Ошибка: первое основание должно быть больше второго!");
+            }
+            else
+            {
+                double side = Math.Sqrt(height * height + Math.Pow((base1 - base2) / 2, 2));
+                double trapezoidPerimeter = base1 + base2 + 2 * side;
+                Console.WriteLine($"Периметр трапеции: {trapezoidPerimeter:F2}");
+            }
+            Console.WriteLine();
+
+            // Задача 2.18-2.21: Вычисление функций
+
+            Console.Write("Введите x: ");
+            double x18 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите y: ");
+            double y18 = Convert.ToDouble(Console.ReadLine());
+            double result18 = x18 * x18 + y18 * y18 - 2 * x18 * y18;
+            Console.WriteLine($"f({x18}, {y18}) = {result18:F2}");
+            Console.WriteLine();
+
+            Console.Write("Введите a: ");
+            double a19 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите b: ");
+            double b19 = Convert.ToDouble(Console.ReadLine());
+            double result19 = Math.Pow(a19 + b19, 3) - Math.Sqrt(Math.Abs(a19 - b19));
+            Console.WriteLine($"f({a19}, {b19}) = {result19:F2}");
+            Console.WriteLine();
+
+            Console.Write("Введите e: ");
+            double e20 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите f: ");
+            double f20 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите g: ");
+            double g20 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите h: ");
+            double h20 = Convert.ToDouble(Console.ReadLine());
+
+            if (Math.Abs(g20 - h20) < 0.000001)
+            {
+                Console.WriteLine("Ошибка: знаменатель (g - h) не может быть равен 0!");
+            }
+            else if (e20 * f20 < 0)
+            {
+                Console.WriteLine("Ошибка: подкоренное выражение e*f должно быть неотрицательным!");
+            }
+            else
+            {
+                double result20 = (e20 + f20) / (g20 - h20) + Math.Sqrt(e20 * f20);
+                Console.WriteLine($"f({e20}, {f20}, {g20}, {h20}) = {result20:F2}");
+            }
+            Console.WriteLine();
+
+            Console.Write("Введите e: ");
+            double e21 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите f: ");
+            double f21 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите g: ");
+            double g21 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите h: ");
+
+double h21 = Convert.ToDouble(Console.ReadLine());
+
+            if (Math.Abs(g21 + h21) < 0.000001)
+            {
+                Console.WriteLine("Ошибка: знаменатель (g + h) не может быть равен 0!");
+            }
+            else
+            {
+                double result21 = (e21 * e21 - f21 * f21) / (g21 + h21) + Math.Abs(e21 - f21);
+                Console.WriteLine($"f({e21}, {f21}, {g21}, {h21}) = {result21:F2}");
+            }
+            Console.WriteLine();
+
+            // Задача 2.22: Среднее арифметическое и среднее геометрическое модулей
+            Console.WriteLine("Задача 2.22: Среднее арифметическое и геометрическое модулей");
+            Console.Write("Введите первое число: ");
+            double num1 = Convert.ToDouble(Console.ReadLine());
+            Console.Write("Введите второе число: ");
+            double num2 = Convert.ToDouble(Console.ReadLine());
+
+            double absNum1 = Math.Abs(num1);
+            double absNum2 = Math.Abs(num2);
+
+            double arithmeticMean = (absNum1 + absNum2) / 2;
+            double geometricMean = Math.Sqrt(absNum1 * absNum2);
+
+            Console.WriteLine($"Модули чисел: |{num1}| = {absNum1}, |{num2}| = {absNum2}");
+            Console.WriteLine($"Среднее арифметическое: {arithmeticMean:F2}");
+            Console.WriteLine($"Среднее геометрическое: {geometricMean:F2}");
+
+            Console.WriteLine("\n=== Все задачи решены ===");
+            Console.ReadKey();
+        }
+    }
+}
