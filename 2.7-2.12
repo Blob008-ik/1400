@@ -1,0 +1,118 @@
+﻿using System;
+
+class Program
+{ 
+    // Задача 2.7: Куб
+    static void Task2_7()
+    {
+        Console.Write("Введите длину ребра куба: ");
+        double edge = Convert.ToDouble(Console.ReadLine());
+
+        double volume = Math.Pow(edge, 3);
+        double sideSurfaceArea = 4 * Math.Pow(edge, 2);
+
+        Console.WriteLine($"Объем куба: {volume:F2}");
+        Console.WriteLine($"Площадь боковой поверхности: {sideSurfaceArea:F2}");
+    }
+
+    // Задача 2.8: Окружность
+    static void Task2_8()
+    {
+        Console.Write("Введите радиус окружности: ");
+        double radius = Convert.ToDouble(Console.ReadLine());
+
+        double circumference = 2 * Math.PI * radius;
+        double circleArea = Math.PI * Math.Pow(radius, 2);
+
+        Console.WriteLine($"Длина окружности: {circumference:F2}");
+        Console.WriteLine($"Площадь круга: {circleArea:F2}");
+    }
+
+    // Задача 2.9a: Функция z(x,y)
+    static void Task2_9a()
+    {
+        Console.Write("Введите значение x: ");
+        double x = Convert.ToDouble(Console.ReadLine());
+
+        Console.Write("Введите значение y: ");
+        double y = Convert.ToDouble(Console.ReadLine());
+
+        double z = 2 * Math.Pow(x, 3) - 3.44 * x * y + 2.3 * Math.Pow(x, 2) - 7.1 * y + 2;
+
+        Console.WriteLine($"z({x:F2}, {y:F2}) = {z:F4}");
+    }
+
+    // Задача 2.9b: Функция x(a,b)
+    static void Task2_9b()
+    {
+        Console.Write("Введите значение a: ");
+        double a = Convert.ToDouble(Console.ReadLine());
+
+        Console.Write("Введите значение b: ");
+        double b = Convert.ToDouble(Console.ReadLine());
+
+        double x = 3.14 * Math.Pow(a + b, 3) + 2.75 * Math.Pow(b, 2) - 12.7 * a - 4.1;
+
+        Console.WriteLine($"x({a:F2}, {b:F2}) = {x:F4}");
+    }
+
+    // Задача 2.10: Средние значения
+    static void Task2_10()
+    {
+
+Console.Write("Введите первое целое число: ");
+        int num1 = Convert.ToInt32(Console.ReadLine());
+
+        Console.Write("Введите второе целое число: ");
+        int num2 = Convert.ToInt32(Console.ReadLine());
+
+        
+        double arithmeticMean = (num1 + num2) / 2.0;
+
+        
+        double geometricMean = Math.Sqrt(num1 * num2);
+
+        Console.WriteLine($"Среднее арифметическое: {arithmeticMean:F2}");
+        Console.WriteLine($"Среднее геометрическое: {geometricMean:F2}");
+    }
+
+    // Задача 2.11: Плотность тела
+    static void Task2_11()
+    {
+        Console.Write("Введите объем тела (в м³): ");
+        double volume = Convert.ToDouble(Console.ReadLine());
+
+        Console.Write("Введите массу тела (в кг): ");
+        double mass = Convert.ToDouble(Console.ReadLine());
+
+        if (volume == 0)
+        {
+            Console.WriteLine("Ошибка: объем не может быть равен нулю!");
+            return;
+        }
+
+        double density = mass / volume;
+
+        Console.WriteLine($"Плотность материала: {density:F2} кг/м³");
+    }
+
+    // Задача 2.12: Плотность населения
+    static void Task2_12()
+    {
+        Console.Write("Введите количество жителей: ");
+        double population = Convert.ToDouble(Console.ReadLine());
+
+        Console.Write("Введите площадь территории (в км²): ");
+        double area = Convert.ToDouble(Console.ReadLine());
+
+        if (area == 0)
+        {
+            Console.WriteLine("Ошибка: площадь не может быть равна нулю!");
+            return;
+        }
+
+        double populationDensity = population / area;
+
+        Console.WriteLine($"Плотность населения: {populationDensity:F2} чел/км²");
+    }
+}
