@@ -1,0 +1,237 @@
+﻿using System;
+
+class Program
+{ 
+
+    // 2.28. Площадь равнобедренной трапеции
+    static void Task2_28()
+    {
+        Console.WriteLine("\n=== 2.28. Площадь равнобедренной трапеции ===");
+        Console.Write("Введите большее основание: ");
+        double a = double.Parse(Console.ReadLine());
+        Console.Write("Введите меньшее основание: ");
+        double b = double.Parse(Console.ReadLine());
+        Console.Write("Введите угол при большем основании (в градусах): ");
+        double angleDeg = double.Parse(Console.ReadLine());
+
+        double angleRad = angleDeg * Math.PI / 180;
+        double height = (a - b) / 2 * Math.Tan(angleRad);
+        double area = (a + b) / 2 * height;
+
+Console.WriteLine($"Высота: {height:F2}");
+        Console.WriteLine($"Площадь: {area:F2}");
+    }
+
+    // 2.29. Треугольник по координатам вершин
+    static void Task2_29()
+    {
+        Console.WriteLine("\n=== 2.29. Треугольник по координатам вершин ===");
+        double[] x = new double[3];
+        double[] y = new double[3];
+
+        for (int i = 0; i < 3; i++)
+        {
+            Console.Write($"Введите x{i + 1}: ");
+            x[i] = double.Parse(Console.ReadLine());
+            Console.Write($"Введите y{i + 1}: ");
+            y[i] = double.Parse(Console.ReadLine());
+        }
+
+        double a = Math.Sqrt(Math.Pow(x[1] - x[0], 2) + Math.Pow(y[1] - y[0], 2));
+        double b = Math.Sqrt(Math.Pow(x[2] - x[1], 2) + Math.Pow(y[2] - y[1], 2));
+        double c = Math.Sqrt(Math.Pow(x[0] - x[2], 2) + Math.Pow(y[0] - y[2], 2));
+
+        double perimeter = a + b + c;
+        double p = perimeter / 2; 
+        double area = Math.Sqrt(p * (p - a) * (p - b) * (p - c));
+
+        Console.WriteLine($"Периметр: {perimeter:F2}");
+        Console.WriteLine($"Площадь: {area:F2}");
+    }
+
+    // 2.30. Четырёхугольник по координатам вершин
+    static void Task2_30()
+    {
+        Console.WriteLine("\n=== 2.30. Четырёхугольник по координатам вершин ===");
+        double[] x = new double[4];
+        double[] y = new double[4];
+
+        for (int i = 0; i < 4; i++)
+        {
+            Console.Write($"Введите x{i + 1}: ");
+            x[i] = double.Parse(Console.ReadLine());
+            Console.Write($"Введите y{i + 1}: ");
+            y[i] = double.Parse(Console.ReadLine());
+        }
+
+        double TriangleArea(double x1, double y1, double x2, double y2, double x3, double y3)
+        {
+            return Math.Abs((x1 - x3) * (y2 - y3) - (x2 - x3) * (y1 - y3)) / 2;
+        }
+
+        double area1 = TriangleArea(x[0], y[0], x[1], y[1], x[2], y[2]);
+        double area2 = TriangleArea(x[0], y[0], x[2], y[2], x[3], y[3]);
+
+        Console.WriteLine($"Площадь четырёхугольника: {area1 + area2:F2}");
+    }
+
+    // 2.31. Стоимость покупки
+    static void Task2_31()
+    {
+        Console.WriteLine("\n=== 2.31. Стоимость покупки ===");
+        Console.Write("Стоимость 1 кг конфет: ");
+        double candyPrice = double.Parse(Console.ReadLine());
+        Console.Write("Стоимость 1 кг печенья: ");
+        double cookiePrice = double.Parse(Console.ReadLine());
+        Console.Write("Стоимость 1 кг яблок: ");
+        double applePrice = double.Parse(Console.ReadLine());
+
+        Console.Write("Количество конфет (кг): ");
+        double candyQty = double.Parse(Console.ReadLine());
+        Console.Write("Количество печенья (кг): ");
+        double cookieQty = double.Parse(Console.ReadLine());
+        Console.Write("Количество яблок (кг): ");
+        double appleQty = double.Parse(Console.ReadLine());
+
+        double total = candyPrice * candyQty + cookiePrice * cookieQty + applePrice * appleQty;
+        Console.WriteLine($"Общая стоимость покупки: {total:F2} руб.");
+    }
+
+    // 2.32. Стоимость компьютеров
+    static void Task2_32()
+    {
+        Console.WriteLine("\n=== 2.32. Стоимость компьютеров ===");
+        Console.Write("Стоимость монитора: ");
+        double monitor = double.Parse(Console.ReadLine());
+        Console.Write("Стоимость системного блока: ");
+        double systemUnit = double.Parse(Console.ReadLine());
+        Console.Write("Стоимость клавиатуры: ");
+        double keyboard = double.Parse(Console.ReadLine());
+        Console.Write("Стоимость мыши: ");
+        double mouse = double.Parse(Console.ReadLine());
+
+        double oneComputer = monitor + systemUnit + keyboard + mouse;
+        Console.WriteLine($"Стоимость 1 компьютера: {oneComputer:F2} руб.");
+        Console.WriteLine($"Стоимость 3 компьютеров: {3 * oneComputer:F2} руб.");
+
+Console.Write("Введите количество компьютеров N: ");
+        int n = int.Parse(Console.ReadLine());
+        Console.WriteLine($"Стоимость {n} компьютеров: {n * oneComputer:F2} руб.");
+    }
+
+    // 2.33. Средний возраст детей
+    static void Task2_33()
+    {
+        Console.WriteLine("\n=== 2.33. Средний возраст детей ===");
+        Console.Write("Возраст Тани (лет): ");
+        double tanyaAge = double.Parse(Console.ReadLine());
+        Console.Write("Возраст Мити (лет): ");
+        double mityaAge = double.Parse(Console.ReadLine());
+
+        double average = (tanyaAge + mityaAge) / 2;
+        double diffTanya = Math.Abs(tanyaAge - average);
+        double diffMitya = Math.Abs(mityaAge - average);
+
+        Console.WriteLine($"Средний возраст: {average:F1} лет");
+        Console.WriteLine($"Возраст Тани отличается на {diffTanya:F1} лет");
+        Console.WriteLine($"Возраст Мити отличается на {diffMitya:F1} лет");
+    }
+
+    // 2.34. Встреча автомобилей
+    static void Task2_34()
+    {
+        Console.WriteLine("\n=== 2.34. Встреча автомобилей ===");
+        Console.Write("Скорость первого автомобиля (км/ч): ");
+        double v1 = double.Parse(Console.ReadLine());
+        Console.Write("Скорость второго автомобиля (км/ч): ");
+        double v2 = double.Parse(Console.ReadLine());
+        Console.Write("Расстояние между автомобилями (км): ");
+        double s = double.Parse(Console.ReadLine());
+
+        if (v1 + v2 > 0)
+        {
+            double time = s / (v1 + v2);
+            Console.WriteLine($"Автомобили встретятся через {time:F2} часа");
+            Console.WriteLine($"Или через {time * 60:F0} минут");
+        }
+        else
+        {
+            Console.WriteLine("Автомобили никогда не встретятся!");
+        }
+    }
+
+    // 2.35. Расстояние между автомобилями
+    static void Task2_35()
+    {
+        Console.WriteLine("\n=== 2.35. Расстояние между автомобилями ===");
+        Console.Write("Скорость первого автомобиля (км/ч, V1 > V2): ");
+        double v1 = double.Parse(Console.ReadLine());
+        Console.Write("Скорость второго автомобиля (км/ч, V2 < V1): ");
+        double v2 = double.Parse(Console.ReadLine());
+        Console.Write("Начальное расстояние между ними (км): ");
+        double s0 = double.Parse(Console.ReadLine());
+
+        if (v1 > v2)
+        {
+            double relativeSpeed = v1 - v2;
+            double time = 0.5; 
+            double distance = s0 + relativeSpeed * time;
+            Console.WriteLine($"Через 30 минут расстояние будет: {distance:F2} км");
+        }
+        else
+        {
+            Console.WriteLine("Ошибка: V1 должно быть больше V2!");
+        }
+    }
+
+    // 2.36. Конвертер температуры
+    static void Task2_36()
+    {
+        Console.WriteLine("\n=== 2.36. Конвертер температуры ===");
+        Console.Write("Температура в градусах Цельсия: ");
+        double celsius = double.Parse(Console.ReadLine());
+
+        double fahrenheit = celsius * 1.8 + 32;
+        double kelvin = celsius + 273.15;
+
+        Console.WriteLine($"Температура по Фаренгейту: {fahrenheit:F2}°F");
+        Console.WriteLine($"Температура по Кельвину: {kelvin:F2}K");
+    }
+
+    // 2.37. 450 градусов по Фаренгейту
+    static void Task2_37()
+    {
+        Console.WriteLine("\n=== 2.37. 450 градусов по Фаренгейту ===");
+        double fahrenheit = 450;
+        double celsius = (fahrenheit - 32) / 1.8;
+
+        Console.WriteLine($"{fahrenheit}°F = {celsius:F2}°C");
+        Console.WriteLine("Роман Рэя Брэдбери «451 градус по Фаренгейту» :)");
+    }
+
+    // 2.38. Арифметика и среднее
+    static void Task2_38()
+    {
+        Console.WriteLine("\n=== 2.38. Арифметика и среднее ===");
+        Console.Write("Введите первое целое число: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите второе целое число: ");
+        int b = int.Parse(Console.ReadLine());
+
+        Console.WriteLine($"{a}+{b}={a + b}");
+        Console.WriteLine($"{a}-{b}={a - b}");
+        Console.WriteLine($"{a}*{b}={a * b}");
+
+
+if (b != 0)
+        {
+            Console.WriteLine($"{a}/{b}={(double)a / b:F6}");
+        }
+        else
+        {
+            Console.WriteLine($"{a}/{b}=деление на ноль");
+        }
+
+        Console.WriteLine($"({a}+{b})/2={(a + b) / 2.0:F1}");
+    }
+}
