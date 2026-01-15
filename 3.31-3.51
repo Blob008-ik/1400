@@ -1,0 +1,296 @@
+﻿using System;
+
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine();
+
+        // 3.31 Число сотен и тысяч
+        Console.WriteLine("3.31. Число сотен и тысяч");
+        Console.Write("Введите натуральное число (> 999): ");
+        int num31 = int.Parse(Console.ReadLine());
+        int hundreds31 = (num31 / 100) % 10;
+        int thousands31 = num31 / 1000;
+        Console.WriteLine($"а) Число сотен: {hundreds31}");
+        Console.WriteLine($"б) Число тысяч: {thousands31}");
+        Console.WriteLine();
+
+        // 3.32-3.33 - решаем обратную задачу
+        Console.WriteLine("3.32-3.33. Найти исходное трехзначное число");
+        Console.WriteLine("По условию: (x - последняя_цифра)/10 + последняя_цифра*100 = 237");
+
+        for (int c = 0; c <= 9; c++)
+        {
+            int x = 10 * (237 - 100 * c) + c;
+            if (x >= 100 && x <= 999)
+            {
+                int check = (x - (x % 10)) / 10;
+                check += (x % 10) * 100;
+                if (check == 237)
+                {
+                    Console.WriteLine($"Найдено число x = {x}");
+                    break;
+                }
+            }
+        }
+        Console.WriteLine();
+
+        // 3.34-3.35
+        Console.WriteLine("3.34-3.35. Найти исходное трехзначное число");
+        Console.WriteLine("По условию: (x % 100)*10 + x/100 = 564");
+
+        int n34 = 564;
+        for (int x34 = 100; x34 <= 999; x34++)
+        {
+            if ((x34 % 100) * 10 + (x34 / 100) == n34)
+            {
+                Console.WriteLine($"Для n={n34} найдено x={x34}");
+                break;
+            }
+        }
+        Console.WriteLine();
+
+        // 3.36-3.37
+        Console.WriteLine("3.36-3.37. Найти исходное трехзначное число");
+        Console.WriteLine("По условию: b*100 + (a*10 + c) = 546");
+        int n36 = 546;
+        int b36 = n36 / 100; 
+        int ac36 = n36 % 100; 
+        int a36 = ac36 / 10; 
+        int c36 = ac36 % 10; 
+        int x36 = a36 * 100 + b36 * 10 + c36;
+        Console.WriteLine($"Для n={n36} найдено x={x36}");
+        Console.WriteLine();
+
+        // 3.38-3.39
+        Console.WriteLine("3.38-3.39. Найти исходное трехзначное число");
+        Console.WriteLine("По условию: (a*10 + c)*10 + b = 456");
+        int n38 = 456;
+        int abc38 = n38 / 10; 
+        int b38 = n38 % 10;
+        int a38 = abc38 / 10; 
+        int c38 = abc38 % 10; 
+        int x38 = a38 * 100 + b38 * 10 + c38;
+        Console.WriteLine($"Для n={n38} найдено x={x38}");
+        Console.WriteLine();
+
+        // 3.40-3.41
+        Console.WriteLine("3.40-3.41. Найти исходное трехзначное число");
+        Console.WriteLine("По условию: c*100 + (b*10 + a) = 654");
+        int n40 = 654;
+        int c40 = n40 / 100;
+        int ba40 = n40 % 100; 
+        int b40 = ba40 / 10;
+        int a40 = ba40 % 10; 
+        int x40 = a40 * 100 + b40 * 10 + c40;
+        Console.WriteLine($"Для n={n40} найдено x={x40}");
+        Console.WriteLine();
+
+        // 3.42 Сумма двузначного и однозначного
+
+Console.WriteLine("3.42. Сумма двузначного (a2a1) и однозначного b");
+        Console.Write("Введите a2 (десятки двузначного): ");
+        int a2 = int.Parse(Console.ReadLine());
+        Console.Write("Введите a1 (единицы двузначного): ");
+        int a1 = int.Parse(Console.ReadLine());
+        Console.Write("Введите b (однозначное): ");
+        int b = int.Parse(Console.ReadLine());
+        int sum_units = a1 + b;
+        int result_units = sum_units % 10;
+        int carry = sum_units / 10; 
+        int result_tens = a2 + carry;
+
+        Console.WriteLine($"Цифры результата: десятки={result_tens}, единицы={result_units}");
+        Console.WriteLine($"Результат: {result_tens}{result_units}");
+        Console.WriteLine();
+
+        // 3.43 Сумма двух двузначных чисел
+        Console.WriteLine("3.43. Сумма двух двузначных чисел (a2a1 + b2b1)");
+        Console.Write("Введите a2: ");
+        int a2_43 = int.Parse(Console.ReadLine());
+        Console.Write("Введите a1: ");
+        int a1_43 = int.Parse(Console.ReadLine());
+        Console.Write("Введите b2: ");
+        int b2_43 = int.Parse(Console.ReadLine());
+        Console.Write("Введите b1: ");
+        int b1_43 = int.Parse(Console.ReadLine());
+
+        int sum_units43 = a1_43 + b1_43;
+        int result_units43 = sum_units43 % 10;
+        int carry43 = sum_units43 / 10;
+
+        int sum_tens43 = a2_43 + b2_43 + carry43;
+        int result_tens43 = sum_tens43 % 10;
+        int result_hundreds43 = sum_tens43 / 10;
+
+        Console.WriteLine($"Цифры результата: {result_hundreds43}{result_tens43}{result_units43}");
+        Console.WriteLine($"Результат: {result_hundreds43 * 100 + result_tens43 * 10 + result_units43}");
+        Console.WriteLine();
+
+        // 3.44 Сумма трехзначного и двузначного
+        Console.WriteLine("3.44. Сумма трехзначного (a3a2a1) и двузначного (b2b1)");
+        Console.Write("Введите a3: ");
+        int a3 = int.Parse(Console.ReadLine());
+        Console.Write("Введите a2: ");
+        int a2_44 = int.Parse(Console.ReadLine());
+        Console.Write("Введите a1: ");
+        int a1_44 = int.Parse(Console.ReadLine());
+        Console.Write("Введите b2: ");
+        int b2_44 = int.Parse(Console.ReadLine());
+        Console.Write("Введите b1: ");
+        int b1_44 = int.Parse(Console.ReadLine());
+
+        int sum_units44 = a1_44 + b1_44;
+        int result_units44 = sum_units44 % 10;
+        int carry44_1 = sum_units44 / 10;
+
+        int sum_tens44 = a2_44 + b2_44 + carry44_1;
+        int result_tens44 = sum_tens44 % 10;
+        int carry44_2 = sum_tens44 / 10;
+
+        int result_hundreds44 = a3 + carry44_2;
+
+        Console.WriteLine($"Цифры результата: {result_hundreds44}{result_tens44}{result_units44}");
+        Console.WriteLine();
+
+        // 3.45 Последовательность двузначных чисел
+        Console.WriteLine("3.45. Последовательность 10111213...9899");
+        Console.Write("Введите k (1-180): ");
+        int k45 = int.Parse(Console.ReadLine());
+
+        int pair_number45 = (k45 + 1) / 2;
+
+        int two_digit_number45 = 10 + pair_number45 - 1;
+
+        int kth_digit45;
+        if (k45 % 2 == 1) 
+        {
+            kth_digit45 = two_digit_number45 / 10;
+        }
+        else 
+        {
+            kth_digit45 = two_digit_number45 % 10;
+        }
+
+        Console.WriteLine($"а) Номер пары: {pair_number45}");
+
+Console.WriteLine($"б) Двузначное число: {two_digit_number45}");
+        Console.WriteLine($"в) {k45}-я цифра: {kth_digit45}");
+        Console.WriteLine();
+
+        // 3.46 Последовательность трехзначных чисел
+        Console.WriteLine("3.46. Последовательность 101102103...149150");
+        Console.Write("Введите k (1-150): ");
+        int k46 = int.Parse(Console.ReadLine());
+
+        int number_index46 = (k46 - 1) / 3; 
+        int digit_in_number46 = (k46 - 1) % 3; 
+
+        int three_digit_number46 = 101 + number_index46;
+
+        int kth_digit46;
+        if (digit_in_number46 == 0)
+            kth_digit46 = three_digit_number46 / 100;
+        else if (digit_in_number46 == 1)
+            kth_digit46 = (three_digit_number46 / 10) % 10;
+        else
+            kth_digit46 = three_digit_number46 % 10;
+
+        Console.WriteLine($"{k46}-я цифра: {kth_digit46}");
+        Console.WriteLine($"Находится в числе: {three_digit_number46}");
+        Console.WriteLine($"Позиция в числе: {digit_in_number46 + 1}-я цифра");
+        Console.WriteLine();
+
+        // 3.47 Угол часовой стрелки
+        Console.WriteLine("3.47. Угол часовой стрелки");
+        Console.Write("Введите часы (0-23): ");
+        int h47 = int.Parse(Console.ReadLine());
+        Console.Write("Введите минуты (0-59): ");
+        int m47 = int.Parse(Console.ReadLine());
+        Console.Write("Введите секунды (0-59): ");
+        int s47 = int.Parse(Console.ReadLine());
+
+        h47 = h47 % 12;
+
+        double angle47 = h47 * 30 + m47 * 0.5 + s47 * (0.5 / 60);
+
+        Console.WriteLine($"Угол часовой стрелки: {angle47:F2}°");
+        Console.WriteLine();
+
+        // 3.48 Время по углу часовой стрелки
+        Console.WriteLine("3.48. Время по углу часовой стрелки");
+        Console.Write("Введите угол y градусов (0-360): ");
+        double y48 = double.Parse(Console.ReadLine());
+
+        double total_hours48 = y48 / 30.0;
+        int hours48 = (int)total_hours48;
+        double minutes_decimal48 = (total_hours48 - hours48) * 60;
+        int minutes48 = (int)minutes_decimal48;
+
+        Console.WriteLine($"Прошло: {hours48} часов {minutes48} минут");
+        Console.WriteLine();
+
+        // 3.50 Когда стрелки совпадут или перпендикулярны
+        Console.WriteLine("3.50. Когда стрелки совпадут или перпендикулярны");
+        Console.Write("Введите часы (1-12): ");
+        int h50 = int.Parse(Console.ReadLine());
+        Console.Write("Введите минуты (0-59): ");
+        int m50 = int.Parse(Console.ReadLine());
+
+        double hour_angle50 = h50 * 30 + m50 * 0.5; 
+        double minute_angle50 = m50 * 6; 
+
+        double angle_diff50 = Math.Abs(hour_angle50 - minute_angle50);
+        if (angle_diff50 > 180) angle_diff50 = 360 - angle_diff50;
+
+        double time_to_match50;
+        if (minute_angle50 >= hour_angle50)
+        {
+            time_to_match50 = (360 - (minute_angle50 - hour_angle50)) / 5.5;
+        }
+        else
+        {
+            time_to_match50 = (hour_angle50 - minute_angle50) / 5.5;
+        }
+
+        double time_to_perpendicular50;
+
+
+        if (Math.Abs(angle_diff50 - 90) < 0.1)
+        {
+            time_to_perpendicular50 = 360 / 5.5;
+        }
+        else if (angle_diff50 < 90)
+        {
+            time_to_perpendicular50 = (90 - angle_diff50) / 5.5;
+        }
+        else
+        {
+            time_to_perpendicular50 = (90 + (360 - angle_diff50)) / 5.5;
+        }
+
+        Console.WriteLine($"а) До совпадения: {time_to_match50:F1} минут");
+        Console.WriteLine($"б) До перпендикулярного положения: {time_to_perpendicular50:F1} минут");
+        Console.WriteLine();
+
+        // 3.51 Проверка делимости
+        Console.WriteLine("3.51. Проверка делимости");
+        Console.Write("Введите a: ");
+        int a51 = int.Parse(Console.ReadLine());
+        Console.Write("Введите b: ");
+        int b51 = int.Parse(Console.ReadLine());
+        int result51;
+        bool divisible1 = (a51 % b51 == 0);
+        bool divisible2 = (b51 % a51 == 0);
+        int check1 = Convert.ToInt32(divisible1);
+        int check2 = Convert.ToInt32(divisible2);
+        result51 = (check1 + check2 > 0) ? 1 : 42;
+
+        Console.WriteLine($"Результат: {result51}");
+        Console.WriteLine($"({a51} делится на {b51}: {divisible1}, {b51} делится на {a51}: {divisible2})");
+
+        Console.ReadKey();
+    }
+}
