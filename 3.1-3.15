@@ -1,0 +1,167 @@
+﻿using System;
+
+
+class Program
+{
+    static void Main()
+    {
+
+        // 3.1 Расстояние в сантиметрах → метры
+        Console.WriteLine("3.1. Сантиметры в метры");
+        Console.Write("Введите расстояние в см: ");
+        int cm = int.Parse(Console.ReadLine());
+        int meters = cm / 100;
+        Console.WriteLine($"Полных метров: {meters}");
+        Console.WriteLine();
+
+        // 3.2 Масса в кг → центнеры
+        Console.WriteLine("3.2. Килограммы в центнеры");
+        Console.Write("Введите массу в кг: ");
+        int kg = int.Parse(Console.ReadLine());
+        int centners = kg / 100;
+        Console.WriteLine($"Полных центнеров: {centners}");
+        Console.WriteLine();
+
+        // 3.3 Дни → недели
+        Console.WriteLine("3.3. Дни в недели");
+        int days = 234;
+        int weeks = days / 7;
+        Console.WriteLine($"{days} дней = {weeks} полных недель");
+        Console.WriteLine();
+
+        // 3.4 Деление яблок
+        Console.WriteLine("3.4. Деление яблок между школьниками");
+        Console.Write("Введите количество школьников: ");
+        int N = int.Parse(Console.ReadLine());
+        Console.Write("Введите количество яблок: ");
+        int k = int.Parse(Console.ReadLine());
+        int applesPerStudent = k / N;
+        int applesLeft = k % N;
+        Console.WriteLine($"Каждому школьнику: {applesPerStudent} яблок");
+        Console.WriteLine($"Останется в корзинке: {applesLeft} яблок");
+        Console.WriteLine();
+
+        // 3.5 Квадраты из прямоугольника
+        Console.WriteLine("3.5. Квадраты из прямоугольника");
+        int width = 543;
+        int height = 130;
+        int squares = width / height;
+        Console.WriteLine($"От прямоугольника {width}x{130} мм можно отрезать {squares} квадратов");
+        Console.WriteLine();
+
+        // 3.6 Номер купе в вагоне
+        Console.WriteLine("3.6. Номер купе в вагоне");
+        Console.Write("Введите номер места (1-36): ");
+        int seat = int.Parse(Console.ReadLine());
+        int compartment = (seat - 1) / 4 + 1;
+        Console.WriteLine($"Место {seat} находится в купе №{compartment}");
+        Console.WriteLine();
+
+        // 3.7 Этаж в 5-этажном доме (15 квартир)
+        Console.WriteLine("3.7. Этаж в 5-этажном доме (15 квартир)");
+        Console.Write("Введите номер квартиры (1-15): ");
+        int flat1 = int.Parse(Console.ReadLine());
+        int floor1 = (flat1 - 1) / 3 + 1;
+        Console.WriteLine($"Квартира {flat1} находится на {floor1} этаже");
+        Console.WriteLine();
+
+        // 3.8 Ряд в кинотеатре
+        Console.WriteLine("3.8. Ряд в кинотеатре");
+        Console.Write("Введите номер билета (01643 и больше): ");
+        int ticket = int.Parse(Console.ReadLine());
+        int firstTicket = 1643;
+        int seatNumber = ticket - firstTicket + 1;
+        int row = (seatNumber - 1) / 15 + 1;
+        Console.WriteLine($"Билет {ticket} находится в {row} ряду");
+        Console.WriteLine();
+
+        // 3.9 Время из секунд
+        Console.WriteLine("3.9. Время из секунд");
+        Console.Write("Введите количество секунд: ");
+        int n = int.Parse(Console.ReadLine());
+        int hours = n / 3600;
+        int minutes = (n % 3600) / 60;
+        int seconds = n % 60;
+        Console.WriteLine($"Прошло: {hours} ч, {minutes} мин, {seconds} сек");
+        Console.WriteLine();
+
+        // 3.10 День недели по номеру дня в году
+        Console.WriteLine("3.10. День недели по номеру дня в году");
+        Console.Write("Введите номер дня года (1-365): ");
+        int k_day = int.Parse(Console.ReadLine());
+
+        // Вариант а: 1 января - понедельник
+        int n_a = (k_day - 1) % 7 + 1;
+        Console.WriteLine($"Если 1 января - понедельник, то это день недели: {n_a}");
+
+// Вариант б: 1 января - вторник
+        int n_b = k_day % 7 + 1;
+        Console.WriteLine($"Если 1 января - вторник, то это день недели: {n_b}");
+
+        // Вариант в: 1 января - d-й день недели
+        Console.Write("Введите номер дня недели 1 января (1-7): ");
+        int d = int.Parse(Console.ReadLine());
+        int n_c = (k_day + d - 2) % 7 + 1;
+        Console.WriteLine($"Это день недели: {n_c} (1-пн, 7-вс)");
+        Console.WriteLine();
+
+        // 3.11 Месяц по количеству месяцев
+        Console.WriteLine("3.11. Месяц по количеству месяцев");
+        Console.Write("Введите количество прошедших месяцев (n): ");
+        int n_months = int.Parse(Console.ReadLine());
+        int x = n_months % 12 + 1;
+        Console.WriteLine($"Это {x}-й месяц года");
+        Console.WriteLine();
+
+        // 3.12 Квартира в доме (20 квартир)
+        Console.WriteLine("3.12. Квартира в 5-этажном доме (20 квартир)");
+        Console.Write("Введите номер квартиры (1-20): ");
+        int flat2 = int.Parse(Console.ReadLine());
+        int floor2 = (flat2 - 1) / 4 + 1;
+        int position = (flat2 - 1) % 4 + 1;
+        Console.WriteLine($"Квартира {flat2}: этаж {floor2}, {position}-я по счету");
+        Console.WriteLine();
+
+        // 3.13 Таблица 10×5
+        Console.WriteLine("3.13. Поиск в таблице 10×5");
+        Console.Write("Введите порядковый номер n (1-50): ");
+        int n_table = int.Parse(Console.ReadLine());
+        int row_table = (n_table - 1) / 5 + 1;
+        int col_table = (n_table - 1) % 5 + 1;
+        Console.WriteLine($"Значение находится в строке {row_table}, столбце {col_table}");
+        Console.WriteLine();
+
+        // 3.14 9-этажный дом с 4 подъездами
+        Console.WriteLine("3.14. Квартира в 9-этажном доме");
+        Console.Write("Введите номер квартиры (1-216): ");
+        int flat3 = int.Parse(Console.ReadLine());
+        int flatsPerEntrance = 9 * 6; // 54
+        int entrance = (flat3 - 1) / flatsPerEntrance + 1;
+        int flatInEntrance = (flat3 - 1) % flatsPerEntrance;
+        int floor3 = flatInEntrance / 6 + 1;
+        int position3 = flatInEntrance % 6 + 1;
+        Console.WriteLine($"Подъезд: {entrance}, этаж: {floor3}, {position3}-я на этаже");
+        Console.WriteLine();
+
+        // 3.15 Склад (вариант 1)
+        Console.WriteLine("3.15. Поиск товара на складе (вариант 1)");
+        Console.Write("Введите номер места (1-1200): ");
+        int place = int.Parse(Console.ReadLine());
+        int placesPerShelf = 15 * 10; // 150
+        int section = (place - 1) / placesPerShelf + 1;
+        int placeInSection = (place - 1) % placesPerShelf;
+        int shelf = placeInSection / 15 + 1;
+        Console.WriteLine($"Секция: {section}, ярус: {shelf}");
+        Console.WriteLine();
+
+        // 3.15 Склад (вариант 2)
+        Console.WriteLine("3.15. Поиск товара на складе (вариант 2)");
+        Console.Write("Введите номер места (1-150): ");
+        int place2 = int.Parse(Console.ReadLine());
+        int section2 = (place2 - 1) % 8 + 1;
+        int shelf2 = (place2 - 1) / 8 + 1;
+        Console.WriteLine($"Секция: {section2}, ярус: {shelf2}");
+
+        Console.ReadKey();
+    }
+}
