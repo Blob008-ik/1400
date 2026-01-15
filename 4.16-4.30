@@ -1,0 +1,341 @@
+﻿using System;
+
+
+class Program
+{
+    static void Main()
+    {
+        while (true)
+        {
+            Console.WriteLine("\n=== МЕНЮ ЗАДАЧ (4.16 - 4.30) ===");
+            Console.WriteLine("4.16 - Корни квадратного уравнения");
+            Console.WriteLine("4.17 - Возраст человека");
+            Console.WriteLine("4.18 - Круг и квадрат (уместится ли?)");
+            Console.WriteLine("4.19 - Круг и треугольник");
+            Console.WriteLine("4.20 - Минимальный прямоугольник (через углы)");
+            Console.WriteLine("4.21 - Минимальный прямоугольник (через стороны)");
+            Console.WriteLine("4.22 - Проверка деления нацело");
+            Console.WriteLine("4.23 - Является ли делителем");
+            Console.WriteLine("4.24 - Свойства числа");
+            Console.WriteLine("4.25 - Следующее четное число");
+            Console.WriteLine("4.26 - Цифры двузначного числа");
+            Console.WriteLine("4.27 - Проверка равенства квадрата и суммы кубов");
+            Console.WriteLine("4.28 - Сумма цифр двузначного числа");
+            Console.WriteLine("4.29 - Кратность суммы цифр");
+            Console.WriteLine("4.30 - Число-палиндром");
+            Console.WriteLine("0 - Выход");
+
+            Console.Write("Выберите задачу: ");
+            string choice = Console.ReadLine();
+
+            if (choice == "0") break;
+
+            switch (choice)
+            {
+                case "4.16": Task416(); break;
+                case "4.17": Task417(); break;
+                case "4.18": Task418(); break;
+                case "4.19": Task419(); break;
+                case "4.20": Task420(); break;
+                case "4.21": Task421(); break;
+                case "4.22": Task422(); break;
+                case "4.23": Task423(); break;
+                case "4.24": Task424(); break;
+                case "4.25": Task425(); break;
+                case "4.26": Task426(); break;
+                case "4.27": Task427(); break;
+                case "4.28": Task428(); break;
+                case "4.29": Task429(); break;
+                case "4.30": Task430(); break;
+                default: Console.WriteLine("Неверный выбор!"); break;
+            }
+
+            Console.WriteLine("\nНажмите любую клавишу...");
+            Console.ReadKey();
+        }
+    }
+
+    // 4.16 - Корни квадратного уравнения
+    static void Task416()
+    {
+        Console.Write("Введите a, b, c: ");
+        double a = double.Parse(Console.ReadLine());
+        double b = double.Parse(Console.ReadLine());
+        double c = double.Parse(Console.ReadLine());
+
+        double D = b * b - 4 * a * c;
+
+        if (D > 0)
+        {
+            double x1 = (-b + Math.Sqrt(D)) / (2 * a);
+            double x2 = (-b - Math.Sqrt(D)) / (2 * a);
+            Console.WriteLine($"Корни: x1 = {x1:F2}, x2 = {x2:F2}");
+        }
+        else if (D == 0)
+        {
+            double x = -b / (2 * a);
+            Console.WriteLine($"Корень: x = {x:F2}");
+        }
+        else
+        {
+            Console.WriteLine("Нет вещественных корней");
+        }
+    }
+
+    // 4.17 - Возраст человека
+    static void Task417()
+    {
+        Console.Write("Год рождения: ");
+        int birthYear = int.Parse(Console.ReadLine());
+        Console.Write("Месяц рождения (1-12): ");
+        int birthMonth = int.Parse(Console.ReadLine());
+
+        Console.Write("Текущий год: ");
+        int currentYear = int.Parse(Console.ReadLine());
+        Console.Write("Текущий месяц (1-12): ");
+        int currentMonth = int.Parse(Console.ReadLine());
+
+        int age = currentYear - birthYear;
+
+        if (currentMonth < birthMonth)
+            age--;
+
+        Console.WriteLine($"Возраст: {age} полных лет");
+    }
+
+
+    // 4.18 - Круг и квадрат (уместится ли?)
+    static void Task418()
+    {
+        Console.Write("Площадь круга: ");
+        double circleArea = double.Parse(Console.ReadLine());
+        Console.Write("Площадь квадрата: ");
+        double squareArea = double.Parse(Console.ReadLine());
+
+        double circleRadius = Math.Sqrt(circleArea / Math.PI);
+        double squareSide = Math.Sqrt(squareArea);
+
+        bool circleInSquare = (2 * circleRadius <= squareSide);
+        bool squareInCircle = (squareSide * Math.Sqrt(2) <= 2 * circleRadius);
+
+        Console.WriteLine($"а) Круг в квадрате: {(circleInSquare ? "ДА" : "НЕТ")}");
+        Console.WriteLine($"б) Квадрат в круге: {(squareInCircle ? "ДА" : "НЕТ")}");
+    }
+
+    // 4.19 - Круг и треугольник
+    static void Task419()
+    {
+        Console.Write("Площадь круга: ");
+        double circleArea = double.Parse(Console.ReadLine());
+        Console.Write("Площадь треугольника: ");
+        double triangleArea = double.Parse(Console.ReadLine());
+
+
+        double circleRadius = Math.Sqrt(circleArea / Math.PI);
+
+        double triangleSide = Math.Sqrt((4 * triangleArea) / Math.Sqrt(3));
+
+        double rInscribed = triangleSide * Math.Sqrt(3) / 6; 
+        double rCircumscribed = triangleSide * Math.Sqrt(3) / 3; 
+
+        bool circleInTriangle = (circleRadius <= rInscribed);
+        bool triangleInCircle = (rCircumscribed <= circleRadius);
+
+        Console.WriteLine($"а) Круг в треугольнике: {(circleInTriangle ? "ДА" : "НЕТ")}");
+        Console.WriteLine($"б) Треугольник в круге: {(triangleInCircle ? "ДА" : "НЕТ")}");
+    }
+
+    // 4.20 - Минимальный прямоугольник (через углы)
+    static void Task420()
+    {
+        Console.WriteLine("Первый прямоугольник:");
+        Console.Write("x1 лев.нижн., y1 лев.нижн.: ");
+        double x1 = double.Parse(Console.ReadLine());
+        double y1 = double.Parse(Console.ReadLine());
+        Console.Write("x1 прав.верх., y1 прав.верх.: ");
+        double x2 = double.Parse(Console.ReadLine());
+        double y2 = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("Второй прямоугольник:");
+        Console.Write("x2 лев.нижн., y2 лев.нижн.: ");
+        double x3 = double.Parse(Console.ReadLine());
+        double y3 = double.Parse(Console.ReadLine());
+        Console.Write("x2 прав.верх., y2 прав.верх.: ");
+        double x4 = double.Parse(Console.ReadLine());
+        double y4 = double.Parse(Console.ReadLine());
+
+        double minX = Math.Min(Math.Min(x1, x2), Math.Min(x3, x4));
+        double minY = Math.Min(Math.Min(y1, y2), Math.Min(y3, y4));
+        double maxX = Math.Max(Math.Max(x1, x2), Math.Max(x3, x4));
+        double maxY = Math.Max(Math.Max(y1, y2), Math.Max(y3, y4));
+
+        Console.WriteLine($"Минимальный прямоугольник:");
+        Console.WriteLine($"Левый нижний: ({minX}, {minY})");
+        Console.WriteLine($"Правый верхний: ({maxX}, {maxY})");
+    }
+
+    // 4.21 - Минимальный прямоугольник (через стороны)
+    static void Task421()
+    {
+        Console.WriteLine("Первый прямоугольник:");
+        Console.Write("x1, y1 лев.нижн.: ");
+        double x1 = double.Parse(Console.ReadLine());
+        double y1 = double.Parse(Console.ReadLine());
+        Console.Write("ширина1, высота1: ");
+
+double w1 = double.Parse(Console.ReadLine());
+        double h1 = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("Второй прямоугольник:");
+        Console.Write("x2, y2 лев.нижн.: ");
+        double x2 = double.Parse(Console.ReadLine());
+        double y2 = double.Parse(Console.ReadLine());
+        Console.Write("ширина2, высота2: ");
+        double w2 = double.Parse(Console.ReadLine());
+        double h2 = double.Parse(Console.ReadLine());
+
+        double minX = Math.Min(x1, x2);
+        double minY = Math.Min(y1, y2);
+        double maxX = Math.Max(x1 + w1, x2 + w2);
+        double maxY = Math.Max(y1 + h1, y2 + h2);
+
+        Console.WriteLine($"Минимальный прямоугольник:");
+        Console.WriteLine($"Левый нижний: ({minX}, {minY})");
+        Console.WriteLine($"Правый верхний: ({maxX}, {maxY})");
+    }
+
+    // 4.22 - Проверка деления нацело
+    static void Task422()
+    {
+        Console.Write("Введите m и n: ");
+        int m = int.Parse(Console.ReadLine());
+        int n = int.Parse(Console.ReadLine());
+
+        if (m % n == 0)
+            Console.WriteLine($"Частное: {m / n}");
+        else
+            Console.WriteLine($"{m} на {n} нацело не делится");
+    }
+
+    // 4.23 - Является ли делителем
+    static void Task423()
+    {
+        Console.Write("Введите a и n: ");
+        int a = int.Parse(Console.ReadLine());
+        int n = int.Parse(Console.ReadLine());
+
+        if (n % a == 0)
+            Console.WriteLine($"{a} является делителем {n}");
+        else
+            Console.WriteLine($"{a} НЕ является делителем {n}");
+    }
+
+    // 4.24 - Свойства числа
+    static void Task424()
+    {
+        Console.Write("Введите натуральное число: ");
+        int number = int.Parse(Console.ReadLine());
+
+        bool isEven = (number % 2 == 0);
+        bool endsWith7 = (number % 10 == 7);
+
+        Console.WriteLine($"а) Четное: {(isEven ? "ДА" : "НЕТ")}");
+        Console.WriteLine($"б) Оканчивается на 7: {(endsWith7 ? "ДА" : "НЕТ")}");
+    }
+
+    // 4.25 - Следующее четное число
+    static void Task425()
+    {
+        Console.Write("Введите целое число n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int nextEven = n % 2 == 0 ? n + 2 : n + 1;
+        Console.WriteLine($"Следующее четное число: {nextEven}");
+    }
+
+    // 4.26 - Цифры двузначного числа
+    static void Task426()
+    {
+        Console.Write("Введите двузначное число: ");
+        int number = int.Parse(Console.ReadLine());
+
+        int first = number / 10;
+        int second = number % 10;
+
+        if (first > second)
+            Console.WriteLine("а) Первая цифра больше");
+        else if (first < second)
+            Console.WriteLine("а) Вторая цифра больше");
+        else
+            Console.WriteLine("а) Цифры равны");
+
+        Console.WriteLine($"б) Цифры одинаковы: {(first == second ? "ДА" : "НЕТ")}");
+    }
+
+    // 4.27 - Проверка равенства квадрата и суммы кубов
+    static void Task427()
+    {
+        Console.Write("Введите двузначное число: ");
+        int number = int.Parse(Console.ReadLine());
+
+        int first = number / 10;
+        int second = number % 10;
+
+        int square = number * number;
+        int sumCubes = first * first * first + second * second * second;
+        int quadrupleSumCubes = 4 * sumCubes;
+
+        bool result = (square == quadrupleSumCubes);
+        Console.WriteLine($"Квадрат числа = {square}");
+        Console.WriteLine($"Учетверенная сумма кубов = {quadrupleSumCubes}");
+        Console.WriteLine($"Ответ: {(result ? "ДА" : "НЕТ")}");
+    }
+
+    // 4.28 - Сумма цифр двузначного числа
+    static void Task428()
+    {
+        Console.Write("Введите двузначное число: ");
+
+int number = int.Parse(Console.ReadLine());
+        Console.Write("Введите число a: ");
+        int a = int.Parse(Console.ReadLine());
+
+        int sum = number / 10 + number % 10;
+
+        bool isTwoDigitSum = (sum >= 10 && sum <= 99);
+        bool sumGreaterThanA = (sum > a);
+
+        Console.WriteLine($"а) Сумма цифр двузначное число: {(isTwoDigitSum ? "ДА" : "НЕТ")}");
+        Console.WriteLine($"б) Сумма цифр больше {a}: {(sumGreaterThanA ? "ДА" : "НЕТ")}");
+    }
+
+    // 4.29 - Кратность суммы цифр
+    static void Task429()
+    {
+        Console.Write("Введите двузначное число: ");
+        int number = int.Parse(Console.ReadLine());
+        Console.Write("Введите число a: ");
+        int a = int.Parse(Console.ReadLine());
+
+        int sum = number / 10 + number % 10;
+
+        bool divisibleBy3 = (sum % 3 == 0);
+        bool divisibleByA = (sum % a == 0);
+
+        Console.WriteLine($"а) Сумма цифр кратна 3: {(divisibleBy3 ? "ДА" : "НЕТ")}");
+        Console.WriteLine($"б) Сумма цифр кратна {a}: {(divisibleByA ? "ДА" : "НЕТ")}");
+    }
+
+    // 4.30 - Число-палиндром
+    static void Task430()
+    {
+        Console.Write("Введите трехзначное число: ");
+        int number = int.Parse(Console.ReadLine());
+
+        int first = number / 100;
+        int last = number % 10;
+
+        bool isPalindrome = (first == last);
+        Console.WriteLine($"Число {number} палиндром: {(isPalindrome ? "ДА" : "НЕТ")}");
+    }
+}

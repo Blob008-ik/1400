@@ -1,0 +1,410 @@
+﻿using System;
+
+class Program
+{
+    static void Main()
+    {
+        while (true)
+        {
+            Console.WriteLine("\n=== МЕНЮ ЗАДАЧ (4.1 - 4.15) ===");
+            Console.WriteLine("4.1 - Сравнение двух чисел (большее/меньшее)");
+            Console.WriteLine("4.2 - Вычисление y = 2x или 3x");
+            Console.WriteLine("4.3 - Вычисление y = x^2 или 1/x");
+            Console.WriteLine("4.4 - Область I или II (первый график)");
+            Console.WriteLine("4.5 - Область I или II (второй график)");
+            Console.WriteLine("4.6 - Функция по графику (а и б)");
+            Console.WriteLine("4.7 - Кусочно-заданная функция 1");
+            Console.WriteLine("4.8 - Кусочно-заданная функция 2");
+            Console.WriteLine("4.9 - Максимум и минимум из двух чисел");
+            Console.WriteLine("4.10 - Сравнение расстояний (км vs футы)");
+            Console.WriteLine("4.11 - Сравнение скоростей (км/ч vs м/с)");
+            Console.WriteLine("4.12 - Площадь круга vs квадрата");
+            Console.WriteLine("4.13 - Плотность материалов");
+            Console.WriteLine("4.14 - Ток в электрических цепях");
+            Console.WriteLine("4.15 - Проверка корней квадратного уравнения");
+            Console.WriteLine("0 - Выход");
+            Console.Write("Выберите задачу: ");
+
+            string choice = Console.ReadLine();
+
+            if (choice == "0") break;
+
+            switch (choice)
+            {
+                case "4.1": Task41(); break;    // Задача 4.1
+                case "4.2": Task42(); break;    // Задача 4.2
+                case "4.3": Task43(); break;    // Задача 4.3
+                case "4.4": Task44(); break;    // Задача 4.4
+                case "4.5": Task45(); break;    // Задача 4.5
+                case "4.7": Task47(); break;    // Задача 4.7
+                case "4.8": Task48(); break;    // Задача 4.8
+                case "4.9": Task49(); break;    // Задача 4.9
+                case "4.10": Task410(); break;  // Задача 4.10
+                case "4.11": Task411(); break;  // Задача 4.11
+                case "4.12": Task412(); break;  // Задача 4.12
+                case "4.13": Task413(); break;  // Задача 4.13
+                case "4.14": Task414(); break;  // Задача 4.14
+                case "4.15": Task415(); break;  // Задача 4.15
+                default: Console.WriteLine("Неверный выбор!"); break;
+            }
+
+            Console.WriteLine("\nНажмите любую клавишу для продолжения...");
+            Console.ReadKey();
+        }
+    }
+
+    // ЗАДАЧА 4.1: Сравнение двух чисел
+    static void Task41()
+    {
+        Console.WriteLine("\n=== ЗАДАЧА 4.1: Сравнение двух чисел ===");
+        Console.WriteLine("Даны два различных вещественных числа.");
+        Console.WriteLine("Определить какое из них больше и какое меньше.");
+
+        Console.Write("Введите первое число: ");
+        double a = double.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        double b = double.Parse(Console.ReadLine());
+
+        if (a > b)
+        {
+            Console.WriteLine($"а) Большее число: {a}");
+            Console.WriteLine($"б) Меньшее число: {b}");
+        }
+        else if (a < b)
+        {
+            Console.WriteLine($"а) Большее число: {b}");
+            Console.WriteLine($"б) Меньшее число: {a}");
+        }
+        else
+        {
+            Console.WriteLine("Числа равны! (хотя по условию они различны)");
+        }
+    }
+
+    // ЗАДАЧА 4.2: Вычисление y = 2x или 3x
+    static void Task42()
+    {
+        Console.WriteLine("\n=== ЗАДАЧА 4.2: Вычисление y ===");
+        Console.WriteLine("y = 2x, если x < 0");
+        Console.WriteLine("y = 3x, если x >= 0");
+
+Console.Write("Введите x: ");
+        double x = double.Parse(Console.ReadLine());
+        double y;
+
+        if (x < 0)
+            y = 2 * x;
+        else
+            y = 3 * x;
+
+        Console.WriteLine($"При x = {x}, y = {y}");
+    }
+
+    // ЗАДАЧА 4.3: Вычисление y = x² или 1/x
+    static void Task43()
+    {
+        Console.WriteLine("\n=== ЗАДАЧА 4.3: Вычисление y ===");
+        Console.WriteLine("y = x², если x <= 0");
+        Console.WriteLine("y = 1/x, если x > 0");
+
+        Console.Write("Введите x: ");
+        double x = double.Parse(Console.ReadLine());
+        double y;
+
+        if (x <= 0)
+            y = x * x;
+        else
+            y = 1 / x;
+
+        Console.WriteLine($"При x = {x}, y = {y}");
+    }
+
+    // ЗАДАЧА 4.4: Область I или II (первый график)
+    static void Task44()
+    {
+        Console.WriteLine("\n=== ЗАДАЧА 4.4: Область I или II ===");
+        Console.WriteLine("График: прямоугольная область от x=0 до x=4");
+        Console.WriteLine("Область I: внутри прямоугольника (y > 0, 0 < x < 4)");
+        Console.WriteLine("Область II: снаружи прямоугольника");
+
+        Console.Write("Введите координату x: ");
+        double x = double.Parse(Console.ReadLine());
+        Console.Write("Введите координату y: ");
+        double y = double.Parse(Console.ReadLine());
+
+        if (y > 0 && x > 0 && x < 4)
+            Console.WriteLine($"Точка ({x}; {y}) находится в области I");
+        else
+            Console.WriteLine($"Точка ({x}; {y}) находится в области II");
+    }
+
+    // ЗАДАЧА 4.5: Область I или II (второй график)
+    static void Task45()
+    {
+        Console.WriteLine("\n=== ЗАДАЧА 4.5: Область I или II (второй график) ===");
+        Console.WriteLine("График: горизонтальная линия y=3");
+        Console.WriteLine("Область I: выше линии (y > 3)");
+        Console.WriteLine("Область II: ниже или на линии (y <= 3)");
+
+        Console.Write("Введите координату x: ");
+        double x = double.Parse(Console.ReadLine());
+        Console.Write("Введите координату y: ");
+        double y = double.Parse(Console.ReadLine());
+
+        if (y > 3)
+            Console.WriteLine($"Точка ({x}; {y}) находится в области I");
+        else
+            Console.WriteLine($"Точка ({x}; {y}) находится в области II");
+    }
+
+    // ЗАДАЧА 4.7: Куcочно-заданная функция 1
+    static void Task47()
+    {
+        Console.WriteLine("\n=== ЗАДАЧА 4.7: Куcочно-заданная функция 1 ===");
+        Console.WriteLine("f(x) = 2x, если x < 0");
+        Console.WriteLine("f(x) = 0, если 0 <= x < 3");
+
+Console.WriteLine("f(x) = -x, если x >= 3");
+
+        Console.Write("Введите x: ");
+        double x = double.Parse(Console.ReadLine());
+        double result;
+
+        if (x < 0)
+            result = 2 * x;
+        else if (x < 3)
+            result = 0;
+        else
+            result = -x;
+
+        Console.WriteLine($"f({x}) = {result}");
+    }
+
+    // ЗАДАЧА 4.8: Куcочно-заданная функция 2
+    static void Task48()
+    {
+        Console.WriteLine("\n=== ЗАДАЧА 4.8: Куcочно-заданная функция 2 ===");
+        Console.WriteLine("f(x) = -x, если x < 0");
+        Console.WriteLine("f(x) = x², если 0 <= x < 1");
+        Console.WriteLine("f(x) = 1/x, если x >= 1");
+
+        Console.Write("Введите x: ");
+        double x = double.Parse(Console.ReadLine());
+        double result;
+
+        if (x < 0)
+            result = -x;
+        else if (x < 1)
+            result = x * x;
+        else
+        {
+            if (x == 0) // Проверка на деление на 0
+                result = double.PositiveInfinity;
+            else
+                result = 1 / x;
+        }
+
+        Console.WriteLine($"f({x}) = {result}");
+    }
+
+    // ЗАДАЧА 4.9: Максимум и минимум
+    static void Task49()
+    {
+        Console.WriteLine("\n=== ЗАДАЧА 4.9: Максимум и минимум ===");
+        Console.WriteLine("Определить максимальное и минимальное значения");
+        Console.WriteLine("из двух различных вещественных чисел");
+
+        Console.Write("Введите первое число: ");
+        double a = double.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        double b = double.Parse(Console.ReadLine());
+
+        // Используем один условный оператор как в условии
+        if (a > b)
+        {
+            Console.WriteLine($"Максимум: {a}");
+            Console.WriteLine($"Минимум: {b}");
+        }
+        else
+        {
+            Console.WriteLine($"Максимум: {b}");
+            Console.WriteLine($"Минимум: {a}");
+        }
+    }
+
+    // ЗАДАЧА 4.10: Сравнение расстояний
+    static void Task410()
+    {
+        Console.WriteLine("\n=== ЗАДАЧА 4.10: Сравнение расстояний ===");
+        Console.WriteLine("Сравнение расстояния в км и в футах");
+        Console.WriteLine("1 фут = 0.3048 метра");
+
+        Console.Write("Введите расстояние в километрах: ");
+        double km = double.Parse(Console.ReadLine());
+        Console.Write("Введите расстояние в футах: ");
+        double feet = double.Parse(Console.ReadLine());
+
+        // Переводим всё в метры для сравнения
+        double metersFromKm = km * 1000;
+        double metersFromFeet = feet * 0.3048;
+
+        Console.WriteLine($"{km} км = {metersFromKm} метров");
+        Console.WriteLine($"{feet} футов = {metersFromFeet:F2} метров");
+
+        if (metersFromKm < metersFromFeet)
+            Console.WriteLine($"Расстояние {km} км МЕНЬШЕ, чем {feet} футов");
+        else if (metersFromKm > metersFromFeet)
+            Console.WriteLine($"Расстояние {km} км БОЛЬШЕ, чем {feet} футов");
+        else
+            Console.WriteLine("Расстояния равны!");
+    }
+
+    // ЗАДАЧА 4.11: Сравнение скоростей
+    static void Task411()
+    {
+        Console.WriteLine("\n=== ЗАДАЧА 4.11: Сравнение скоростей ===");
+        Console.WriteLine("Сравнение скорости в км/ч и в м/с");
+
+        Console.Write("Введите скорость в км/ч: ");
+        double kmh = double.Parse(Console.ReadLine());
+        Console.Write("Введите скорость в м/с: ");
+        double ms = double.Parse(Console.ReadLine());
+
+        // Переводим км/ч в м/с: 1 км/ч = 1000/3600 = 5/18 м/с
+        double msFromKmh = kmh * 1000 / 3600;
+
+        Console.WriteLine($"{kmh} км/ч = {msFromKmh:F2} м/с");
+        Console.WriteLine($"{ms} м/с = {ms} м/с");
+
+if (msFromKmh > ms)
+            Console.WriteLine($"{kmh} км/ч БОЛЬШЕ, чем {ms} м/с");
+        else if (msFromKmh < ms)
+            Console.WriteLine($"{kmh} км/ч МЕНЬШЕ, чем {ms} м/с");
+        else
+            Console.WriteLine("Скорости равны!");
+    }
+
+    // ЗАДАЧА 4.12: Площадь круга vs квадрата
+    static void Task412()
+    {
+        Console.WriteLine("\n=== ЗАДАЧА 4.12: Площадь круга vs квадрата ===");
+        Console.WriteLine("У какой фигуры площадь больше: у круга или квадрата?");
+
+        Console.Write("Введите радиус круга: ");
+        double radius = double.Parse(Console.ReadLine());
+        Console.Write("Введите сторону квадрата: ");
+        double side = double.Parse(Console.ReadLine());
+
+        double circleArea = Math.PI * radius * radius;
+        double squareArea = side * side;
+
+        Console.WriteLine($"Площадь круга: {circleArea:F2}");
+        Console.WriteLine($"Площадь квадрата: {squareArea:F2}");
+
+        if (circleArea > squareArea)
+            Console.WriteLine("Площадь круга БОЛЬШЕ площади квадрата");
+        else if (circleArea < squareArea)
+            Console.WriteLine("Площадь круга МЕНЬШЕ площади квадрата");
+        else
+            Console.WriteLine("Площади равны!");
+    }
+
+    // ЗАДАЧА 4.13: Плотность материалов
+    static void Task413()
+    {
+        Console.WriteLine("\n=== ЗАДАЧА 4.13: Плотность материалов ===");
+        Console.WriteLine("Материал какого из двух тел имеет большую плотность?");
+
+        Console.WriteLine("Первое тело:");
+        Console.Write("Масса (кг): ");
+        double mass1 = double.Parse(Console.ReadLine());
+        Console.Write("Объем (м³): ");
+        double volume1 = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("Второе тело:");
+        Console.Write("Масса (кг): ");
+        double mass2 = double.Parse(Console.ReadLine());
+        Console.Write("Объем (м³): ");
+        double volume2 = double.Parse(Console.ReadLine());
+
+        double density1 = mass1 / volume1;
+        double density2 = mass2 / volume2;
+
+        Console.WriteLine($"Плотность первого тела: {density1:F2} кг/м³");
+        Console.WriteLine($"Плотность второго тела: {density2:F2} кг/м³");
+
+        if (density1 > density2)
+            Console.WriteLine("Плотность ПЕРВОГО тела БОЛЬШЕ");
+        else if (density1 < density2)
+            Console.WriteLine("Плотность ВТОРОГО тела БОЛЬШЕ");
+        else
+            Console.WriteLine("Плотности равны!");
+    }
+
+    // ЗАДАЧА 4.14: Ток в электрических цепях
+    static void Task414()
+    {
+        Console.WriteLine("\n=== ЗАДАЧА 4.14: Ток в электрических цепях ===");
+        Console.WriteLine("По какому участку цепи протекает меньший ток?");
+        Console.WriteLine("Используем закон Ома: I = U / R");
+
+        Console.WriteLine("Первый участок цепи:");
+        Console.Write("Сопротивление R1 (Ом): ");
+        double r1 = double.Parse(Console.ReadLine());
+        Console.Write("Напряжение U1 (В): ");
+        double u1 = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("Второй участок цепи:");
+        Console.Write("Сопротивление R2 (Ом): ");
+        double r2 = double.Parse(Console.ReadLine());
+        Console.Write("Напряжение U2 (В): ");
+        double u2 = double.Parse(Console.ReadLine());
+
+        double i1 = u1 / r1;
+        double i2 = u2 / r2;
+
+        Console.WriteLine($"Ток на первом участке: I1 = {i1:F2} А");
+        Console.WriteLine($"Ток на втором участке: I2 = {i2:F2} А");
+
+        if (i1 < i2)
+            Console.WriteLine("Меньший ток протекает по ПЕРВОМУ участку");
+        else if (i1 > i2)
+            Console.WriteLine("Меньший ток протекает по ВТОРОМУ участку");
+        else
+
+Console.WriteLine("Токи равны!");
+    }
+
+    // ЗАДАЧА 4.15: Проверка корней квадратного уравнения
+    static void Task415()
+    {
+        Console.WriteLine("\n=== ЗАДАЧА 4.15: Проверка корней квадратного уравнения ===");
+        Console.WriteLine("Уравнение: ax² + bx + c = 0 (a ≠ 0)");
+        Console.WriteLine("Проверяем, имеет ли уравнение корни");
+
+        Console.Write("Введите коэффициент a (a ≠ 0): ");
+        double a = double.Parse(Console.ReadLine());
+
+        if (a == 0)
+        {
+            Console.WriteLine("Ошибка: a не может быть равно 0!");
+            return;
+        }
+
+        Console.Write("Введите коэффициент b: ");
+        double b = double.Parse(Console.ReadLine());
+        Console.Write("Введите коэффициент c: ");
+        double c = double.Parse(Console.ReadLine());
+
+        double discriminant = b * b - 4 * a * c;
+
+        Console.WriteLine($"Дискриминант D = {discriminant}");
+
+        if (discriminant > 0)
+            Console.WriteLine("Уравнение имеет ДВА различных вещественных корня");
+        else if (discriminant == 0)
+            Console.WriteLine("Уравнение имеет ОДИН вещественный корень");
+        else
+            Console.WriteLine("Уравнение НЕ имеет вещественных корней");
+    }
+}
