@@ -1,0 +1,214 @@
+﻿using System;
+
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("=== РЕШЕНИЕ ЗАДАЧ 3.16-3.30 ===");
+        Console.WriteLine();
+
+        // 3.16 Двузначное число
+        Console.WriteLine("3.16. Двузначное число");
+        Console.Write("Введите двузначное число: ");
+        int num16 = int.Parse(Console.ReadLine());
+        int tens16 = num16 / 10;
+        int units16 = num16 % 10;
+        Console.WriteLine($"а) Число десятков: {tens16}");
+        Console.WriteLine($"б) Число единиц: {units16}");
+        Console.WriteLine();
+
+        // 3.17 Сумма цифр двузначного числа
+        Console.WriteLine("3.17. Сумма цифр двузначного числа");
+        Console.Write("Введите двузначное число: ");
+        int num17 = int.Parse(Console.ReadLine());
+        int sum17 = (num17 / 10) + (num17 % 10);
+        Console.WriteLine($"Сумма цифр: {sum17}");
+        Console.WriteLine();
+
+        // 3.18 Перестановка цифр двузначного числа
+        Console.WriteLine("3.18. Перестановка цифр двузначного числа");
+        Console.Write("Введите двузначное число: ");
+        int num18 = int.Parse(Console.ReadLine());
+        int reversed18 = (num18 % 10) * 10 + (num18 / 10);
+        Console.WriteLine($"Число после перестановки: {reversed18}");
+        Console.WriteLine();
+
+        // 3.19 Цифры трехзначного числа
+        Console.WriteLine("3.19. Цифры трехзначного числа");
+        Console.Write("Введите трехзначное число: ");
+        int num19 = int.Parse(Console.ReadLine());
+        int hundreds19 = num19 / 100;
+        int tens19 = (num19 / 10) % 10;
+        int units19 = num19 % 10;
+        Console.WriteLine($"Цифры: {hundreds19}, {tens19}, {units19}");
+        Console.WriteLine();
+
+        // 3.20 Операции с трехзначным числом
+        Console.WriteLine("3.20. Операции с трехзначным числом");
+        Console.Write("Введите трехзначное число: ");
+        int num20 = int.Parse(Console.ReadLine());
+        int hundreds20 = num20 / 100;
+        int tens20 = (num20 / 10) % 10;
+        int units20 = num20 % 10;
+        Console.WriteLine($"а) Число единиц: {units20}");
+        Console.WriteLine($"б) Число десятков: {tens20}");
+        Console.WriteLine($"в) Сумма цифр: {hundreds20 + tens20 + units20}");
+        Console.WriteLine($"г) Произведение цифр: {hundreds20 * tens20 * units20}");
+        Console.WriteLine();
+
+        // 3.21 Перевернуть трехзначное число
+        Console.WriteLine("3.21. Перевернуть трехзначное число");
+        Console.Write("Введите трехзначное число: ");
+        int num21 = int.Parse(Console.ReadLine());
+        int reversed21 = (num21 % 10) * 100 + ((num21 / 10) % 10) * 10 + (num21 / 100);
+        Console.WriteLine($"Число справа налево: {reversed21}");
+        Console.WriteLine();
+
+        // 3.22 Первую цифру в конец
+        Console.WriteLine("3.22. Первую цифру в конец");
+        Console.Write("Введите трехзначное число: ");
+        int num22 = int.Parse(Console.ReadLine());
+        int first22 = num22 / 100;
+        int lastTwo22 = num22 % 100;
+        int result22 = lastTwo22 * 10 + first22;
+        Console.WriteLine($"Результат: {result22}");
+        Console.WriteLine();
+
+        // 3.23 Последнюю цифру в начало
+        Console.WriteLine("3.23. Последнюю цифру в начало");
+        Console.Write("Введите трехзначное число: ");
+        int num23 = int.Parse(Console.ReadLine());
+        int last23 = num23 % 10;
+        int firstTwo23 = num23 / 10;
+        int result23 = last23 * 100 + firstTwo23;
+        Console.WriteLine($"Результат: {result23}");
+        Console.WriteLine();
+
+        // 3.24 Поменять первую и вторую цифры
+        Console.WriteLine("3.24. Поменять первую и вторую цифры");
+        Console.Write("Введите трехзначное число: ");
+
+int num24 = int.Parse(Console.ReadLine());
+        int hundreds24 = num24 / 100;
+        int tens24 = (num24 / 10) % 10;
+        int units24 = num24 % 10;
+        int result24 = tens24 * 100 + hundreds24 * 10 + units24;
+        Console.WriteLine($"Результат: {result24}");
+        Console.WriteLine();
+
+        // 3.25 Поменять вторую и третью цифры
+        Console.WriteLine("3.25. Поменять вторую и третью цифры");
+        Console.Write("Введите трехзначное число: ");
+        int num25 = int.Parse(Console.ReadLine());
+        int hundreds25 = num25 / 100;
+        int tens25 = (num25 / 10) % 10;
+        int units25 = num25 % 10;
+        int result25 = hundreds25 * 100 + units25 * 10 + tens25;
+        Console.WriteLine($"Результат: {result25}");
+        Console.WriteLine();
+
+        // 3.26 Все перестановки трехзначного числа (все цифры разные)
+        Console.WriteLine("3.26. Все перестановки трехзначного числа");
+        Console.Write("Введите трехзначное число (все цифры разные): ");
+        int num26 = int.Parse(Console.ReadLine());
+        int a = num26 / 100;
+        int b = (num26 / 10) % 10;
+        int c = num26 % 10;
+        Console.WriteLine("Все перестановки:");
+        Console.WriteLine($"{a}{b}{c}"); 
+        Console.WriteLine($"{a}{c}{b}");
+        Console.WriteLine($"{b}{a}{c}");
+        Console.WriteLine($"{b}{c}{a}");
+        Console.WriteLine($"{c}{a}{b}");
+        Console.WriteLine($"{c}{b}{a}");
+        Console.WriteLine();
+
+        // 3.27 Сумма цифр 4- и 5-значных чисел
+        Console.WriteLine("3.27. Сумма цифр");
+
+        // а) 4-значное число
+        Console.WriteLine("а) 4-значное число");
+        Console.Write("Введите 4-значное число: ");
+        int num27a = int.Parse(Console.ReadLine());
+        int sum27a = 0;
+        int temp27a = num27a;
+        for (int i = 0; i < 4; i++)
+        {
+            sum27a += temp27a % 10;
+            temp27a /= 10;
+        }
+        Console.WriteLine($"Сумма цифр: {sum27a}");
+
+        // б) 5-значное число
+        Console.WriteLine("\nб) 5-значное число");
+        Console.Write("Введите 5-значное число: ");
+        int num27b = int.Parse(Console.ReadLine());
+        int sum27b = 0;
+        int temp27b = num27b;
+        for (int i = 0; i < 5; i++)
+        {
+            sum27b += temp27b % 10;
+            temp27b /= 10;
+        }
+        Console.WriteLine($"Сумма цифр: {sum27b}");
+        Console.WriteLine();
+
+        // 3.28 Операции с четырехзначным числом
+        Console.WriteLine("3.28. Операции с четырехзначным числом");
+        Console.Write("Введите четырехзначное число: ");
+        int num28 = int.Parse(Console.ReadLine());
+
+        // Разбиваем на цифры
+        int thousands = num28 / 1000;
+        int hundreds28 = (num28 / 100) % 10;
+        int tens28 = (num28 / 10) % 10;
+        int units28 = num28 % 10;
+
+        // а) Перевернуть число
+        int reversed28 = units28 * 1000 + tens28 * 100 + hundreds28 * 10 + thousands;
+        Console.WriteLine($"а) Справа налево: {reversed28}");
+
+        // б) Поменять 1-2 и 3-4 цифры
+        int result28b = hundreds28 * 1000 + thousands * 100 + units28 * 10 + tens28;
+        Console.WriteLine($"б) Перестановка 1-2 и 3-4: {result28b}");
+
+        // в) Поменять 2 и 3 цифры
+        int result28c = thousands * 1000 + tens28 * 100 + hundreds28 * 10 + units28;
+        Console.WriteLine($"в) Перестановка 2 и 3: {result28c}");
+
+        // г) Способ 1: поменять две первые и две последние цифры (с выделением цифр)
+        int result28d1 = tens28 * 1000 + units28 * 100 + thousands * 10 + hundreds28;
+        Console.WriteLine($"г) Способ 1 (две первые и две последние): {result28d1}");
+
+        // г) Способ 2: без выделения отдельных цифр
+
+int firstTwo28 = num28 / 100;  // первые две цифры
+        int lastTwo28 = num28 % 100;   // последние две цифры
+        int result28d2 = lastTwo28 * 100 + firstTwo28;
+        Console.WriteLine($"г) Способ 2 (две первые и две последние): {result28d2}");
+        Console.WriteLine();
+
+        // 3.29 Число единиц и десятков в натуральном числе
+        Console.WriteLine("3.29. Единицы и десятки в натуральном числе");
+        Console.Write("Введите натуральное число (> 9): ");
+        int num29 = int.Parse(Console.ReadLine());
+        int units29 = num29 % 10;
+        int tens29 = (num29 / 10) % 10;
+        Console.WriteLine($"а) Число единиц: {units29}");
+        Console.WriteLine($"б) Число десятков: {tens29}");
+        Console.WriteLine();
+
+        // 3.30 Число десятков и сотен в натуральном числе
+        Console.WriteLine("3.30. Десятки и сотни в натуральном числе");
+        Console.Write("Введите натуральное число (> 99): ");
+        int num30 = int.Parse(Console.ReadLine());
+        int tens30 = (num30 / 10) % 10;
+        int hundreds30 = (num30 / 100) % 10;
+        Console.WriteLine($"а) Число десятков: {tens30}");
+        Console.WriteLine($"б) Число сотен: {hundreds30}");
+
+        Console.WriteLine("\n=== ВСЕ ЗАДАЧИ РЕШЕНЫ ===");
+        Console.ReadKey();
+    }
+}
