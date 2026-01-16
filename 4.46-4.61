@@ -1,0 +1,214 @@
+
+def task_4_47():
+    """Проверка неравенств для трех чисел"""
+    a = float(input("Введите a: "))
+    b = float(input("Введите b: "))
+    c = float(input("Введите c: "))
+    
+    result_a = a < b < c
+    result_b = b > a > c
+    
+    print(f"а) a < b < c: {result_a}")
+    print(f"б) b > a > c: {result_b}")
+    return result_a, result_b
+
+def task_4_48():
+    """Проверка, является ли одно число делителем другого"""
+    num1 = int(input("Введите первое число: "))
+    num2 = int(input("Введите второе число: "))
+    
+    result = (num1 != 0 and num2 % num1 == 0) or (num2 != 0 and num1 % num2 == 0)
+    print(f"Одно из чисел является делителем другого: {result}")
+    return result
+
+def task_4_49():
+    """Проверка цифр в двузначном числе"""
+    num = int(input("Введите двузначное число: "))
+    
+    digit1 = num // 10
+    digit2 = num % 10
+    has_3 = digit1 == 3 or digit2 == 3
+    
+    a = int(input("Введите цифру a для проверки (0-9): "))
+    has_a = digit1 == a or digit2 == a
+    
+    print(f"а) Число содержит цифру 3: {has_3}")
+    print(f"б) Число содержит цифру {a}: {has_a}")
+    return has_3, has_a
+
+def task_4_50():
+    """Проверка наличия определенных цифр в двузначном числе"""
+    num = int(input("Введите двузначное число: "))
+    digit1 = num // 10
+    digit2 = num % 10
+    
+    has_4_or_7 = digit1 in [4, 7] or digit2 in [4, 7]
+    has_3_6_9 = digit1 in [3, 6, 9] or digit2 in [3, 6, 9]
+    
+    print(f"а) Число содержит цифры 4 или 7: {has_4_or_7}")
+    print(f"б) Число содержит цифры 3, 6 или 9: {has_3_6_9}")
+    return has_4_or_7, has_3_6_9
+
+def task_4_51():
+    """Проверка цифр в трехзначном числе"""
+    num = int(input("Введите трехзначное число: "))
+    
+    digit1 = num // 100
+    digit2 = (num // 10) % 10
+    digit3 = num % 10
+    has_6 = digit1 == 6 or digit2 == 6 or digit3 == 6
+    
+    n = int(input("Введите цифру n для проверки (0-9): "))
+    has_n = digit1 == n or digit2 == n or digit3 == n
+    
+    print(f"а) Число содержит цифру 6: {has_6}")
+    print(f"б) Число содержит цифру {n}: {has_n}")
+    return has_6, has_n
+
+def task_4_52():
+    """Проверка наличия цифры 6 в трехзначном числе"""
+    num = int(input("Введите трехзначное число: "))
+    
+    digit1 = num // 100
+    digit2 = (num // 10) % 10
+    digit3 = num % 10
+    has_6 = digit1 == 6 or digit2 == 6 or digit3 == 6
+    
+    print(f"Число содержит цифру 6: {has_6}")
+    return has_6
+
+def task_4_53():
+    """Проверка определенных цифр в трехзначном числе"""
+    num = int(input("Введите трехзначное число: "))
+    digit1 = num // 100
+    digit2 = (num // 10) % 10
+    digit3 = num % 10
+    
+    has_4_or_7 = digit1 in [4, 7] or digit2 in [4, 7] or digit3 in [4, 7]
+    has_3_6_9 = digit1 in [3, 6, 9] or digit2 in [3, 6, 9] or digit3 in [3, 6, 9]
+    
+    print(f"а) Число содержит цифры 4 или 7: {has_4_or_7}")
+    print(f"б) Число содержит цифры 3, 6 или 9: {has_3_6_9}")
+    return has_4_or_7, has_3_6_9
+
+def task_4_54():
+    """Проверка цифр в четырехзначном числе"""
+    num = int(input("Введите четырехзначное число: "))
+    
+    digit1 = num // 1000
+    digit2 = (num // 100) % 10
+    digit3 = (num // 10) % 10
+    digit4 = num % 10
+    has_4 = digit1 == 4 or digit2 == 4 or digit3 == 4 or digit4 == 4
+    
+    b = int(input("Введите цифру b для проверки (0-9): "))
+    has_b = digit1 == b or digit2 == b or digit3 == b or digit4 == b
+    
+    print(f"а) Число содержит цифру 4: {has_4}")
+    print(f"б) Число содержит цифру {b}: {has_b}")
+    return has_4, has_b
+
+def task_4_55():
+    """Проверка определенных цифр в четырехзначном числе"""
+    num = int(input("Введите четырехзначное число: "))
+    digit1 = num // 1000
+    digit2 = (num // 100) % 10
+    digit3 = (num // 10) % 10
+    digit4 = num % 10
+    
+    has_2_or_7 = digit1 in [2, 7] or digit2 in [2, 7] or digit3 in [2, 7] or digit4 in [2, 7]
+    has_3_6_9 = digit1 in [3, 6, 9] or digit2 in [3, 6, 9] or digit3 in [3, 6, 9] or digit4 in [3, 6, 9]
+    
+    print(f"а) Число содержит цифры 2 или 7: {has_2_or_7}")
+    print(f"б) Число содержит цифры 3, 6 или 9: {has_3_6_9}")
+    return has_2_or_7, has_3_6_9
+
+
+def task_4_56():
+    """Проверка симметричности четырехзначного числа"""
+    num = int(input("Введите четырехзначное число: "))
+    
+    digit1 = num // 1000
+    digit2 = (num // 100) % 10
+    digit3 = (num // 10) % 10
+    digit4 = num % 10
+    
+    is_symmetric = digit1 == digit4 and digit2 == digit3
+    
+    print(f"Число симметричное: {is_symmetric}")
+    return is_symmetric
+
+def task_4_57():
+    """Проверка остатка от деления"""
+    a = int(input("Введите число a (неотрицательное): "))
+    b = int(input("Введите число b (положительное): "))
+    c = int(input("Введите число c: "))
+    d = int(input("Введите число d: "))
+    
+    remainder = a % b
+    result = remainder == c or remainder == d
+    
+    print(f"Остаток от деления {a} на {b} равен {c} или {d}: {result}")
+    return result
+
+def task_4_58():
+    """Проверка на наличие пары равных чисел"""
+    a = float(input("Введите a: "))
+    b = float(input("Введите b: "))
+    c = float(input("Введите c: "))
+    
+    result = a == b or a == c or b == c
+    
+    print(f"Среди чисел есть хотя бы одна пара равных: {result}")
+    return result
+
+def task_4_59():
+    """Проверка типа треугольника"""
+    a = float(input("Введите сторону a: "))
+    b = float(input("Введите сторону b: "))
+    c = float(input("Введите сторону c: "))
+    
+    equilateral = a == b == c
+    isosceles = a == b or a == c or b == c
+    
+    print(f"а) Треугольник равносторонний: {equilateral}")
+    print(f"б) Треугольник равнобедренный: {isosceles}")
+    return equilateral, isosceles
+
+def task_4_60():
+    """Проверка равенства роста трех человек"""
+    height1 = float(input("Введите рост первого человека: "))
+    height2 = float(input("Введите рост второго человека: "))
+    height3 = float(input("Введите рост третьего человека: "))
+    
+    result = height1 == height2 == height3
+    
+    print(f"Рост всех трех человек одинаков: {result}")
+    return result
+
+def task_4_61():
+    """Решение квадратного уравнения"""
+    print("Решение квадратного уравнения ax² + bx + c = 0")
+    a = float(input("Введите a (не равно 0): "))
+    
+    if a == 0:
+        print("Ошибка: a не должно быть равно 0")
+        return None
+    
+    b = float(input("Введите b: "))
+    c = float(input("Введите c: "))
+    
+    discriminant = b**2 - 4*a*c
+    
+    if discriminant > 0:
+        x1 = (-b + discriminant**0.5) / (2*a)
+        x2 = (-b - discriminant**0.5) / (2*a)
+        print(f"Два различных корня: x1 = {x1:.2f}, x2 = {x2:.2f}")
+        return x1, x2
+    elif discriminant == 0:
+        x = -b / (2*a)
+        print(f"Один корень (кратности 2): x = {x:.2f}")
+        return x
+    else:
+        print("Действительных корней нет")
+        return None

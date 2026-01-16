@@ -1,0 +1,55 @@
+﻿using System;
+
+class Program3
+{
+    static void Task_4_145()
+    {
+        Console.WriteLine("4.145 - Восточный календарь");
+        Console.Write("Введите год нашей эры: ");
+        int year = int.Parse(Console.ReadLine());
+
+        // Животные китайского календаря (12-летний цикл)
+        string[] animals = {
+            "Крыса", "Корова", "Тигр", "Заяц",
+            "Дракон", "Змея", "Лошадь", "Овца",
+            "Обезьяна", "Петух", "Собака", "Свинья"
+        };
+
+        // Цвета (5-летний цикл, каждый цвет действует 2 года)
+        string[] colors = {
+            "Зеленый", "Зеленый",
+            "Красный", "Красный",
+            "Желтый", "Желтый",
+            "Белый", "Белый",
+            "Черный", "Черный"
+        };
+
+        // 1984 год - начало цикла (зеленая крыса)
+        int startYear = 1984;
+
+        // Вычисляем смещение от начала цикла
+        int offset = (year - startYear) % 60;
+        if (offset < 0) offset += 60; // для годов до 1984
+
+        // Определяем животное (12-летний цикл)
+        int animalIndex = offset % 12;
+        string animal = animals[animalIndex];
+
+        // Определяем цвет (10-летний цикл)
+        int colorIndex = offset % 10;
+        string color = colors[colorIndex];
+
+        Console.WriteLine($"Год {year} - год {animal}, {color}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задачи 4.145");
+        Console.WriteLine("====================");
+
+        Task_4_145();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

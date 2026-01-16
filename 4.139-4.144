@@ -1,0 +1,312 @@
+﻿using System;
+
+class Program2
+{
+    static void Task_4_139()
+    {
+        Console.WriteLine("4.139 - Достоинство карты");
+        Console.Write("Введите номер карты (6-14): ");
+        int k = int.Parse(Console.ReadLine());
+
+        string card;
+        if (k == 6)
+            card = "шестерка";
+        else if (k == 7)
+            card = "семерка";
+        else if (k == 8)
+            card = "восьмерка";
+        else if (k == 9)
+            card = "девятка";
+        else if (k == 10)
+            card = "десятка";
+        else if (k == 11)
+            card = "валет";
+        else if (k == 12)
+            card = "дама";
+        else if (k == 13)
+            card = "король";
+        else if (k == 14)
+            card = "туз";
+        else
+            card = "неверный номер";
+
+        Console.WriteLine($"Это карта: {card}");
+    }
+
+    static void Task_4_140()
+    {
+        Console.WriteLine("\n4.140 - Полное название карты");
+        Console.Write("Введите номер масти (1-4): ");
+        int m = int.Parse(Console.ReadLine());
+
+        Console.Write("Введите номер достоинства (6-14): ");
+        int k = int.Parse(Console.ReadLine());
+
+        // Определяем масть
+        string suit;
+        if (m == 1)
+            suit = "пик";
+        else if (m == 2)
+            suit = "треф";
+        else if (m == 3)
+            suit = "бубен";
+        else if (m == 4)
+            suit = "червей";
+        else
+        {
+            Console.WriteLine("Неверный номер масти");
+            return;
+        }
+
+        // Определяем достоинство
+        string rank;
+        if (k == 6)
+            rank = "Шестерка";
+        else if (k == 7)
+            rank = "Семерка";
+        else if (k == 8)
+            rank = "Восьмерка";
+        else if (k == 9)
+            rank = "Девятка";
+        else if (k == 10)
+            rank = "Десятка";
+        else if (k == 11)
+            rank = "Валет";
+        else if (k == 12)
+            rank = "Дама";
+        else if (k == 13)
+            rank = "Король";
+        else if (k == 14)
+            rank = "Туз";
+        else
+        {
+            Console.WriteLine("Неверный номер достоинства");
+            return;
+        }
+
+        Console.WriteLine($"Это карта: {rank} {suit}");
+    }
+
+    static void Task_4_141()
+    {
+        Console.WriteLine("\n4.141 - День недели по номеру дня года");
+        Console.Write("Введите номер дня года (1-365): ");
+        int k = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Какой день недели был 1 января?");
+        Console.WriteLine("1 - понедельник");
+        Console.WriteLine("2 - вторник");
+        Console.WriteLine("3 - среда");
+        Console.WriteLine("4 - четверг");
+        Console.WriteLine("5 - пятница");
+        Console.WriteLine("6 - суббота");
+        Console.WriteLine("7 - воскресенье");
+        Console.Write("Ваш выбор (1-7): ");
+        int d = int.Parse(Console.ReadLine());
+
+        // Вычисляем день недели для k-го дня
+        // d-1 - преобразуем в индекс от 0 до 6
+        // k-1 - потому что первый день имеет номер 1, а не 0
+        int dayIndex = (d - 1 + k - 1) % 7;
+
+        string dayName;
+        if (dayIndex == 0)
+            dayName = "понедельник";
+        else if (dayIndex == 1)
+            dayName = "вторник";
+        else if (dayIndex == 2)
+            dayName = "среда";
+        else if (dayIndex == 3)
+            dayName = "четверг";
+        else if (dayIndex == 4)
+            dayName = "пятница";
+        else if (dayIndex == 5)
+            dayName = "суббота";
+        else
+            dayName = "воскресенье";
+
+        Console.WriteLine($"{k}-й день года - это {dayName}");
+    }
+
+    static void Task_4_142()
+    {
+        Console.WriteLine("\n4.142 - Название месяца через n месяцев и 2 дня от 2010 года");
+
+Console.Write("Введите количество прошедших месяцев (n): ");
+        int n = int.Parse(Console.ReadLine());
+
+        // Всего месяцев от января 2010
+        int totalMonths = n + 1; // +1 потому что январь уже прошел (начали с 2010)
+
+        // Определяем месяц по остатку от деления на 12
+        int monthNumber = totalMonths % 12;
+        if (monthNumber == 0) monthNumber = 12; // декабрь
+
+        string monthName;
+        if (monthNumber == 1)
+            monthName = "январь";
+        else if (monthNumber == 2)
+            monthName = "февраль";
+        else if (monthNumber == 3)
+            monthName = "март";
+        else if (monthNumber == 4)
+            monthName = "апрель";
+        else if (monthNumber == 5)
+            monthName = "май";
+        else if (monthNumber == 6)
+            monthName = "июнь";
+        else if (monthNumber == 7)
+            monthName = "июль";
+        else if (monthNumber == 8)
+            monthName = "август";
+        else if (monthNumber == 9)
+            monthName = "сентябрь";
+        else if (monthNumber == 10)
+            monthName = "октябрь";
+        else if (monthNumber == 11)
+            monthName = "ноябрь";
+        else
+            monthName = "декабрь";
+
+        Console.WriteLine($"Этот день в месяце: {monthName}");
+    }
+
+    static void Task_4_143()
+    {
+        Console.WriteLine("\n4.143 - Дата предыдущего и следующего дня (не високосный год)");
+        Console.Write("Введите номер месяца (1-12): ");
+        int m = int.Parse(Console.ReadLine());
+        Console.Write("Введите число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        // Дни в месяцах (не високосный год)
+        int[] daysInMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
+        // а) Предыдущий день
+        int prevDay, prevMonth;
+        if (n > 1)
+        {
+            prevDay = n - 1;
+            prevMonth = m;
+        }
+        else
+        {
+            prevMonth = m - 1;
+            if (prevMonth == 0) prevMonth = 12;
+            prevDay = daysInMonth[prevMonth - 1];
+        }
+
+        // б) Следующий день
+        int nextDay, nextMonth;
+        if (n < daysInMonth[m - 1])
+        {
+            nextDay = n + 1;
+            nextMonth = m;
+        }
+        else
+        {
+            nextDay = 1;
+            nextMonth = m + 1;
+            if (nextMonth == 13) nextMonth = 1;
+        }
+
+        Console.WriteLine($"а) Предыдущий день: {prevDay:00}.{prevMonth:00}");
+        Console.WriteLine($"б) Следующий день: {nextDay:00}.{nextMonth:00}");
+    }
+
+    static void Task_4_144()
+    {
+        Console.WriteLine("\n4.144 - Дата предыдущего и следующего дня (с учетом високосности)");
+        Console.Write("Введите год: ");
+        int g = int.Parse(Console.ReadLine());
+        Console.Write("Введите номер месяца (1-12): ");
+        int m = int.Parse(Console.ReadLine());
+        Console.Write("Введите число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        // Проверяем, високосный ли год
+        bool isLeap = false;
+        if (g % 4 == 0)
+        {
+            if (g % 100 == 0)
+            {
+                if (g % 400 == 0)
+                    isLeap = true;
+            }
+            else
+            {
+                isLeap = true;
+            }
+        }
+
+        // Дни в месяцах
+        int[] daysInMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        if (isLeap) daysInMonth[1] = 29;
+
+        // а) Предыдущий день
+        int prevDay, prevMonth, prevYear;
+        if (n > 1)
+        {
+            prevDay = n - 1;
+            prevMonth = m;
+            prevYear = g;
+        }
+        else
+        {
+            prevMonth = m - 1;
+            if (prevMonth == 0)
+            {
+
+prevMonth = 12;
+                prevYear = g - 1;
+            }
+            else
+            {
+                prevYear = g;
+            }
+            prevDay = daysInMonth[prevMonth - 1];
+        }
+
+        // б) Следующий день
+        int nextDay, nextMonth, nextYear;
+        if (n < daysInMonth[m - 1])
+        {
+            nextDay = n + 1;
+            nextMonth = m;
+            nextYear = g;
+        }
+        else
+        {
+            nextDay = 1;
+            nextMonth = m + 1;
+            if (nextMonth == 13)
+            {
+                nextMonth = 1;
+                nextYear = g + 1;
+            }
+            else
+            {
+                nextYear = g;
+            }
+        }
+
+        Console.WriteLine($"а) Предыдущий день: {prevDay:00}.{prevMonth:00}.{prevYear}");
+        Console.WriteLine($"б) Следующий день: {nextDay:00}.{nextMonth:00}.{nextYear}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 4.139-4.144");
+        Console.WriteLine("========================");
+
+        Task_4_139();
+        Task_4_140();
+        Task_4_141();
+        Task_4_142();
+        Task_4_143();
+        Task_4_144();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

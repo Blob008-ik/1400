@@ -1,0 +1,89 @@
+﻿using System;
+
+class Program1
+{
+    static void Task_4_133()
+    {
+        Console.WriteLine("4.133 - Название дня недели");
+        Console.Write("Введите номер дня недели (1-7): ");
+        int day = int.Parse(Console.ReadLine());
+
+        string dayName;
+        if (day == 1)
+            dayName = "понедельник";
+        else if (day == 2)
+            dayName = "вторник";
+        else if (day == 3)
+            dayName = "среда";
+        else if (day == 4)
+            dayName = "четверг";
+        else if (day == 5)
+            dayName = "пятница";
+        else if (day == 6)
+            dayName = "суббота";
+        else if (day == 7)
+            dayName = "воскресенье";
+        else
+            dayName = "неверный номер";
+
+        Console.WriteLine($"Это {dayName}");
+    }
+
+    static void Task_4_134()
+    {
+        Console.WriteLine("\n4.134 - Название месяца");
+        Console.Write("Введите номер месяца (1-12): ");
+        int month = int.Parse(Console.ReadLine());
+
+        string monthName;
+        if (month == 1)
+            monthName = "январь";
+        else if (month == 2)
+            monthName = "февраль";
+        else if (month == 3)
+            monthName = "март";
+        else if (month == 4)
+            monthName = "апрель";
+        else if (month == 5)
+            monthName = "май";
+        else if (month == 6)
+            monthName = "июнь";
+        else if (month == 7)
+            monthName = "июль";
+        else if (month == 8)
+            monthName = "август";
+        else if (month == 9)
+            monthName = "сентябрь";
+        else if (month == 10)
+            monthName = "октябрь";
+        else if (month == 11)
+            monthName = "ноябрь";
+        else if (month == 12)
+            monthName = "декабрь";
+        else
+            monthName = "неверный номер";
+
+        Console.WriteLine($"Это {monthName}");
+    }
+
+  
+    static void Task_4_138()
+    {
+        Console.WriteLine("\n4.138 - Название масти карты");
+        Console.Write("Введите номер масти (1-4): ");
+        int m = int.Parse(Console.ReadLine());
+
+        string suit;
+        if (m == 1)
+            suit = "пики";
+        else if (m == 2)
+            suit = "трефы";
+        else if (m == 3)
+            suit = "бубны";
+        else if (m == 4)
+            suit = "червы";
+        else
+            suit = "неверный номер";
+
+        Console.WriteLine($"Это масть: {suit}");
+    } }

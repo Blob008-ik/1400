@@ -1,0 +1,148 @@
+﻿using System;
+
+
+class Program3
+{
+    static void Task_4_101()
+    {
+        Console.WriteLine("4.101 - Максимум и минимум трех чисел");
+        Console.Write("Введите первое число: ");
+        double a = double.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        double b = double.Parse(Console.ReadLine());
+        Console.Write("Введите третье число: ");
+        double c = double.Parse(Console.ReadLine());
+
+        // Находим максимум
+        double max = a;
+        if (b > max) max = b;
+        if (c > max) max = c;
+
+        // Находим минимум
+        double min = a;
+        if (b < min) min = b;
+        if (c < min) min = c;
+
+        Console.WriteLine($"Максимум: {max}");
+        Console.WriteLine($"Минимум: {min}");
+    }
+
+    static void Task_4_102()
+    {
+        Console.WriteLine("\n4.102 - Максимум и минимум четырех чисел");
+        Console.Write("Введите первое число: ");
+        double a = double.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        double b = double.Parse(Console.ReadLine());
+        Console.Write("Введите третье число: ");
+        double c = double.Parse(Console.ReadLine());
+        Console.Write("Введите четвертое число: ");
+        double d = double.Parse(Console.ReadLine());
+
+        // Находим максимум
+        double max = a;
+        if (b > max) max = b;
+        if (c > max) max = c;
+        if (d > max) max = d;
+
+        // Находим минимум
+        double min = a;
+        if (b < min) min = b;
+        if (c < min) min = c;
+        if (d < min) min = d;
+
+        Console.WriteLine($"Максимум: {max}");
+        Console.WriteLine($"Минимум: {min}");
+    }
+
+    static void Task_4_103()
+    {
+        Console.WriteLine("\n4.103 - Абсолютная величина числа");
+        Console.Write("Введите число: ");
+        double x = double.Parse(Console.ReadLine());
+
+        // Находим абсолютную величину
+        double absValue = x;
+        if (x < 0)
+            absValue = -x;
+
+        Console.WriteLine($"Абсолютная величина |{x}| = {absValue}");
+    }
+
+    static void Task_4_104()
+    {
+        Console.WriteLine("\n4.104 - Операции с абсолютными величинами");
+        Console.Write("Введите первое число: ");
+        double x = double.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        double y = double.Parse(Console.ReadLine());
+
+        // Абсолютные величины
+        double absX = x;
+        if (x < 0) absX = -x;
+
+        double absY = y;
+        if (y < 0) absY = -y;
+
+        // а) Полусумма абсолютных величин
+        double halfSum = (absX + absY) / 2;
+
+        // б) Квадратный корень из произведения
+        double sqrtProduct = 0;
+        bool canCalculate = true;
+
+        if (absX * absY >= 0)
+            sqrtProduct = Math.Sqrt(absX * absY);
+        else
+            canCalculate = false;
+
+        Console.WriteLine($"а) Полусумма абсолютных величин: {halfSum}");
+        if (canCalculate)
+            Console.WriteLine($"б) Квадратный корень из произведения: {sqrtProduct:F2}");
+        else
+            Console.WriteLine("б) Невозможно вычислить корень из отрицательного числа");
+    }
+
+    static void Task_4_105()
+    {
+        Console.WriteLine("\n4.105 - Уменьшение первого числа");
+        Console.Write("Введите первое число: ");
+        double x = double.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        double y = double.Parse(Console.ReadLine());
+
+        // Абсолютные величины
+        double absX = x;
+        if (x < 0) absX = -x;
+
+        double absY = y;
+        if (y < 0) absY = -y;
+
+        // Уменьшаем первое число, если оно больше по модулю
+
+if (absX > absY)
+        {
+            x = x / 2;
+            Console.WriteLine($"Первое число уменьшено в 2 раза: {x}");
+        }
+        else
+        {
+            Console.WriteLine($"Первое число не изменено: {x}");
+        }
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 4.101-4.105");
+        Console.WriteLine("========================");
+
+        Task_4_101();
+        Task_4_102();
+        Task_4_103();
+        Task_4_104();
+        Task_4_105();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

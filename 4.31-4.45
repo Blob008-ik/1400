@@ -1,0 +1,268 @@
+﻿using System;
+
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("=== Задачи 4.31-4.45 ===");
+
+        // 4.31
+        Console.WriteLine("\n--- Задача 4.31 ---");
+        Console.Write("Введите трехзначное число: ");
+        int num = int.Parse(Console.ReadLine());
+
+        int first = num / 100;
+        int second = (num / 10) % 10;
+        int third = num % 10;
+
+        Console.WriteLine($"Цифры: {first}, {second}, {third}");
+
+        // а) первая или последняя
+        if (first > third)
+            Console.WriteLine("а) Первая цифра больше последней");
+        else if (first < third)
+            Console.WriteLine("а) Последняя цифра больше первой");
+        else
+            Console.WriteLine("а) Первая и последняя цифры равны");
+
+        // б) первая или вторая
+        if (first > second)
+            Console.WriteLine("б) Первая цифра больше второй");
+        else if (first < second)
+            Console.WriteLine("б) Вторая цифра больше первой");
+        else
+            Console.WriteLine("б) Первая и вторая цифры равны");
+
+        // в) вторая или последняя
+        if (second > third)
+            Console.WriteLine("в) Вторая цифра больше последней");
+        else if (second < third)
+            Console.WriteLine("в) Последняя цифра больше второй");
+        else
+            Console.WriteLine("в) Вторая и последняя цифры равны");
+
+        // 4.32
+        Console.WriteLine("\n--- Задача 4.32 ---");
+        int square = num * num;
+        int sumCubes = first * first * first + second * second * second + third * third * third;
+
+        if (square == sumCubes)
+            Console.WriteLine($"Квадрат числа {num} равен сумме кубов его цифр");
+        else
+            Console.WriteLine($"Квадрат числа {num} НЕ равен сумме кубов его цифр");
+
+        // 4.33
+        Console.WriteLine("\n--- Задача 4.33 ---");
+        int sumDigits = first + second + third;
+        int productDigits = first * second * third;
+
+        Console.WriteLine($"а) Сумма цифр = {sumDigits}");
+        if (sumDigits >= 10 && sumDigits <= 99)
+            Console.WriteLine("   Сумма цифр является двузначным числом");
+        else
+            Console.WriteLine("   Сумма цифр НЕ является двузначным числом");
+
+        Console.WriteLine($"б) Произведение цифр = {productDigits}");
+        if (productDigits >= 100 && productDigits <= 999)
+            Console.WriteLine("   Произведение цифр является трехзначным числом");
+        else
+            Console.WriteLine("   Произведение цифр НЕ является трехзначным числом");
+
+        // в) больше ли числа а произведение его цифр
+        Console.Write("в) Введите число a: ");
+        int a = int.Parse(Console.ReadLine());
+        if (productDigits > a)
+            Console.WriteLine($"   Произведение цифр ({productDigits}) > {a}");
+        else
+            Console.WriteLine($"   Произведение цифр ({productDigits}) <= {a}");
+
+        // г) кратна ли пяти сумма его цифр
+        if (sumDigits % 5 == 0)
+            Console.WriteLine("г) Сумма цифр кратна 5");
+        else
+            Console.WriteLine("г) Сумма цифр НЕ кратна 5");
+
+        // д) кратна ли сумма его цифр числу а
+        if (a != 0 && sumDigits % a == 0)
+            Console.WriteLine($"д) Сумма цифр кратна {a}");
+        else
+            Console.WriteLine($"д) Сумма цифр НЕ кратна {a}");
+
+        // 4.35
+        Console.WriteLine("\n--- Задача 4.35 ---");
+        Console.Write("Введите четырехзначное число: ");
+        int num4 = int.Parse(Console.ReadLine());
+
+        int d1 = num4 / 1000;
+        int d2 = (num4 / 100) % 10;
+        int d3 = (num4 / 10) % 10;
+        int d4 = num4 % 10;
+
+        // а) равна ли сумма первых двух сумме последних двух
+        if ((d1 + d2) == (d3 + d4))
+            Console.WriteLine($"а) Сумма первых двух цифр ({d1}+{d2}) = сумме последних двух ({d3}+{d4})");
+        else
+            Console.WriteLine($"а) Сумма первых двух цифр ({d1}+{d2}) ≠ сумме последних двух ({d3}+{d4})");
+
+        // б) кратна ли трем сумма всех цифр
+        int sum4 = d1 + d2 + d3 + d4;
+        if (sum4 % 3 == 0)
+            Console.WriteLine($"б) Сумма цифр ({sum4}) кратна 3");
+        else
+            Console.WriteLine($"б) Сумма цифр ({sum4}) НЕ кратна 3");
+
+        // в) кратно ли четырем произведение цифр
+        int prod4 = d1 * d2 * d3 * d4;
+        if (prod4 % 4 == 0)
+            Console.WriteLine($"в) Произведение цифр ({prod4}) кратно 4");
+        else
+            Console.WriteLine($"в) Произведение цифр ({prod4}) НЕ кратно 4");
+
+        // г) кратно ли произведение числу а
+        Console.Write("г) Введите число a: ");
+        int a2 = int.Parse(Console.ReadLine());
+        if (a2 != 0 && prod4 % a2 == 0)
+            Console.WriteLine($"   Произведение цифр кратно {a2}");
+        else
+            Console.WriteLine($"   Произведение цифр НЕ кратно {a2}");
+
+        // 4.36
+        Console.WriteLine("\n--- Задача 4.36 ---");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+        int lastDigit = n % 10;
+
+        // а) заканчивается четной цифрой
+        if (lastDigit % 2 == 0)
+            Console.WriteLine($"а) Число заканчивается четной цифрой {lastDigit}");
+        else
+            Console.WriteLine($"а) Число НЕ заканчивается четной цифрой");
+
+        // б) заканчивается нечетной цифрой
+        if (lastDigit % 2 != 0)
+            Console.WriteLine($"б) Число заканчивается нечетной цифрой {lastDigit}");
+        else
+            Console.WriteLine($"б) Число НЕ заканчивается нечетной цифрой");
+
+        // 4.37
+        Console.WriteLine("\n--- Задача 4.37 ---");
+        Console.Write("Введите число a: ");
+        int numA = int.Parse(Console.ReadLine());
+        Console.Write("Введите число b: ");
+        int numB = int.Parse(Console.ReadLine());
+
+        if (numA != 0 && numB % numA == 0)
+            Console.WriteLine($"а) {numA} является делителем {numB}");
+        else
+            Console.WriteLine($"а) {numA} НЕ является делителем {numB}");
+
+        if (numB != 0 && numA % numB == 0)
+            Console.WriteLine($"б) {numB} является делителем {numA}");
+        else
+            Console.WriteLine($"б) {numB} НЕ является делителем {numA}");
+
+        // 4.38
+        Console.WriteLine("\n--- Задача 4.38 ---");
+        Console.Write("Введите размеры стола a и b (a > b): ");
+        string[] sizes = Console.ReadLine().Split();
+        int tableA = int.Parse(sizes[0]);
+        int tableB = int.Parse(sizes[1]);
+
+        Console.Write("Введите размеры картонных прямоугольников c и d (c > d): ");
+        sizes = Console.ReadLine().Split();
+        int cardC = int.Parse(sizes[0]);
+        int cardD = int.Parse(sizes[1]);
+
+        // Размещение длинной стороной вдоль длинной стороны стола
+        int count1 = (tableA / cardC) * (tableB / cardD);
+        // Размещение длинной стороной вдоль короткой стороны стола
+        int count2 = (tableA / cardD) * (tableB / cardC);
+
+if (count1 > count2)
+            Console.WriteLine($"Лучше размещать длинной стороной вдоль длинной стороны стола: {count1} > {count2}");
+        else if (count2 > count1)
+            Console.WriteLine($"Лучше размещать длинной стороной вдоль короткой стороны стола: {count2} > {count1}");
+        else
+            Console.WriteLine($"Количество одинаково: {count1} = {count2}");
+
+        // 4.39
+        Console.WriteLine("\n--- Задача 4.39 ---");
+        Console.Write("Введите время t (в минутах от начала часа): ");
+        double t = double.Parse(Console.ReadLine());
+
+        // Цикл работы светофора: 3 мин зеленый, 2 мин красный
+        double cycleTime = t % 5; // 5-минутный цикл
+
+        if (cycleTime < 3)
+            Console.WriteLine($"В момент времени t={t} минут горит ЗЕЛЕНЫЙ сигнал");
+        else
+            Console.WriteLine($"В момент времени t={t} минут горит КРАСНЫЙ сигнал");
+
+        // 4.40
+        Console.WriteLine("\n--- Задача 4.40 ---");
+        Console.Write("Введите число: ");
+        double x = double.Parse(Console.ReadLine());
+
+        if (x > -5 && x < 3)
+            Console.WriteLine($"Число {x} принадлежит интервалу (-5, 3)");
+        else
+            Console.WriteLine($"Число {x} НЕ принадлежит интервалу (-5, 3)");
+
+        // 4.41
+        Console.WriteLine("\n--- Задача 4.41 ---");
+        Console.Write("Введите натуральное число: ");
+        int numCheck = int.Parse(Console.ReadLine());
+
+        if (numCheck >= 10 && numCheck <= 99)
+            Console.WriteLine($"Число {numCheck} является двузначным");
+        else
+            Console.WriteLine($"Число {numCheck} НЕ является двузначным");
+
+        // 4.42
+        Console.WriteLine("\n--- Задача 4.42 ---");
+        Console.Write("Введите координаты точки (x y): ");
+        string[] coords = Console.ReadLine().Split();
+        double x42 = double.Parse(coords[0]);
+        double y42 = double.Parse(coords[1]);
+        if (x42 > 0 && y42 > 0 && x42 + y42 < 2)
+            Console.WriteLine($"Точка ({x42},{y42}) попадает в область I");
+        else
+            Console.WriteLine($"Точка ({x42},{y42}) НЕ попадает в область I");
+
+        // 4.43
+        Console.WriteLine("\n--- Задача 4.43 ---");
+        Console.Write("Введите координаты точки (x y): ");
+        coords = Console.ReadLine().Split();
+        double x43 = double.Parse(coords[0]);
+        double y43 = double.Parse(coords[1]);
+        if (x43 > 0 && y43 > 0 && y43 < -2.0 / 3.0 * x43 + 2)
+            Console.WriteLine($"Точка ({x43},{y43}) попадает в область I");
+        else
+            Console.WriteLine($"Точка ({x43},{y43}) НЕ попадает в область I");
+
+        // 4.44
+        Console.WriteLine("\n--- Задача 4.44 ---");
+        Console.Write("Введите координаты точки (x y): ");
+        coords = Console.ReadLine().Split();
+        double x44 = double.Parse(coords[0]);
+        double y44 = double.Parse(coords[1]);
+
+        if (x44 > 0 || x44 < -1)
+            Console.WriteLine($"Точка ({x44},{y44}) попадает в область I или III");
+        else
+            Console.WriteLine($"Точка ({x44},{y44}) НЕ попадает в область I или III");
+
+        // 4.45
+        Console.WriteLine("\n--- Задача 4.45 (начало) ---");
+        Console.Write("Введите вещественное число x: ");
+        double x45 = double.Parse(Console.ReadLine());
+
+        if (x45 <= 0)
+            Console.WriteLine("f(x) = 0");
+        else if (x45 <= 1)
+            Console.WriteLine($"f(x) = {x45 * x45}"); 
+        else
+            Console.WriteLine($"f(x) = {x45 * x45 * x45}");
+    }
+}

@@ -1,0 +1,140 @@
+﻿using System;
+
+class Program1
+{
+    static void Task_4_123()
+    {
+        Console.WriteLine("4.123 - Результат футбольной игры");
+        Console.Write("Введите количество очков команды (0, 1 или 3): ");
+        int points = int.Parse(Console.ReadLine());
+
+        string result;
+        if (points == 3)
+            result = "выигрыш";
+        else if (points == 1)
+            result = "ничья";
+        else if (points == 0)
+            result = "проигрыш";
+        else
+            result = "некорректное количество очков";
+
+        Console.WriteLine($"Результат игры: {result}");
+    }
+
+    static void Task_4_124()
+    {
+        Console.WriteLine("\n4.124 - Кто старше: Митя или Вася?");
+        Console.Write("Введите возраст Мити: ");
+        int mitya = int.Parse(Console.ReadLine());
+        Console.Write("Введите возраст Васи: ");
+        int vasya = int.Parse(Console.ReadLine());
+
+        if (mitya > vasya)
+            Console.WriteLine("Митя старше Васи");
+        else if (vasya > mitya)
+            Console.WriteLine("Вася старше Мити");
+        else
+            Console.WriteLine("Митя и Вася одного возраста");
+    }
+
+    static void Task_4_125()
+    {
+        Console.WriteLine("\n4.125 - Весовая категория боксера");
+        Console.Write("Введите вес боксера в кг: ");
+        double weight = double.Parse(Console.ReadLine());
+
+        if (weight < 60)
+            Console.WriteLine("Легкий вес (до 60 кг)");
+        else if (weight < 64)
+            Console.WriteLine("Первый полусредний вес (до 64 кг)");
+        else if (weight < 69)
+            Console.WriteLine("Полусредний вес (до 69 кг)");
+        else
+            Console.WriteLine("Боксер тяжелее полусреднего веса");
+    }
+
+    static void Task_4_126()
+    {
+        Console.WriteLine("\n4.126 - Делители чисел");
+        Console.Write("Введите первое число a: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите второе число b: ");
+        int b = int.Parse(Console.ReadLine());
+
+        if (a % b == 0)
+            Console.WriteLine($"{b} является делителем {a}");
+        else if (b % a == 0)
+            Console.WriteLine($"{a} является делителем {b}");
+        else
+            Console.WriteLine("Ни одно число не является делителем другого");
+    }
+
+    static void Task_4_127()
+    {
+        Console.WriteLine("\n4.127 - Анализ трех чисел");
+        Console.Write("Введите первое число: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        int b = int.Parse(Console.ReadLine());
+        Console.Write("Введите третье число: ");
+        int c = int.Parse(Console.ReadLine());
+
+        // а) Самое большое
+        int max = a;
+        if (b > max) max = b;
+        if (c > max) max = c;
+
+        // б) Самое маленькое
+        int min = a;
+        if (b < min) min = b;
+        if (c < min) min = c;
+
+        // в) Среднее (не самое большое и не самое маленькое)
+        int middle = a;
+        if ((b > min && b < max) || (b < min && b > max)) middle = b;
+        if ((c > min && c < max) || (c < min && c > max)) middle = c;
+
+        Console.WriteLine($"а) Самое большое: {max}");
+        Console.WriteLine($"б) Самое маленькое: {min}");
+        Console.WriteLine($"в) Среднее: {middle}");
+    }
+
+    static void Task_4_128()
+    {
+        Console.WriteLine("\n4.128 - Максимум и минимум трех чисел");
+        Console.Write("Введите первое число: ");
+        double a = double.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        double b = double.Parse(Console.ReadLine());
+        Console.Write("Введите третье число: ");
+        double c = double.Parse(Console.ReadLine());
+
+        double max = a;
+
+if (b > max) max = b;
+        if (c > max) max = c;
+
+        double min = a;
+        if (b < min) min = b;
+        if (c < min) min = c;
+
+        Console.WriteLine($"Максимальное: {max}");
+        Console.WriteLine($"Минимальное: {min}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 4.123-4.128");
+        Console.WriteLine("========================");
+
+        Task_4_123();
+        Task_4_124();
+        Task_4_125();
+        Task_4_126();
+        Task_4_127();
+        Task_4_128();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

@@ -1,0 +1,157 @@
+﻿using System;
+
+class Program4
+{
+    static void Task_4_106()
+    {
+        Console.WriteLine("4.106 - Увеличение второго числа");
+        Console.Write("Введите первое число: ");
+        double a = double.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        double b = double.Parse(Console.ReadLine());
+
+        // Проверяем условие
+        if (b >= 0) // можно извлекать корень только из неотрицательного числа
+        {
+            double sqrtB = Math.Sqrt(b);
+            if (sqrtB < a)
+            {
+                b = b * 5;
+                Console.WriteLine($"Второе число увеличено в 5 раз: {b}");
+            }
+            else
+            {
+                Console.WriteLine($"Второе число не изменено: {b}");
+            }
+        }
+        else
+        {
+            Console.WriteLine($"Второе число отрицательное, корень не извлекается: {b}");
+        }
+    }
+
+    static void Task_4_107()
+    {
+        Console.WriteLine("\n4.107 - Четные числа из трех");
+        Console.Write("Введите первое число: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        int b = int.Parse(Console.ReadLine());
+        Console.Write("Введите третье число: ");
+        int c = int.Parse(Console.ReadLine());
+
+        Console.Write("Четные числа: ");
+        bool hasEven = false;
+
+        if (a % 2 == 0)
+        {
+            Console.Write($"{a} ");
+            hasEven = true;
+        }
+        if (b % 2 == 0)
+        {
+            Console.Write($"{b} ");
+            hasEven = true;
+        }
+        if (c % 2 == 0)
+        {
+            Console.Write($"{c} ");
+            hasEven = true;
+        }
+
+        if (!hasEven)
+            Console.Write("нет четных чисел");
+
+        Console.WriteLine();
+    }
+
+    static void Task_4_108()
+    {
+        Console.WriteLine("\n4.108 - Квадраты неотрицательных чисел");
+        Console.Write("Введите первое число: ");
+        double a = double.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        double b = double.Parse(Console.ReadLine());
+        Console.Write("Введите третье число: ");
+        double c = double.Parse(Console.ReadLine());
+
+        if (a >= 0)
+            Console.WriteLine($"a² = {a * a}");
+        if (b >= 0)
+            Console.WriteLine($"b² = {b * b}");
+        if (c >= 0)
+            Console.WriteLine($"c² = {c * c}");
+    }
+
+    static void Task_4_109()
+    {
+        Console.WriteLine("\n4.109 - Числа в интервале [1.6, 3.8]");
+        Console.Write("Введите первое число: ");
+        double a = double.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        double b = double.Parse(Console.ReadLine());
+        Console.Write("Введите третье число: ");
+        double c = double.Parse(Console.ReadLine());
+
+        Console.Write("Числа в интервале [1.6, 3.8]: ");
+        bool hasInInterval = false;
+
+        if (a >= 1.6 && a <= 3.8)
+        {
+            Console.Write($"{a} ");
+            hasInInterval = true;
+        }
+        if (b >= 1.6 && b <= 3.8)
+        {
+            Console.Write($"{b} ");
+            hasInInterval = true;
+        }
+        if (c >= 1.6 && c <= 3.8)
+        {
+            Console.Write($"{c} ");
+            hasInInterval = true;
+        }
+
+        if (!hasInInterval)
+            Console.Write("нет таких чисел");
+
+        Console.WriteLine();
+    }
+
+    static void Task_4_110()
+    {
+        Console.WriteLine("\n4.110 - Количество отрицательных чисел");
+        Console.Write("Введите первое число: ");
+        double a = double.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        double b = double.Parse(Console.ReadLine());
+Console.Write("Введите третье число: ");
+        double c = double.Parse(Console.ReadLine());
+        Console.Write("Введите четвертое число: ");
+        double d = double.Parse(Console.ReadLine());
+
+        int count = 0;
+
+        if (a < 0) count++;
+        if (b < 0) count++;
+        if (c < 0) count++;
+        if (d < 0) count++;
+
+        Console.WriteLine($"Количество отрицательных чисел: {count}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 4.106-4.110");
+        Console.WriteLine("========================");
+
+        Task_4_106();
+        Task_4_107();
+        Task_4_108();
+        Task_4_109();
+        Task_4_110();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

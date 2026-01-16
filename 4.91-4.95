@@ -1,0 +1,193 @@
+﻿using System;
+
+class Program
+{
+    static void Task_4_91()
+    {
+        Console.WriteLine("4.91 - Дата предыдущего/следующего дня");
+
+        Console.Write("Введите год: ");
+        int year = int.Parse(Console.ReadLine());
+        Console.Write("Введите месяц (1-12): ");
+        int month = int.Parse(Console.ReadLine());
+        Console.Write("Введите число: ");
+        int day = int.Parse(Console.ReadLine());
+
+        // Проверяем, високосный ли год
+        bool isLeap = false;
+        if (year % 4 == 0)
+        {
+            if (year % 100 == 0)
+            {
+                if (year % 400 == 0)
+                    isLeap = true;
+            }
+            else
+            {
+                isLeap = true;
+            }
+        }
+
+        // Дни в месяцах
+        int[] days = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+        if (isLeap) days[1] = 29; // Февраль в високосный год
+
+        // а) Предыдущий день
+        int prevDay, prevMonth, prevYear;
+        if (day > 1)
+        {
+            prevDay = day - 1;
+            prevMonth = month;
+            prevYear = year;
+        }
+        else
+        {
+            prevMonth = month - 1;
+            if (prevMonth == 0)
+            {
+                prevMonth = 12;
+                prevYear = year - 1;
+            }
+            else
+            {
+                prevYear = year;
+            }
+            prevDay = days[prevMonth - 1];
+        }
+
+        // б) Следующий день
+        int nextDay, nextMonth, nextYear;
+        if (day < days[month - 1])
+        {
+            nextDay = day + 1;
+            nextMonth = month;
+            nextYear = year;
+        }
+        else
+        {
+            nextDay = 1;
+            nextMonth = month + 1;
+            if (nextMonth == 13)
+            {
+                nextMonth = 1;
+                nextYear = year + 1;
+            }
+            else
+            {
+                nextYear = year;
+            }
+        }
+
+        Console.WriteLine($"а) Предыдущий день: {prevDay:00}.{prevMonth:00}.{prevYear}");
+        Console.WriteLine($"б) Следующий день: {nextDay:00}.{nextMonth:00}.{nextYear}");
+    }
+
+    static void Task_4_92()
+    {
+        Console.WriteLine("\n4.92 - Светофор для водителей");
+        Console.Write("Введите время с начала часа (в минутах): ");
+        double t = double.Parse(Console.ReadLine());
+
+        // Цикл светофора: 3 мин зеленый, 1 мин желтый, 2 мин красный = 6 мин
+        double cycleTime = t % 6; // Остаток от деления на 6
+
+        string color;
+        if (cycleTime < 3)
+            color = "зеленый";
+        else if (cycleTime < 4) // от 3 до 4
+            color = "желтый";
+        else
+            color = "красный";
+
+        Console.WriteLine($"Сигнал светофора: {color}");
+    }
+
+    static void Task_4_93()
+    {
+        Console.WriteLine("\n4.93 - День недели по номеру дня года");
+        Console.Write("Введите номер дня года (1-365): ");
+        int k = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("1 января был:");
+        Console.WriteLine("1. Понедельник");
+        Console.WriteLine("2. Вторник");
+        Console.WriteLine("3. Среда");
+        Console.WriteLine("4. Четверг");
+        Console.WriteLine("5. Пятница");
+        Console.WriteLine("6. Суббота");
+        Console.WriteLine("7. Воскресенье");
+        Console.Write("Выберите вариант (1-7): ");
+        int d = int.Parse(Console.ReadLine());
+
+        // Названия дней недели
+        string[] days = { "понедельник", "вторник", "среда", "четверг", "пятница", "суббота", "воскресенье" };
+
+        // Вычисляем день недели для k-го дня
+        // -1 потому что дни нумеруются с 0, а не с 1
+        int dayIndex = (d - 1 + k - 1) % 7;
+        string dayName = days[dayIndex];
+
+        string dayType;
+        if (dayName == "суббота" || dayName == "воскресенье")
+            dayType = "выходной";
+        else
+            dayType = "рабочий";
+
+        Console.WriteLine($"День {k} года - это {dayName}");
+        Console.WriteLine($"Это {dayType} день");
+    }
+
+    static void Task_4_94()
+    {
+        Console.WriteLine("\n4.94 - k-я цифра в последовательности 101112...9899");
+        Console.Write("Введите k (1-180): ");
+        int k = int.Parse(Console.ReadLine());
+
+        // В последовательности 90 двузначных чисел = 180 цифр
+        // Номер числа в последовательности (начиная с 10)
+        int numIndex = (k - 1) / 2; // 0, 1, 2, ..., 89
+        int number = 10 + numIndex; // 10, 11, 12, ..., 99
+
+        // Какая цифра в числе: 0 - первая, 1 - вторая
+        int digitPos = (k - 1) % 2;
+
+        // Получаем нужную цифру
+        string numStr = number.ToString();
+        char digitChar = numStr[digitPos];
+        int digit = int.Parse(digitChar.ToString());
+
+        Console.WriteLine($"{k}-я цифра: {digit} (из числа {number})");
+    }
+
+    static void Task_4_95()
+    {
+        Console.WriteLine("\n4.95 - n-я цифра в последовательности 012...20");
+        Console.Write("Введите n (1-32): ");
+        int n = int.Parse(Console.ReadLine());
+
+        int digit, number;
+
+        if (n <= 10)
+        {
+            // Это цифры от 0 до 9
+            digit = n - 1; // n=1 -> 0, n=10 -> 9
+            number = digit;
+        }
+        else
+        {
+            // Это двузначные числа 10-20
+            int offset = n - 10; // сколько цифр от начала двузначных
+            int numIndex = (offset - 1) / 2; // 0, 1, 2, ..., 10
+            number = 10 + numIndex; // 10, 11, 12, ..., 20
+
+            // Какая цифра в числе: 0 - первая, 1 - вторая
+            int digitPos = (offset - 1) % 2;
+
+            string numStr = number.ToString();
+            char digitChar = numStr[digitPos];
+            digit = int.Parse(digitChar.ToString());
+        }
+
+        Console.WriteLine($"{n}-я цифра: {digit} (из числа {number})");
+    }
+}

@@ -1,0 +1,150 @@
+﻿using System;
+
+class Program2
+{
+    static void Task_4_96()
+    {
+        Console.WriteLine("4.96 - k-я цифра в последовательности 5051...150");
+        Console.Write("Введите k (1-252): ");
+        int k = int.Parse(Console.ReadLine());
+
+        int digit = 0;
+        int number = 0;
+
+        // Числа от 50 до 99 (двузначные)
+        if (k <= 100)
+        {
+            int numIndex = (k - 1) / 2; // 0, 1, 2, ..., 49
+            number = 50 + numIndex; // 50, 51, 52, ..., 99
+
+            int digitPos = (k - 1) % 2; // 0 или 1
+            string numStr = number.ToString();
+            digit = int.Parse(numStr[digitPos].ToString());
+        }
+        else
+        {
+            // Числа от 100 до 150 (трехзначные)
+            int offset = k - 100; // сколько цифр от начала трехзначных
+            int numIndex = (offset - 1) / 3; // 0, 1, 2, ..., 50
+            number = 100 + numIndex; // 100, 101, 102, ..., 150
+
+            int digitPos = (offset - 1) % 3; // 0, 1 или 2
+            string numStr = number.ToString();
+            digit = int.Parse(numStr[digitPos].ToString());
+        }
+
+        Console.WriteLine($"{k}-я цифра: {digit} (из числа {number})");
+    }
+
+    static void Task_4_97()
+    {
+        Console.WriteLine("\n4.97 - k-я цифра в последовательности 123...110");
+        Console.Write("Введите k (1-222): ");
+        int k = int.Parse(Console.ReadLine());
+
+        int digit = 0;
+        int number = 0;
+
+        // Числа от 1 до 9 (однозначные)
+        if (k <= 9)
+        {
+            digit = k;
+            number = k;
+        }
+        // Числа от 10 до 99 (двузначные)
+        else if (k <= 189) // 9 + 180 = 189
+        {
+            int offset = k - 9; // сколько цифр от начала двузначных
+            int numIndex = (offset - 1) / 2; // 0, 1, 2, ..., 89
+            number = 10 + numIndex; // 10, 11, 12, ..., 99
+
+            int digitPos = (offset - 1) % 2; // 0 или 1
+            string numStr = number.ToString();
+            digit = int.Parse(numStr[digitPos].ToString());
+        }
+        // Числа от 100 до 110 (трехзначные)
+        else
+        {
+            int offset = k - 189; // сколько цифр от начала трехзначных
+            int numIndex = (offset - 1) / 3; // 0, 1, 2, ..., 10
+            number = 100 + numIndex; // 100, 101, 102, ..., 110
+
+            int digitPos = (offset - 1) % 3; // 0, 1 или 2
+            string numStr = number.ToString();
+            digit = int.Parse(numStr[digitPos].ToString());
+        }
+
+        Console.WriteLine($"{k}-я цифра: {digit} (из числа {number})");
+    }
+
+    static void Task_4_98()
+    {
+        Console.WriteLine("\n4.98 - Четность суммы номеров квартир");
+        Console.Write("Введите номер первой квартиры: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите количество квартир: ");
+        int n = int.Parse(Console.ReadLine());
+
+        // Сумма арифметической прогрессии: S = n * (a1 + an) / 2
+        int last = a + n - 1; // номер последней квартиры
+
+        // Проверяем четность суммы без вычисления самой суммы
+        // Если n*(a+last) четное, то и сумма четная
+        bool isEven = (n * (a + last)) % 2 == 0;
+
+        Console.WriteLine($"Сумма номеров всех {n} квартир четная: {isEven}");
+    }
+
+    static void Task_4_99()
+    {
+        Console.WriteLine("\n4.99 - Максимум двух чисел (без полного if)");
+        Console.Write("Введите первое число: ");
+        double x = double.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        double y = double.Parse(Console.ReadLine());
+
+        // а) Два неполных условных оператора
+        double max1 = x;
+        if (y > max1)
+            max1 = y;
+
+// б) Один неполный условный оператор
+        double max2 = x;
+        if (y > x)
+            max2 = y;
+
+        Console.WriteLine($"а) Максимум (два if): {max1}");
+        Console.WriteLine($"б) Максимум (один if): {max2}");
+    }
+
+    static void Task_4_100()
+    {
+        Console.WriteLine("\n4.100 - Максимум и минимум двух чисел");
+        Console.Write("Введите первое число: ");
+        double x = double.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        double y = double.Parse(Console.ReadLine());
+
+        // а) Два неполных условных оператора
+        double max1 = x;
+        double min1 = x;
+
+        if (y > max1)
+            max1 = y;
+        if (y < min1)
+            min1 = y;
+
+        // б) Один неполный условный оператор
+        double max2 = x;
+        double min2 = y;
+
+        if (x < y)
+        {
+            min2 = x;
+            max2 = y;
+        }
+
+        Console.WriteLine($"а) Максимум: {max1}, минимум: {min1}");
+        Console.WriteLine($"б) Максимум: {max2}, минимум: {min2}");
+    }
+}
