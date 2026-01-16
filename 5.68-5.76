@@ -1,0 +1,119 @@
+﻿using System;
+
+class Program4
+{
+    static void Task_5_68()
+    {
+        Console.WriteLine("5.68 - Сумма факториалов 1! + 2! + ... + n!");
+        Console.Write("Введите n (1 < n ≤ 10): ");
+        int n = int.Parse(Console.ReadLine());
+
+        long sum = 0;
+        long factorial = 1;
+
+        for (int i = 1; i <= n; i++)
+        {
+            factorial *= i; // вычисляем i!
+            sum += factorial;
+        }
+
+        Console.WriteLine($"Сумма факториалов: {sum}");
+    }
+
+    static void Task_5_73()
+    {
+        Console.WriteLine("\n5.73 - Угол падающей палки");
+
+        double length = 4.5; // м
+        double initialDistance = 3.0; // м
+        double step = 0.2; // м
+
+        Console.WriteLine("Расстояние  Угол (градусы)");
+        Console.WriteLine("-----------------------");
+
+        for (double distance = initialDistance; distance >= 0; distance -= step)
+        {
+            // По теореме Пифагора: sin(α) = расстояние / длина
+            double sinAlpha = distance / length;
+
+            // Проверяем, чтобы sin был в допустимых пределах
+            if (sinAlpha >= 0 && sinAlpha <= 1)
+            {
+                double alphaRad = Math.Asin(sinAlpha);
+                double alphaDeg = alphaRad * 180 / Math.PI;
+                Console.WriteLine($"{distance,6:F1} м   {alphaDeg,8:F1}°");
+            }
+        }
+    }
+
+    static void Task_5_74()
+    {
+        Console.WriteLine("\n5.74 - Нечетные числа от 10 до 100");
+
+        Console.WriteLine("Способ 1 (с if):");
+        for (int i = 10; i <= 100; i++)
+        {
+            if (i % 2 != 0) // нечетное
+            {
+                Console.Write(i + " ");
+            }
+        }
+
+        Console.WriteLine("\n\nСпособ 2 (без if):");
+        for (int i = 11; i <= 99; i += 2) // начинаем с 11, шаг 2
+        {
+            Console.Write(i + " ");
+        }
+        Console.WriteLine();
+    }
+
+    static void Task_5_75()
+    {
+        Console.WriteLine("\n5.75 - Числа от 100 до 200, кратные трем");
+
+        for (int i = 100; i <= 200; i++)
+        {
+            if (i % 3 == 0)
+            {
+                Console.Write(i + " ");
+            }
+        }
+        Console.WriteLine();
+    }
+
+    static void Task_5_76()
+    {
+        Console.WriteLine("\n5.76 - Числа от a до b, кратные c");
+        Console.Write("Введите a: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите b (b > a): ");
+        int b = int.Parse(Console.ReadLine());
+        Console.Write("Введите c: ");
+        int c = int.Parse(Console.ReadLine());
+
+        Console.WriteLine($"Числа от {a} до {b}, кратные {c}:");
+        for (int i = a; i <= b; i++)
+        {
+            if (i % c == 0)
+            {
+                Console.Write(i + " ");
+            }
+        }
+        Console.WriteLine();
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 5.68-5.76");
+        Console.WriteLine("======================");
+
+        Task_5_68();
+        Task_5_73();
+        Task_5_74();
+        Task_5_75();
+        Task_5_76();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

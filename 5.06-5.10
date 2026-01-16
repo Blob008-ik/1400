@@ -1,0 +1,93 @@
+﻿using System;
+
+class Program2
+{
+    static void Task_5_6()
+    {
+        Console.WriteLine("5.6 - Таблицы чисел");
+
+        Console.WriteLine("а)");
+        for (int i = 21; i <= 35; i++)
+        {
+            Console.WriteLine($"{i} {i - 0.6}");
+        }
+
+        Console.WriteLine("\nб)");
+        for (int i = 16; i <= 24; i++)
+        {
+            Console.WriteLine($"{i} {i - 0.5} {i + 0.8}");
+        }
+    }
+
+    static void Task_5_7()
+    {
+        Console.WriteLine("\n5.7 - Стоимость товара");
+        double price = 20.4;
+
+        Console.WriteLine("Количество  Стоимость");
+        Console.WriteLine("---------------------");
+        for (int i = 2; i <= 20; i++)
+        {
+            double cost = price * i;
+            Console.WriteLine($"{i,5}     {cost,10:F1} руб.");
+        }
+    }
+
+    static void Task_5_8()
+    {
+        Console.WriteLine("\n5.8 - Перевод фунтов в килограммы");
+        double poundToKg = 0.453; // 1 фунт = 453 г
+
+        Console.WriteLine("Фунты  Кг");
+        Console.WriteLine("---------");
+        for (int pounds = 1; pounds <= 10; pounds++)
+        {
+            double kg = pounds * poundToKg;
+            Console.WriteLine($"{pounds,3}   {kg,5:F2}");
+        }
+    }
+
+    static void Task_5_9()
+    {
+        Console.WriteLine("\n5.9 - Перевод дюймов в сантиметры");
+        double inchToCm = 2.54; // 1 дюйм = 25.4 мм = 2.54 см
+
+        Console.WriteLine("Дюймы  Сантиметры");
+        Console.WriteLine("-----------------");
+        for (int inches = 10; inches <= 22; inches++)
+        {
+            double cm = inches * inchToCm;
+            Console.WriteLine($"{inches,3}   {cm,8:F1}");
+        }
+    }
+
+    static void Task_5_10()
+    {
+        Console.WriteLine("\n5.10 - Перевод долларов в рубли");
+        Console.Write("Введите курс доллара (руб. за 1 доллар): ");
+        double rate = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("Доллары  Рубли");
+        Console.WriteLine("--------------");
+        for (int dollars = 1; dollars <= 20; dollars++)
+        {
+            double rubles = dollars * rate;
+            Console.WriteLine($"{dollars,4}   {rubles,7:F2}");
+        }
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 5.6-5.10");
+        Console.WriteLine("======================");
+
+        Task_5_6();
+        Task_5_7();
+        Task_5_8();
+        Task_5_9();
+        Task_5_10();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

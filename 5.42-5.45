@@ -1,0 +1,94 @@
+﻿using System;
+
+class Program9
+{
+    static void Task_5_42()
+    {
+        Console.WriteLine("5.42 - Странный муж");
+
+        double distanceFromHome = 0; // расстояние от дома
+        double totalPath = 0; // общий пройденный путь
+        int direction = 1; // 1 - от дома, -1 - к дому
+
+        for (int i = 1; i <= 100; i++)
+        {
+            double step = 1.0 / i;
+            totalPath += step;
+            distanceFromHome += direction * step;
+
+            // Меняем направление
+            direction = -direction;
+        }
+
+        Console.WriteLine($"а) После 100 этапов муж будет на расстоянии: {Math.Abs(distanceFromHome):F4} км от дома");
+        Console.WriteLine($"б) Общий пройденный путь: {totalPath:F4} км");
+    }
+
+    static void Task_5_43()
+    {
+        Console.WriteLine("\n5.43 - Последовательность a₀, a₁, a₂, ...");
+        Console.Write("Введите n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double a = 1; // a₀ = 1
+        Console.WriteLine($"a₀ = {a}");
+
+        for (int k = 1; k <= n; k++)
+        {
+            a = k * a + 1.0 / k;
+            Console.WriteLine($"a{k} = {a:F4}");
+        }
+    }
+
+    static void Task_5_44()
+    {
+        Console.WriteLine("\n5.44 - Последовательность Фибоначчи");
+        Console.Write("Введите n (n ≥ 3): ");
+        int n = int.Parse(Console.ReadLine());
+
+        // а) Найти n-й член
+        if (n == 1 || n == 2)
+        {
+            Console.WriteLine($"а) {n}-й член Фибоначчи = 1");
+        }
+        else
+        {
+            long fib1 = 1; // F₁
+            long fib2 = 1; // F₂
+            long fibN = 0;
+
+            for (int i = 3; i <= n; i++)
+            {
+                fibN = fib1 + fib2;
+                fib1 = fib2;
+                fib2 = fibN;
+            }
+
+            Console.WriteLine($"а) {n}-й член Фибоначчи = {fibN}");
+        }
+
+        // б) Получить первые n членов
+        Console.WriteLine("\nб) Первые n членов Фибоначчи:");
+        if (n >= 1) Console.Write("1 ");
+        if (n >= 2) Console.Write("1 ");
+
+        if (n >= 3)
+        {
+            long fib1 = 1;
+            long fib2 = 1;
+            for (int i = 3; i <= n; i++)
+            {
+                long fib = fib1 + fib2;
+                Console.Write($"{fib} ");
+                fib1 = fib2;
+                fib2 = fib;
+            }
+        }
+        Console.WriteLine();
+    }
+
+    static void Task_5_45()
+    {
+        Console.WriteLine("\n5.45 - 3-й, 4-й, ..., 10-й член Фибоначчи");
+    }
+}

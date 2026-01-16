@@ -1,0 +1,227 @@
+﻿using System;
+
+class Program6
+{
+    static void Task_5_27()
+    {
+        Console.WriteLine("5.27 - Суммы целых чисел");
+
+        // а) от 200 до 600
+        int sum1 = 0;
+        for (int i = 200; i <= 600; i++)
+        {
+            sum1 += i;
+        }
+        Console.WriteLine($"а) Сумма от 200 до 600: {sum1}");
+
+        // б) от a до 400
+        Console.Write("\nб) Введите a (a ≤ 400): ");
+        int a = int.Parse(Console.ReadLine());
+        int sum2 = 0;
+        for (int i = a; i <= 400; i++)
+        {
+            sum2 += i;
+        }
+        Console.WriteLine($"Сумма от {a} до 400: {sum2}");
+
+        // в) от -15 до b
+        Console.Write("\nв) Введите b (b ≥ -15): ");
+        int b = int.Parse(Console.ReadLine());
+        int sum3 = 0;
+        for (int i = -15; i <= b; i++)
+        {
+            sum3 += i;
+        }
+        Console.WriteLine($"Сумма от -15 до {b}: {sum3}");
+
+        // г) от a до b
+        Console.Write("\nг) Введите a: ");
+        int a2 = int.Parse(Console.ReadLine());
+        Console.Write("Введите b (b ≥ a): ");
+        int b2 = int.Parse(Console.ReadLine());
+        int sum4 = 0;
+        for (int i = a2; i <= b2; i++)
+        {
+            sum4 += i;
+        }
+        Console.WriteLine($"Сумма от {a2} до {b2}: {sum4}");
+    }
+
+    static void Task_5_28()
+    {
+        Console.WriteLine("\n5.28 - Произведения целых чисел");
+
+        // а) от 7 до 14
+        long product1 = 1;
+        for (int i = 7; i <= 14; i++)
+        {
+            product1 *= i;
+        }
+        Console.WriteLine($"а) Произведение от 7 до 14: {product1}");
+
+        // б) от a до 15
+        Console.Write("\nб) Введите a (1 ≤ a ≤ 15): ");
+        int a = int.Parse(Console.ReadLine());
+        long product2 = 1;
+        for (int i = a; i <= 15; i++)
+        {
+            product2 *= i;
+        }
+        Console.WriteLine($"Произведение от {a} до 15: {product2}");
+
+        // в) от 1 до b
+        Console.Write("\nв) Введите b (1 ≤ b ≤ 10): ");
+        int b = int.Parse(Console.ReadLine());
+        long product3 = 1;
+        for (int i = 1; i <= b; i++)
+        {
+            product3 *= i;
+        }
+        Console.WriteLine($"Произведение от 1 до {b}: {product3}");
+
+        // г) от a до b
+        Console.Write("\nг) Введите a: ");
+        int a2 = int.Parse(Console.ReadLine());
+        Console.Write("Введите b (b ≥ a): ");
+        int b2 = int.Parse(Console.ReadLine());
+        long product4 = 1;
+        for (int i = a2; i <= b2; i++)
+        {
+            product4 *= i;
+        }
+        Console.WriteLine($"Произведение от {a2} до {b2}: {product4}");
+    }
+
+    static void Task_5_29()
+    {
+        Console.WriteLine("\n5.29 - Средние арифметические");
+
+        // а) от 1 до 750
+        int sum1 = 0;
+        int count1 = 0;
+        for (int i = 1; i <= 750; i++)
+        {
+            sum1 += i;
+            count1++;
+        }
+        double average1 = (double)sum1 / count1;
+        Console.WriteLine($"а) Среднее от 1 до 750: {average1:F2}");
+
+        // б) от 150 до b
+        Console.Write("\nб) Введите b (b ≥ 150): ");
+        int b = int.Parse(Console.ReadLine());
+        int sum2 = 0;
+        int count2 = 0;
+        for (int i = 150; i <= b; i++)
+        {
+            sum2 += i;
+            count2++;
+        }
+        double average2 = (double)sum2 / count2;
+        Console.WriteLine($"Среднее от 150 до {b}: {average2:F2}");
+
+        // в) от a до 200
+        Console.Write("\nв) Введите a (a ≤ 200): ");
+        int a = int.Parse(Console.ReadLine());
+        int sum3 = 0;
+        int count3 = 0;
+        for (int i = a; i <= 200; i++)
+        {
+            sum3 += i;
+            count3++;
+        }
+        double average3 = (double)sum3 / count3;
+
+Console.WriteLine($"Среднее от {a} до 200: {average3:F2}");
+
+        // г) от a до b
+        Console.Write("\nг) Введите a: ");
+        int a2 = int.Parse(Console.ReadLine());
+        Console.Write("Введите b (b ≥ a): ");
+        int b2 = int.Parse(Console.ReadLine());
+        int sum4 = 0;
+        int count4 = 0;
+        for (int i = a2; i <= b2; i++)
+        {
+            sum4 += i;
+            count4++;
+        }
+        double average4 = (double)sum4 / count4;
+        Console.WriteLine($"Среднее от {a2} до {b2}: {average4:F2}");
+    }
+
+    static void Task_5_30()
+    {
+        Console.WriteLine("\n5.30 - Суммы квадратов и кубов");
+
+        // а) сумма кубов от 25 до 40
+        long sum1 = 0;
+        for (int i = 25; i <= 40; i++)
+        {
+            sum1 += i * i * i;
+        }
+        Console.WriteLine($"а) Сумма кубов от 25 до 40: {sum1}");
+
+        // б) сумма квадратов от a до 50
+        Console.Write("\nб) Введите a (0 ≤ a ≤ 50): ");
+        int a = int.Parse(Console.ReadLine());
+        long sum2 = 0;
+        for (int i = a; i <= 50; i++)
+        {
+            sum2 += i * i;
+        }
+        Console.WriteLine($"Сумма квадратов от {a} до 50: {sum2}");
+
+        // в) сумма квадратов от 1 до n
+        Console.Write("\nв) Введите n (1 ≤ n ≤ 100): ");
+        int n = int.Parse(Console.ReadLine());
+        long sum3 = 0;
+        for (int i = 1; i <= n; i++)
+        {
+            sum3 += i * i;
+        }
+        Console.WriteLine($"Сумма квадратов от 1 до {n}: {sum3}");
+
+        // г) сумма квадратов от a до b
+        Console.Write("\nг) Введите a: ");
+        int a2 = int.Parse(Console.ReadLine());
+        Console.Write("Введите b (b ≥ a): ");
+        int b = int.Parse(Console.ReadLine());
+        long sum4 = 0;
+        for (int i = a2; i <= b; i++)
+        {
+            sum4 += i * i;
+        }
+        Console.WriteLine($"Сумма квадратов от {a2} до {b}: {sum4}");
+    }
+
+    static void Task_5_31()
+    {
+        Console.WriteLine("\n5.31 - Сумма n² + (n+1)² + ... + (2n)²");
+        Console.Write("Введите натуральное число n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        long sum = 0;
+        for (int i = n; i <= 2 * n; i++)
+        {
+            sum += i * i;
+        }
+
+        Console.WriteLine($"Сумма от {n}² до {2 * n}²: {sum}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 5.27-5.31");
+        Console.WriteLine("======================");
+
+        Task_5_27();
+        Task_5_28();
+        Task_5_29();
+        Task_5_30();
+        Task_5_31();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

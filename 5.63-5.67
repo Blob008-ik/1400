@@ -1,0 +1,112 @@
+﻿using System;
+
+class Program3
+{
+    static void Task_5_63()
+    {
+        Console.WriteLine("5.63 - Вычисление выражения 1×3×5×...×(2n-1)");
+        Console.Write("Введите n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        long product = 1;
+        for (int i = 1; i <= n; i++)
+        {
+            product *= (2 * i - 1);
+        }
+
+        Console.WriteLine($"Произведение = {product}");
+    }
+
+    static void Task_5_64()
+    {
+        Console.WriteLine("\n5.64 - Перевернуть семизначное число");
+        Console.Write("Введите семизначное число: ");
+        int number = int.Parse(Console.ReadLine());
+
+        int reversed = 0;
+        int temp = number;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+            reversed = reversed * 10 + digit;
+            temp /= 10;
+        }
+
+        Console.WriteLine($"Число наоборот: {reversed}");
+    }
+
+    static void Task_5_65()
+    {
+        Console.WriteLine("\n5.65 - Квадрат числа как сумма нечетных чисел");
+        Console.Write("Введите натуральное число n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int sum = 0;
+        Console.Write($"{n}² = ");
+        for (int i = 1; i <= (2 * n - 1); i += 2)
+        {
+            sum += i;
+            if (i > 1) Console.Write(" + ");
+            Console.Write(i);
+        }
+        Console.WriteLine($" = {sum}");
+    }
+
+    static void Task_5_66()
+    {
+        Console.WriteLine("\n5.66 - Сумма квадратов от 1 до 12 (без степени)");
+
+        int totalSum = 0;
+        for (int n = 1; n <= 12; n++)
+        {
+            // n² = 1 + 3 + 5 + ... + (2n-1)
+            int square = 0;
+            for (int i = 1; i <= (2 * n - 1); i += 2)
+            {
+                square += i;
+            }
+            totalSum += square;
+        }
+
+        Console.WriteLine($"Сумма квадратов от 1 до 12: {totalSum}");
+    }
+
+    static void Task_5_67()
+    {
+        Console.WriteLine("\n5.67 - Куб числа как сумма нечетных чисел");
+        Console.Write("Введите натуральное число n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        // Находим первое нечетное число для куба
+        // Для n³ нужно n последовательных нечетных чисел
+        // Первое число: n² - n + 1
+        int firstOdd = n * n - n + 1;
+
+        int sum = 0;
+        Console.Write($"{n}³ = ");
+        for (int i = 0; i < n; i++)
+        {
+            int oddNumber = firstOdd + 2 * i;
+            sum += oddNumber;
+            if (i > 0) Console.Write(" + ");
+            Console.Write(oddNumber);
+        }
+        Console.WriteLine($" = {sum}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 5.63-5.67");
+        Console.WriteLine("======================");
+
+        Task_5_63();
+        Task_5_64();
+        Task_5_65();
+        Task_5_66();
+        Task_5_67();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

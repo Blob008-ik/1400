@@ -1,0 +1,87 @@
+﻿using System;
+
+class Program3
+{
+    static void Task_5_11()
+    {
+        Console.WriteLine("5.11 - Расстояние до горизонта");
+        double R = 6350; // радиус Земли в км
+
+        Console.WriteLine("Высота (км)  Расстояние до горизонта (км)");
+        Console.WriteLine("----------------------------------------");
+        for (int h = 1; h <= 10; h++)
+        {
+            // Формула: d = √(2Rh + h²)
+            double distance = Math.Sqrt(2 * R * h + h * h);
+            Console.WriteLine($"{h,6}   {distance,20:F1}");
+        }
+    }
+
+    static void Task_5_12()
+    {
+        Console.WriteLine("\n5.12 - Плотность воздуха на разных высотах");
+        double p0 = 1.29; // плотность на уровне моря
+        double z = 0.000125; // коэффициент
+
+        Console.WriteLine("Высота (м)  Плотность (кг/м³)");
+        Console.WriteLine("----------------------------");
+        for (int h = 0; h <= 1000; h += 100)
+        {
+            // p = p0 * e^(-h*z)
+            double p = p0 * Math.Exp(-h * z);
+            Console.WriteLine($"{h,6}   {p,15:F3}");
+        }
+    }
+
+    static void Task_5_13()
+    {
+        Console.WriteLine("\n5.13 - Таблица умножения на 7");
+        for (int i = 1; i <= 9; i++)
+        {
+            Console.WriteLine($"{i} x 7 = {i * 7}");
+        }
+    }
+
+    static void Task_5_14()
+    {
+        Console.WriteLine("\n5.14 - Таблица умножения на 9");
+        for (int i = 1; i <= 9; i++)
+        {
+            Console.WriteLine($"9 x {i} = {9 * i}");
+        }
+    }
+
+    static void Task_5_15()
+    {
+        Console.WriteLine("\n5.15 - Таблица умножения на число n");
+        Console.Write("Введите число n (1-9): ");
+        int n = int.Parse(Console.ReadLine());
+
+        if (n >= 1 && n <= 9)
+        {
+            for (int i = 1; i <= 9; i++)
+            {
+                Console.WriteLine($"{i} x {n} = {i * n}");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Число должно быть от 1 до 9");
+        }
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 5.11-5.15");
+        Console.WriteLine("======================");
+
+        Task_5_11();
+        Task_5_12();
+        Task_5_13();
+        Task_5_14();
+        Task_5_15();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

@@ -1,0 +1,171 @@
+﻿using System;
+
+class Program10
+{
+    static void Task_5_46()
+    {
+        Console.WriteLine("5.46 - Последовательность дробей 1/1, 2/1, 3/2, ...");
+        Console.Write("а) Введите k для k-го члена: ");
+        int k = int.Parse(Console.ReadLine());
+
+        // Числители
+        long numerator1 = 1; // a₁
+        long numerator2 = 2; // a₂
+
+        // Знаменатели
+        long denominator1 = 1; // b₁
+        long denominator2 = 1; // b₂
+
+        if (k == 1)
+        {
+            Console.WriteLine($"a) {k}-й член: {numerator1}/{denominator1}");
+        }
+        else if (k == 2)
+        {
+            Console.WriteLine($"a) {k}-й член: {numerator2}/{denominator2}");
+        }
+        else
+        {
+            long numeratorK = 0;
+            long denominatorK = 0;
+
+            for (int i = 3; i <= k; i++)
+            {
+                numeratorK = numerator1 + numerator2;
+                denominatorK = denominator1 + denominator2;
+
+                numerator1 = numerator2;
+                numerator2 = numeratorK;
+
+                denominator1 = denominator2;
+                denominator2 = denominatorK;
+            }
+
+            Console.WriteLine($"а) {k}-й член: {numeratorK}/{denominatorK}");
+        }
+
+        // б) Первые n членов
+        Console.Write("\nб) Введите n для первых n членов: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("\nПервые n членов последовательности:");
+        if (n >= 1) Console.Write("1/1 ");
+        if (n >= 2) Console.Write("2/1 ");
+
+        if (n >= 3)
+        {
+            long num1 = 1, num2 = 2;
+            long den1 = 1, den2 = 1;
+
+            for (int i = 3; i <= n; i++)
+            {
+                long num = num1 + num2;
+                long den = den1 + den2;
+                Console.Write($"{num}/{den} ");
+
+                num1 = num2;
+                num2 = num;
+                den1 = den2;
+                den2 = den;
+            }
+        }
+        Console.WriteLine();
+    }
+
+    static void Task_5_48()
+    {
+        Console.WriteLine("\n5.48 - Деление амебы");
+
+        int cells = 1; // начальное количество
+        Console.WriteLine("Время (часы)  Количество клеток");
+        Console.WriteLine("-----------------------------");
+
+        for (int hours = 3; hours <= 24; hours += 3)
+        {
+            cells *= 2; // каждые 3 часа делится на 2
+            Console.WriteLine($"{hours,6}   {cells,12}");
+        }
+    }
+
+    static void Task_5_49()
+    {
+        Console.WriteLine("\n5.49 - Банковский вклад");
+
+        double deposit = 1000; // начальный вклад
+        double interestRate = 0.02; // 2% в месяц
+
+        Console.WriteLine("а) Прирост вклада по месяцам:");
+        Console.WriteLine("Месяц  Прирост (руб.)");
+        Console.WriteLine("-------------------");
+
+        for (int month = 1; month <= 10; month++)
+        {
+            double increase = deposit * interestRate;
+            Console.WriteLine($"{month,3}   {increase,10:F2}");
+            deposit += increase;
+        }
+
+        // б) Сумма вклада через 3-12 месяцев
+        Console.WriteLine("\nб) Сумма вклада по месяцам:");
+        Console.WriteLine("Месяц  Сумма вклада (руб.)");
+        Console.WriteLine("------------------------");
+
+        deposit = 1000; // сбрасываем к начальному вкладу
+        for (int month = 1; month <= 12; month++)
+        {
+            deposit += deposit * interestRate;
+            if (month >= 3)
+            {
+                Console.WriteLine($"{month,3}   {deposit,15:F2}");
+            }
+        }
+    }
+
+    static void Task_5_50()
+    {
+        Console.WriteLine("\n5.50 - Тренировки лыжника");
+
+double distance = 10; // пробег в первый день
+        double increaseRate = 0.10; // увеличение на 10% в день
+
+        Console.WriteLine("а) Пробег по дням:");
+        Console.WriteLine("День  Пробег (км)");
+        Console.WriteLine("---------------");
+
+        for (int day = 1; day <= 10; day++)
+        {
+            if (day > 1)
+            {
+                distance += distance * increaseRate;
+            }
+            Console.WriteLine($"{day,2}   {distance,8:F1}");
+        }
+
+        // б) Суммарный путь за 7 дней
+        Console.WriteLine("\nб) Суммарный путь за первые 7 дней:");
+        distance = 10; // сбрасываем
+        double totalDistance = 10; // первый день
+
+        for (int day = 2; day <= 7; day++)
+        {
+            distance += distance * increaseRate;
+            totalDistance += distance;
+        }
+
+        Console.WriteLine($"Всего за 7 дней: {totalDistance:F1} км");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 5.46-5.50");
+        Console.WriteLine("======================");
+
+        Task_5_46();
+        Task_5_48();
+        Task_5_49();
+        Task_5_50();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

@@ -1,0 +1,181 @@
+﻿using System;
+
+class Program7
+{
+    static void Task_5_90()
+    {
+        Console.WriteLine("5.90 - Сумма первых n чисел Фибоначчи четная?");
+        Console.Write("Введите n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        if (n == 1)
+        {
+            Console.WriteLine("Сумма первого числа Фибоначчи (1) - нечетная");
+            return;
+        }
+
+        long fib1 = 1; // F₁
+        long fib2 = 1; // F₂
+        long sum = 2;  // F₁ + F₂ = 2
+
+        for (int i = 3; i <= n; i++)
+        {
+            long fib = fib1 + fib2;
+            sum += fib;
+            fib1 = fib2;
+            fib2 = fib;
+        }
+
+        bool isEven = sum % 2 == 0;
+        Console.WriteLine($"Сумма первых {n} чисел Фибоначчи: {sum}");
+        Console.WriteLine($"Эта сумма {(isEven ? "четная" : "нечетная")}");
+    }
+
+    static void Task_5_91()
+    {
+        Console.WriteLine("\n5.91 - Делители числа");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.WriteLine($"а) Все делители числа {n}:");
+        for (int i = 1; i <= n; i++)
+        {
+            if (n % i == 0)
+            {
+                Console.Write(i + " ");
+            }
+        }
+
+        Console.WriteLine("\n\nб) Сумма делителей:");
+        int sumAll = 0;
+        for (int i = 1; i <= n; i++)
+        {
+            if (n % i == 0)
+            {
+                sumAll += i;
+            }
+        }
+        Console.WriteLine($"Сумма: {sumAll}");
+
+        Console.WriteLine("\nв) Сумма четных делителей:");
+        int sumEven = 0;
+        for (int i = 1; i <= n; i++)
+        {
+            if (n % i == 0 && i % 2 == 0)
+            {
+                sumEven += i;
+            }
+        }
+        Console.WriteLine($"Сумма четных: {sumEven}");
+
+        Console.WriteLine("\nг) Количество делителей:");
+        int countAll = 0;
+        for (int i = 1; i <= n; i++)
+        {
+            if (n % i == 0)
+            {
+                countAll++;
+            }
+        }
+        Console.WriteLine($"Всего делителей: {countAll}");
+
+        Console.WriteLine("\nд) Количество нечетных делителей:");
+        int countOdd = 0;
+        for (int i = 1; i <= n; i++)
+        {
+            if (n % i == 0 && i % 2 != 0)
+            {
+                countOdd++;
+            }
+        }
+        Console.WriteLine($"Нечетных делителей: {countOdd}");
+
+        Console.WriteLine("\nж) Количество делителей, больших d:");
+        Console.Write("Введите d: ");
+        int d = int.Parse(Console.ReadLine());
+        int countGreater = 0;
+        for (int i = d + 1; i <= n; i++)
+        {
+            if (n % i == 0)
+            {
+                countGreater++;
+            }
+        }
+        Console.WriteLine($"Делителей, больших {d}: {countGreater}");
+    }
+
+    static void Task_5_92()
+    {
+        Console.WriteLine("\n5.92 - Проверка на простое число");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        if (n <= 1)
+        {
+            Console.WriteLine($"Число {n} не является простым");
+            return;
+        }
+
+        bool isPrime = true;
+        for (int i = 2; i * i <= n; i++) // проверяем до корня из n
+        {
+            if (n % i == 0)
+            {
+                isPrime = false;
+                break;
+            }
+        }
+
+        Console.WriteLine($"Число {n} {(isPrime ? "простое" : "не простое")}");
+    }
+
+    static void Task_5_93()
+    {
+        Console.WriteLine("\n5.93 - Проверка на совершенное число");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int sumDivisors = 0;
+        for (int i = 1; i < n; i++) // исключаем само число
+
+{
+            if (n % i == 0)
+            {
+                sumDivisors += i;
+            }
+        }
+
+        bool isPerfect = sumDivisors == n;
+        Console.WriteLine($"Сумма делителей (кроме самого числа): {sumDivisors}");
+        Console.WriteLine($"Число {n} {(isPerfect ? "совершенное" : "не совершенное")}");
+    }
+
+    static void Task_5_94()
+    {
+        Console.WriteLine("\n5.94 - Числа, квадрат которых не превышает n");
+        Console.Write("Введите n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.Write($"Числа, квадрат которых ≤ {n}: ");
+        for (int i = 1; i * i <= n; i++) // условие в цикле for
+        {
+            Console.Write(i + " ");
+        }
+        Console.WriteLine();
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 5.90-5.94");
+        Console.WriteLine("======================");
+
+        Task_5_90();
+        Task_5_91();
+        Task_5_92();
+        Task_5_93();
+        Task_5_94();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

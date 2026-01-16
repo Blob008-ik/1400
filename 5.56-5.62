@@ -1,0 +1,132 @@
+﻿using System;
+
+class Program2
+{
+    static void Task_5_56()
+    {
+        Console.WriteLine("5.56 - Площадь арки синусоиды");
+
+        // Площадь под кривой y = sin(x) от 0 до π
+        // Используем метод прямоугольников
+        int n = 1000; // количество разбиений
+        double width = Math.PI / n; // ширина прямоугольника
+        double area = 0;
+
+        for (int i = 0; i < n; i++)
+        {
+            double x = i * width;
+            double height = Math.Sin(x);
+            area += height * width;
+        }
+
+        Console.WriteLine($"Приближенная площадь арки синусоиды: {area:F4}");
+    }
+
+    static void Task_5_59()
+    {
+        Console.WriteLine("\n5.59 - Факториал числа");
+        Console.Write("Введите натуральное число n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        long factorial = 1;
+        for (int i = 1; i <= n; i++)
+        {
+            factorial *= i;
+        }
+
+        Console.WriteLine($"{n}! = {factorial}");
+    }
+
+    static void Task_5_60()
+    {
+        Console.WriteLine("\n5.60 - Умножение без операции умножения");
+        Console.Write("Введите целое число n: ");
+        int n = int.Parse(Console.ReadLine());
+        Console.Write("Введите вещественное число a: ");
+        double a = double.Parse(Console.ReadLine());
+
+        double product = 0;
+        for (int i = 0; i < Math.Abs(n); i++)
+        {
+            product += a;
+        }
+
+        if (n < 0)
+        {
+            product = -product;
+        }
+
+        Console.WriteLine($"{n} × {a} = {product}");
+    }
+
+    static void Task_5_61()
+    {
+        Console.WriteLine("\n5.61 - Умножение целых чисел сложением");
+        Console.Write("Введите x: ");
+        int x = int.Parse(Console.ReadLine());
+        Console.Write("Введите y: ");
+        int y = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Способ 1:");
+        int product1 = 0;
+        for (int i = 0; i < Math.Abs(y); i++)
+        {
+            product1 += x;
+        }
+        if (y < 0) product1 = -product1;
+        Console.WriteLine($"{x} × {y} = {product1}");
+
+        Console.WriteLine("\nСпособ 2:");
+        int product2 = 0;
+        int smaller = Math.Min(Math.Abs(x), Math.Abs(y));
+        int larger = Math.Max(Math.Abs(x), Math.Abs(y));
+        for (int i = 0; i < smaller; i++)
+        {
+            product2 += larger;
+        }
+
+        // Учитываем знаки
+        if ((x < 0 && y > 0) || (x > 0 && y < 0))
+        {
+            product2 = -product2;
+        }
+        Console.WriteLine($"{x} × {y} = {product2}");
+    }
+
+    static void Task_5_62()
+    {
+        Console.WriteLine("\n5.62 - Возведение в степень без операции степени");
+        Console.Write("Введите a: ");
+        double a = double.Parse(Console.ReadLine());
+        Console.Write("Введите степень n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double result = 1;
+        for (int i = 0; i < Math.Abs(n); i++)
+        {
+            result *= a;
+        }
+
+        if (n < 0)
+        {
+            result = 1 / result;
+        }
+
+        Console.WriteLine($"{a}^{n} = {result}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 5.56-5.62");
+        Console.WriteLine("======================");
+
+        Task_5_56();
+        Task_5_59();
+        Task_5_60();
+        Task_5_61();
+        Task_5_62();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

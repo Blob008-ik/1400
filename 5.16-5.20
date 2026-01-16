@@ -1,0 +1,74 @@
+﻿using System;
+
+class Program4
+{
+    static void Task_5_16()
+    {
+        Console.WriteLine("5.16 - Синусы целых чисел от 2 до 15");
+        for (int i = 2; i <= 15; i++)
+        {
+            double sinValue = Math.Sin(i);
+            Console.WriteLine($"sin({i}) = {sinValue:F4}");
+        }
+    }
+
+    static void Task_5_17()
+    {
+        Console.WriteLine("\n5.17 - Вычисление y = 3t² + 4.87t - 3, где t = x + 3");
+        Console.WriteLine("x    t    y");
+        Console.WriteLine("-----------");
+        for (int x = 4; x <= 28; x++)
+        {
+            double t = x + 3;
+            double y = 3 * t * t + 4.87 * t - 3;
+            Console.WriteLine($"{x,2}   {t,4:F1}   {y,8:F2}");
+        }
+    }
+
+    static void Task_5_18()
+    {
+        Console.WriteLine("\n5.18 - Вычисление z = 4.3t² - 8t + 13, где t = 3a");
+        Console.WriteLine("a    t    z");
+        Console.WriteLine("-----------");
+        for (int a = 2; a <= 17; a++)
+        {
+            double t = 3 * a;
+            double z = 4.3 * t * t - 8 * t + 13;
+            Console.WriteLine($"{a,2}   {t,4:F1}   {z,8:F2}");
+        }
+    }
+
+    static void Task_5_19()
+    {
+        Console.WriteLine("\n5.19 - Синусы от 0.1 до 1.5");
+        for (double x = 0.1; x <= 1.5; x += 0.1)
+        {
+            double sinValue = Math.Sin(x);
+            Console.WriteLine($"sin({x:F1}) = {sinValue:F4}");
+        }
+    }
+
+    static void Task_5_20()
+    {
+        Console.WriteLine("\n5.20 - Числа от 0.1 до 0.9");
+        for (double x = 0.1; x < 1.0; x += 0.1)
+        {
+            Console.WriteLine($"{x:F1}");
+        }
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 5.16-5.20");
+        Console.WriteLine("======================");
+
+        Task_5_16();
+        Task_5_17();
+        Task_5_18();
+        Task_5_19();
+        Task_5_20();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

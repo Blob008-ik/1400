@@ -1,0 +1,86 @@
+﻿using System;
+
+class Program5
+{
+    static void Task_5_21()
+    {
+        Console.WriteLine("5.21 - Стоимость сыра");
+        Console.Write("Введите стоимость 1 кг сыра (руб.): ");
+        double pricePerKg = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("\nВес (г)  Стоимость (руб.)");
+        Console.WriteLine("------------------------");
+        for (int weight = 50; weight <= 1000; weight += 50)
+        {
+            double cost = (weight / 1000.0) * pricePerKg;
+            Console.WriteLine($"{weight,5}   {cost,10:F2}");
+        }
+    }
+
+    static void Task_5_22()
+    {
+        Console.WriteLine("\n5.22 - Стоимость конфет");
+        Console.Write("Введите стоимость 1 кг конфет (руб.): ");
+        double pricePerKg = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("\nВес (г)  Стоимость (руб.)");
+        Console.WriteLine("------------------------");
+        for (int weight = 100; weight <= 2000; weight += 100)
+        {
+            double cost = (weight / 1000.0) * pricePerKg;
+            Console.WriteLine($"{weight,5}   {cost,10:F2}");
+        }
+    }
+
+    static void Task_5_23()
+    {
+        Console.WriteLine("\n5.23 - Числа от 2.1 до 2.8");
+        for (double x = 2.1; x <= 2.8; x += 0.1)
+        {
+            Console.WriteLine($"{x:F1}");
+        }
+    }
+
+    static void Task_5_24()
+    {
+        Console.WriteLine("\n5.24 - Числа от 3.2 до 3.9");
+        for (double x = 3.2; x <= 3.9; x += 0.1)
+        {
+            Console.WriteLine($"{x:F1}");
+        }
+    }
+
+    static void Task_5_25()
+    {
+        Console.WriteLine("\n5.25 - Числа от 2.2 до 4.2 с шагом 0.2");
+        for (double x = 2.2; x <= 4.2; x += 0.2)
+        {
+            Console.WriteLine($"{x:F1}");
+        }
+    }
+
+    static void Task_5_26()
+    {
+        Console.WriteLine("\n5.26 - Числа от 4.4 до 6.4 с шагом 0.2");
+        for (double x = 4.4; x <= 6.4; x += 0.2)
+        {
+            Console.WriteLine($"{x:F1}");
+        }
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 5.21-5.26");
+        Console.WriteLine("======================");
+
+        Task_5_21();
+        Task_5_22();
+        Task_5_23();
+        Task_5_24();
+        Task_5_25();
+        Task_5_26();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

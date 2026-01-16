@@ -1,0 +1,119 @@
+﻿using System;
+
+class Program1
+{
+    static void Task_5_1()
+    {
+        Console.WriteLine("5.1 - Печатаем число 20 десять раз");
+        for (int i = 1; i <= 10; i++)
+        {
+            Console.Write("20 ");
+        }
+        Console.WriteLine();
+    }
+
+    static void Task_5_2()
+    {
+        Console.WriteLine("\n5.2 - Печатаем любое число любое количество раз");
+        Console.Write("Введите число: ");
+        int number = int.Parse(Console.ReadLine());
+        Console.Write("Сколько раз вывести: ");
+        int count = int.Parse(Console.ReadLine());
+
+        for (int i = 1; i <= count; i++)
+        {
+            Console.Write(number + " ");
+        }
+        Console.WriteLine();
+    }
+
+    static void Task_5_3()
+    {
+        Console.WriteLine("\n5.3 - Печатаем числа столбиком");
+
+        // а) от 20 до 35
+        Console.WriteLine("а) Целые числа от 20 до 35:");
+        for (int i = 20; i <= 35; i++)
+        {
+            Console.WriteLine(i);
+        }
+
+        // б) квадраты от a до 50
+        Console.Write("\nб) Введите a (a ≤ 50): ");
+        int a = int.Parse(Console.ReadLine());
+        Console.WriteLine($"Квадраты чисел от {a} до 50:");
+        for (int i = a; i <= 50; i++)
+        {
+            Console.WriteLine($"{i}^2 = {i * i}");
+        }
+
+        // в) кубы от 10 до b
+        Console.Write("\nв) Введите b (b ≥ 10): ");
+        int b = int.Parse(Console.ReadLine());
+        Console.WriteLine($"Кубы чисел от 10 до {b}:");
+        for (int i = 10; i <= b; i++)
+        {
+            Console.WriteLine($"{i}^3 = {i * i * i}");
+        }
+
+        // г) числа от a до b
+        Console.Write("\nг) Введите a: ");
+        int a2 = int.Parse(Console.ReadLine());
+        Console.Write("Введите b (b ≥ a): ");
+        int b2 = int.Parse(Console.ReadLine());
+        Console.WriteLine($"Числа от {a2} до {b2}:");
+        for (int i = a2; i <= b2; i++)
+        {
+            Console.WriteLine(i);
+        }
+    }
+
+    static void Task_5_4()
+    {
+        Console.WriteLine("\n5.4 - Таблицы чисел");
+
+        Console.WriteLine("а)");
+        for (int i = 10; i <= 25; i++)
+        {
+            Console.WriteLine($"{i} {i + 0.4}");
+        }
+
+        Console.WriteLine("\nб)");
+        for (int i = 25; i <= 35; i++)
+        {
+            Console.WriteLine($"{i} {i + 0.5} {i - 0.2}");
+        }
+    }
+
+    static void Task_5_5()
+    {
+        Console.WriteLine("\n5.5 - Таблицы чисел в обратном порядке");
+
+        Console.WriteLine("а)");
+        for (int i = 21; i >= 10; i--)
+        {
+            Console.WriteLine($"{i} {i - 1.8}");
+        }
+
+        Console.WriteLine("\nб)");
+        for (int i = 45; i >= 25; i--)
+        {
+            Console.WriteLine($"{i} {i - 0.5} {i - 0.8}");
+        }
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 5.1-5.5");
+        Console.WriteLine("=====================");
+
+        Task_5_1();
+        Task_5_2();
+        Task_5_3();
+        Task_5_4();
+        Task_5_5();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

@@ -1,0 +1,51 @@
+﻿using System;
+
+class Program5
+{
+    static void Task_5_77()
+    {
+        Console.WriteLine("5.77 - Нечетные двузначные числа, оканчивающиеся на 3 или 7");
+
+        for (int i = 10; i <= 99; i++)
+        {
+            int lastDigit = i % 10;
+            if ((lastDigit == 3 || lastDigit == 7) && i % 2 != 0)
+            {
+                Console.Write(i + " ");
+            }
+        }
+        Console.WriteLine();
+    }
+
+    static void Task_5_78()
+    {
+        Console.WriteLine("\n5.78 - Трехзначные числа с остатками при делении");
+        Console.WriteLine("Числа, которые при делении на 47 дают остаток 43,");
+        Console.WriteLine("а при делении на 43 дают остаток 45:");
+
+        for (int i = 100; i <= 999; i++)
+        {
+            if (i % 47 == 43 && i % 43 == 45)
+            {
+                Console.Write(i + " ");
+            }
+        }
+        Console.WriteLine();
+    }
+
+    static void Task_5_79()
+    {
+        Console.WriteLine("\n5.79 - Четырехзначные числа с остатками при делении");
+        Console.WriteLine("Числа, которые при делении на 133 дают остаток 125,");
+        Console.WriteLine("а при делении на 134 дают остаток 111:");
+
+        for (int i = 1000; i <= 9999; i++)
+        {
+            if (i % 133 == 125 && i % 134 == 111)
+            {
+                Console.Write(i + " ");
+            }
+        }
+        Console.WriteLine();
+    }
+}
