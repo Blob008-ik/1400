@@ -1,0 +1,194 @@
+﻿using System;
+
+class Program11
+{
+    static void Task_6_51()
+    {
+        Console.WriteLine("6.51 - Проверки свойств числа с параметрами");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.Write("Введите k: ");
+        int k = int.Parse(Console.ReadLine());
+        Console.Write("Введите b: ");
+        int b = int.Parse(Console.ReadLine());
+        Console.Write("Введите x: ");
+        int x = int.Parse(Console.ReadLine());
+        Console.Write("Введите y: ");
+        int y = int.Parse(Console.ReadLine());
+        Console.Write("Введите a: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите делитель b2: ");
+        int b2 = int.Parse(Console.ReadLine());
+        Console.Write("Введите m: ");
+        int m = int.Parse(Console.ReadLine());
+        Console.Write("Введите делитель n2: ");
+        int n2 = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int sumDigits = 0;
+        int productDigits = 1;
+        int digitCount = 0;
+        int firstDigit = 0;
+        int lastDigit = n % 10;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            sumDigits += digit;
+            if (digit != 0) productDigits *= digit;
+            digitCount++;
+
+            if (temp < 10) firstDigit = digit;
+
+            temp /= 10;
+        }
+
+        Console.WriteLine($"а) Сумма цифр > {k} и число четное: {sumDigits > k && n % 2 == 0}");
+        Console.WriteLine($"б) Кол-во цифр четное и число ≤ {b}: {digitCount % 2 == 0 && n <= b}");
+        Console.WriteLine($"г) Начинается с {x} и заканчивается на {y}: {firstDigit == x && lastDigit == y}");
+        Console.WriteLine($"д) Произведение цифр < {a} и число делится на {b2}: {productDigits < a && n % b2 == 0}");
+        Console.WriteLine($"е) Сумма цифр > {m} и число делится на {n2}: {sumDigits > m && n % n2 == 0}");
+    }
+
+    static void Task_6_52()
+    {
+        Console.WriteLine("\n6.52 - Проверка наличия цифр");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        bool has3 = false;
+        bool has2 = false;
+        bool has5 = false;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            if (digit == 3) has3 = true;
+            if (digit == 2) has2 = true;
+            if (digit == 5) has5 = true;
+
+            temp /= 10;
+        }
+
+        Console.WriteLine($"а) Есть ли цифра 3: {has3}");
+        Console.WriteLine($"б) Есть ли цифры 2 и 5: {has2 && has5}");
+    }
+
+    static void Task_6_53()
+    {
+        Console.WriteLine("\n6.53 - Проверка цифр с параметрами");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.Write("Введите цифру a: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите цифру b: ");
+        int b = int.Parse(Console.ReadLine());
+        Console.Write("Введите k: ");
+        int k = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int countA = 0;
+        bool hasB = false;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            if (digit == a) countA++;
+            if (digit == b) hasB = true;
+
+            temp /= 10;
+        }
+
+        Console.WriteLine($"а) Есть ли цифра {a}: {countA > 0}");
+        Console.WriteLine($"б) Нет ли цифры {b}: {!hasB}");
+        Console.WriteLine($"в) Цифра {a} встречается > {k} раз: {countA > k}");
+        Console.WriteLine($"г) Есть ли цифры {a} и {b}: {countA > 0 && hasB}");
+    }
+
+    static void Task_6_54()
+
+{
+        Console.WriteLine("\n6.54 - Какая цифра чаще: 0 или 9?");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+    int temp = n;
+    int count0 = 0;
+    int count9 = 0;
+        
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+            
+            if (digit == 0) count0++;
+            if (digit == 9) count9++;
+            
+            temp /= 10;
+        }
+
+string result;
+if (count0 > count9)
+    result = "Цифра 0 встречается чаще";
+else if (count9 > count0)
+    result = "Цифра 9 встречается чаще";
+else if (count0 == 0 && count9 == 0)
+    result = "Ни 0, ни 9 не встречаются";
+else
+    result = "Цифры 0 и 9 встречаются одинаково часто";
+
+Console.WriteLine($"Цифра 0: {count0} раз, цифра 9: {count9} раз");
+Console.WriteLine($"Результат: {result}");
+    }
+    
+    static void Task_6_55()
+{
+    Console.WriteLine("\n6.55 - Цифра a встречается реже, чем b?");
+    Console.Write("Введите натуральное число: ");
+    int n = int.Parse(Console.ReadLine());
+
+    Console.Write("Введите цифру a: ");
+    int a = int.Parse(Console.ReadLine());
+    Console.Write("Введите цифру b: ");
+    int b = int.Parse(Console.ReadLine());
+
+    int temp = n;
+    int countA = 0;
+    int countB = 0;
+
+    while (temp > 0)
+    {
+        int digit = temp % 10;
+
+        if (digit == a) countA++;
+        if (digit == b) countB++;
+
+        temp /= 10;
+    }
+
+    bool isALessFrequent = countA < countB;
+
+    Console.WriteLine($"Цифра {a}: {countA} раз, цифра {b}: {countB} раз");
+    Console.WriteLine($"Цифра {a} встречается реже, чем {b}: {isALessFrequent}");
+}
+
+static void Main()
+{
+    Console.WriteLine("Решение задач 6.51-6.55");
+    Console.WriteLine("======================");
+
+    Task_6_51();
+    Task_6_52();
+    Task_6_53();
+    Task_6_54();
+    Task_6_55();
+
+    Console.WriteLine("\nНажмите любую клавишу для выхода...");
+    Console.ReadKey();
+}
+}

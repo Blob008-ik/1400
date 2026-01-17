@@ -1,0 +1,140 @@
+﻿using System;
+
+class Program3
+{
+    static void Task_6_11()
+    {
+        Console.WriteLine("6.11 - Ввод 10 чисел (или до 0)");
+
+        Console.WriteLine("Вводите числа (ввод прекратится после 10 чисел или при вводе 0):");
+        int count = 0;
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Число {i + 1}: ");
+            int number = int.Parse(Console.ReadLine());
+
+            if (number == 0)
+            {
+                Console.WriteLine("Введен 0 - ввод прекращен.");
+                break;
+            }
+
+            count++;
+        }
+
+        Console.WriteLine($"Всего введено чисел: {count}");
+    }
+
+    static void Task_6_12()
+    {
+        Console.WriteLine("\n6.12 - Ввод чисел до 0");
+
+        Console.WriteLine("Вводите числа (последнее число должно быть 0):");
+        int number;
+        int count = 0;
+
+        do
+        {
+            Console.Write("Введите число: ");
+            number = int.Parse(Console.ReadLine());
+
+            if (number != 0)
+            {
+                Console.WriteLine($"Вы ввели число: {number}");
+                count++;
+            }
+        } while (number != 0);
+
+        Console.WriteLine($"Всего введено чисел (кроме 0): {count}");
+    }
+
+    static void Task_6_13()
+    {
+        Console.WriteLine("\n6.13 - Вывод чисел 10-30 разными циклами");
+
+        Console.WriteLine("а) Цикл с предусловием (while):");
+        int i = 10;
+        while (i <= 30)
+        {
+            Console.WriteLine(i);
+            i++;
+        }
+
+        Console.WriteLine("\nб) Цикл с постусловием (do-while):");
+        int j = 10;
+        do
+        {
+            Console.WriteLine(j);
+            j++;
+        } while (j <= 30);
+
+        Console.WriteLine("\nв) Цикл for (для сравнения):");
+        for (int k = 10; k <= 30; k++)
+        {
+            Console.WriteLine(k);
+        }
+    }
+
+    static void Task_6_14()
+    {
+        Console.WriteLine("\n6.14 - Числа 100-80 циклом с условием");
+
+        Console.WriteLine("С помощью while:");
+        int i = 100;
+        while (i >= 80)
+        {
+            Console.WriteLine(i);
+            i--;
+        }
+
+        Console.WriteLine("\nС помощью do-while:");
+        int j = 100;
+        do
+        {
+            Console.WriteLine(j);
+            j--;
+        } while (j >= 80);
+    }
+
+    static void Task_6_15()
+    {
+        Console.WriteLine("\n6.15 - Перевод алгоритма на C#");
+
+        Console.WriteLine("Исходный алгоритмический язык:");
+        Console.WriteLine("n := 21");
+        Console.WriteLine("нц пока n <= 151");
+        Console.WriteLine("  вывод 2 * n");
+        Console.WriteLine("  n := n + 10");
+        Console.WriteLine("кц");
+
+        Console.WriteLine("\nНа C# (цикл for):");
+        for (int n = 21; n <= 151; n += 10)
+        {
+            Console.WriteLine(2 * n);
+        }
+
+        Console.WriteLine("\nНа C# (цикл while):");
+        int m = 21;
+        while (m <= 151)
+        {
+            Console.WriteLine(2 * m);
+            m += 10;
+        }
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 6.11-6.15");
+        Console.WriteLine("======================");
+
+        Task_6_11();
+        Task_6_12();
+        Task_6_13();
+        Task_6_14();
+        Task_6_15();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

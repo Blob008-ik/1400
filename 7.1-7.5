@@ -1,0 +1,117 @@
+﻿using System;
+
+class Program1
+{
+    static void Task_7_1()
+    {
+        Console.WriteLine("7.1 - Сумма 10 чисел");
+
+        double[] numbers = new double[10];
+        double sum = 0;
+
+        Console.WriteLine("Введите 10 чисел:");
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"a{i + 1}: ");
+            numbers[i] = double.Parse(Console.ReadLine());
+            sum += numbers[i];
+        }
+
+        Console.WriteLine($"\nСумма всех чисел: {sum}");
+    }
+
+    static void Task_7_2()
+    {
+        Console.WriteLine("\n7.2 - Сумма n вещественных чисел");
+        Console.Write("Введите количество чисел n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double[] numbers = new double[n];
+        double sum = 0;
+
+        Console.WriteLine($"Введите {n} вещественных чисел:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"a{i + 1}: ");
+            numbers[i] = double.Parse(Console.ReadLine());
+            sum += numbers[i];
+        }
+
+        Console.WriteLine($"\nСумма всех чисел: {sum}");
+    }
+
+    static void Task_7_3()
+    {
+        Console.WriteLine("\n7.3 - Периметр 12-угольника");
+
+        double[] sides = new double[12];
+        double perimeter = 0;
+
+        Console.WriteLine("Введите длины 12 сторон:");
+        for (int i = 0; i < 12; i++)
+        {
+            Console.Write($"Сторона {i + 1}: ");
+            sides[i] = double.Parse(Console.ReadLine());
+            perimeter += sides[i];
+        }
+
+        Console.WriteLine($"\nПериметр 12-угольника: {perimeter}");
+    }
+
+    static void Task_7_4()
+    {
+        Console.WriteLine("\n7.4 - Общая масса груза");
+
+        Console.Write("Введите количество предметов: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double[] weights = new double[n];
+        double totalWeight = 0;
+
+        Console.WriteLine($"Введите массу каждого предмета:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Предмет {i + 1} (кг): ");
+            weights[i] = double.Parse(Console.ReadLine());
+            totalWeight += weights[i];
+        }
+
+        Console.WriteLine($"\nОбщая масса груза: {totalWeight} кг");
+    }
+
+    static void Task_7_5()
+    {
+        Console.WriteLine("\n7.5 - Общая зарплата сотрудников");
+
+        Console.Write("Введите количество сотрудников: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double[] salaries = new double[n];
+        double totalSalary = 0;
+
+        Console.WriteLine($"Введите зарплату каждого сотрудника:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Сотрудник {i + 1}: ");
+            salaries[i] = double.Parse(Console.ReadLine());
+            totalSalary += salaries[i];
+        }
+
+        Console.WriteLine($"\nОбщая сумма выплат: {totalSalary:F2} руб.");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 7.1-7.5");
+        Console.WriteLine("=====================");
+
+        Task_7_1();
+        Task_7_2();
+        Task_7_3();
+        Task_7_4();
+        Task_7_5();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

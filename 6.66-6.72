@@ -1,0 +1,150 @@
+﻿using System;
+
+class Program14
+{
+    static int GCD(int a, int b)
+    {
+        while (b != 0)
+        {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
+
+    static void Task_6_66()
+    {
+        Console.WriteLine("6.66 - НОД трех чисел");
+        Console.Write("Введите первое число: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        int b = int.Parse(Console.ReadLine());
+        Console.Write("Введите третье число: ");
+        int c = int.Parse(Console.ReadLine());
+
+        int gcdAB = GCD(a, b);
+        int gcdABC = GCD(gcdAB, c);
+
+        Console.WriteLine($"НОД({a}, {b}, {c}) = {gcdABC}");
+    }
+
+    static int LCM(int a, int b)
+    {
+        return Math.Abs(a * b) / GCD(a, b);
+    }
+
+    static void Task_6_67()
+    {
+        Console.WriteLine("\n6.67 - НОК двух чисел");
+        Console.Write("Введите первое число: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        int b = int.Parse(Console.ReadLine());
+
+        int lcm = LCM(a, b);
+        Console.WriteLine($"НОК({a}, {b}) = {lcm}");
+    }
+
+    static void Task_6_68()
+    {
+        Console.WriteLine("\n6.68 - Сокращение дроби");
+        Console.Write("Введите числитель: ");
+        int numerator = int.Parse(Console.ReadLine());
+        Console.Write("Введите знаменатель: ");
+        int denominator = int.Parse(Console.ReadLine());
+
+        if (denominator == 0)
+        {
+            Console.WriteLine("Ошибка: знаменатель не может быть 0");
+            return;
+        }
+
+        int gcd = GCD(numerator, denominator);
+        int simplifiedNum = numerator / gcd;
+        int simplifiedDen = denominator / gcd;
+
+        Console.WriteLine($"Исходная дробь: {numerator}/{denominator}");
+        Console.WriteLine($"Сокращенная дробь: {simplifiedNum}/{simplifiedDen}");
+        Console.WriteLine($"НОД({numerator}, {denominator}) = {gcd}");
+    }
+
+    static void Task_6_71()
+    {
+        Console.WriteLine("\n6.71 - Проверка числа Фибоначчи");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        if (n == 0 || n == 1)
+        {
+            Console.WriteLine($"Число {n} является числом Фибоначчи");
+            return;
+        }
+
+        int a = 1, b = 1;
+        bool isFibonacci = false;
+
+        while (b < n)
+        {
+            int temp = b;
+            b = a + b;
+            a = temp;
+
+            if (b == n)
+            {
+                isFibonacci = true;
+                break;
+            }
+        }
+
+        Console.WriteLine($"Число {n} {(isFibonacci ? "является" : "не является")} числом Фибоначчи");
+    }
+
+    static void Task_6_72()
+    {
+        Console.WriteLine("\n6.72 - Проверка члена арифметической прогрессии");
+        Console.Write("Введите число n: ");
+        int n = int.Parse(Console.ReadLine());
+        Console.Write("Введите первый член f: ");
+        int f = int.Parse(Console.ReadLine());
+        Console.Write("Введите шаг s: ");
+        int s = int.Parse(Console.ReadLine());
+
+        if (s == 0)
+        {
+            Console.WriteLine("Ошибка: шаг не может быть 0");
+            return;
+        }
+
+        // Проверяем, является ли n членом прогрессии
+        // n = f + k*s, где k - целое
+        bool isMember = false;
+        if ((n - f) % s == 0 && (n - f) / s >= 0)
+        {
+            isMember = true;
+        }
+
+        Console.WriteLine($"Число {n} {(isMember ? "является" : "не является")} членом арифметической прогрессии");
+        if (isMember)
+        {
+            int k = (n - f) / s;
+            Console.WriteLine($"Это {k + 1}-й член прогрессии");
+
+}
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 6.66-6.72");
+        Console.WriteLine("======================");
+
+        Task_6_66();
+        Task_6_67();
+        Task_6_68();
+        Task_6_71();
+        Task_6_72();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

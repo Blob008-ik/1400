@@ -1,0 +1,259 @@
+﻿using System;
+class Program10
+{
+    static void Task_6_46()
+    {
+        Console.WriteLine("6.46 - Порядковые номера max и min цифр (все цифры различны)");
+        Console.Write("Введите натуральное число (все цифры различны): ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int maxDigit = 0;
+        int minDigit = 9;
+        int maxPosFromEnd = 0;
+        int minPosFromEnd = 0;
+        int position = 0;
+        int totalDigits = 0;
+
+        // Сначала перевернем число, чтобы обработать от начала
+        int reversed = 0;
+        while (temp > 0)
+        {
+            reversed = reversed * 10 + (temp % 10);
+            totalDigits++;
+            temp /= 10;
+        }
+
+        // Ищем позиции от начала (в перевернутом числе)
+        temp = reversed;
+        position = 0;
+        while (temp > 0)
+        {
+            position++;
+            int digit = temp % 10;
+
+            if (digit > maxDigit)
+            {
+                maxDigit = digit;
+                maxPosFromEnd = totalDigits - position + 1; // переводим в позицию от конца
+            }
+
+            if (digit < minDigit)
+            {
+                minDigit = digit;
+                minPosFromEnd = totalDigits - position + 1; // переводим в позицию от конца
+            }
+
+            temp /= 10;
+        }
+
+        Console.WriteLine($"а) От конца числа:");
+        Console.WriteLine($"   - Максимальная цифра {maxDigit}: позиция {maxPosFromEnd}");
+        Console.WriteLine($"   - Минимальная цифра {minDigit}: позиция {minPosFromEnd}");
+
+        Console.WriteLine($"\nб) От начала числа:");
+        Console.WriteLine($"   - Максимальная цифра {maxDigit}: позиция {totalDigits - maxPosFromEnd + 1}");
+        Console.WriteLine($"   - Минимальная цифра {minDigit}: позиция {totalDigits - minPosFromEnd + 1}");
+    }
+
+    static void Task_6_47()
+    {
+        Console.WriteLine("\n6.47 - Какая цифра левее: max или min? (все цифры различны)");
+        Console.Write("Введите натуральное число (все цифры различны): ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int maxDigit = 0;
+        int minDigit = 9;
+        int maxPosFromStart = 0;
+        int minPosFromStart = 0;
+        int position = 0;
+        int totalDigits = 0;
+
+        // Сначала перевернем число
+        int reversed = 0;
+        while (temp > 0)
+        {
+            reversed = reversed * 10 + (temp % 10);
+            totalDigits++;
+            temp /= 10;
+        }
+
+        // Ищем позиции от начала (в перевернутом числе)
+        temp = reversed;
+        position = 0;
+        while (temp > 0)
+        {
+            position++;
+            int digit = temp % 10;
+
+            if (digit > maxDigit)
+            {
+                maxDigit = digit;
+                maxPosFromStart = position;
+            }
+
+            if (digit < minDigit)
+            {
+                minDigit = digit;
+                minPosFromStart = position;
+            }
+
+            temp /= 10;
+        }
+
+        string result;
+        if (maxPosFromStart < minPosFromStart)
+            result = "Максимальная цифра левее минимальной";
+        else if (minPosFromStart < maxPosFromStart)
+            result = "Минимальная цифра левее максимальной";
+        else
+            result = "Цифры на одной позиции (невозможно при разных цифрах)";
+
+        Console.WriteLine($"Максимальная цифра: {maxDigit} (позиция {maxPosFromStart})");
+        Console.WriteLine($"Минимальная цифра: {minDigit} (позиция {minPosFromStart})");
+        Console.WriteLine($"Результат: {result}");
+    }
+
+    static void Task_6_48()
+    {
+        Console.WriteLine("\n6.48 - Максимальная нечетная цифра и позиция минимальной");
+
+Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int maxOddDigit = 0; // 0 - значит нечетных нет
+        int minDigit = 9;
+        int minPosFromStart = 0;
+        int position = 0;
+        int totalDigits = 0;
+
+        // Сначала перевернем число
+        int reversed = 0;
+        while (temp > 0)
+        {
+            reversed = reversed * 10 + (temp % 10);
+            totalDigits++;
+            temp /= 10;
+        }
+
+        // Ищем максимальную нечетную и позицию минимальной
+        temp = reversed;
+        position = 0;
+        while (temp > 0)
+        {
+            position++;
+            int digit = temp % 10;
+
+            // а) максимальная нечетная цифра
+            if (digit % 2 != 0 && digit > maxOddDigit)
+            {
+                maxOddDigit = digit;
+            }
+
+            // б) позиция минимальной цифры (известно, что она одна)
+            if (digit < minDigit)
+            {
+                minDigit = digit;
+                minPosFromStart = position;
+            }
+
+            temp /= 10;
+        }
+
+        Console.WriteLine($"а) Максимальная нечетная цифра: {(maxOddDigit > 0 ? maxOddDigit.ToString() : "нет нечетных цифр")}");
+        Console.WriteLine($"б) Минимальная цифра: {minDigit}, ее позиция слева направо: {minPosFromStart}");
+    }
+
+    static void Task_6_49()
+    {
+        Console.WriteLine("\n6.49 - Проверки свойств числа");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int sumDigits = 0;
+        int productDigits = 1;
+        int digitCount = 0;
+        int firstDigit = 0;
+        int lastDigit = n % 10;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            sumDigits += digit;
+            if (digit != 0) productDigits *= digit;
+            digitCount++;
+
+            if (temp < 10) firstDigit = digit; // последняя итерация
+
+            temp /= 10;
+        }
+
+        Console.WriteLine($"а) Сумма цифр > 10: {sumDigits > 10}");
+        Console.WriteLine($"б) Произведение цифр < 50: {productDigits < 50}");
+        Console.WriteLine($"в) Количество цифр четное: {digitCount % 2 == 0}");
+        Console.WriteLine($"г) Число четырехзначное: {digitCount == 4}");
+        Console.WriteLine($"д) Первая цифра не превышает 6: {firstDigit <= 6}");
+        Console.WriteLine($"е) Начинается и заканчивается одной цифрой: {firstDigit == lastDigit}");
+        Console.WriteLine($"ж) Первая цифра > последней: {firstDigit > lastDigit}");
+    }
+
+    static void Task_6_50()
+    {
+        Console.WriteLine("\n6.50 - Проверки свойств числа с параметрами");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.Write("Введите a: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите b: ");
+        int b = int.Parse(Console.ReadLine());
+        Console.Write("Введите k: ");
+        int k = int.Parse(Console.ReadLine());
+        Console.Write("Введите m: ");
+        int m = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int sumDigits = 0;
+        int productDigits = 1;
+        int digitCount = 0;
+        int firstDigit = 0;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            sumDigits += digit;
+            if (digit != 0) productDigits *= digit;
+            digitCount++;
+
+            if (temp < 10) firstDigit = digit;
+
+            temp /= 10;
+        }
+
+        Console.WriteLine($"а) Сумма цифр < {a}: {sumDigits < a}");
+
+Console.WriteLine($"б) Произведение цифр > {b}: {productDigits > b}");
+        Console.WriteLine($"в) Число {k}-значное: {digitCount == k}");
+        Console.WriteLine($"г) Первая цифра > {m}: {firstDigit > m}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 6.46-6.50");
+        Console.WriteLine("======================");
+
+        Task_6_46();
+        Task_6_47();
+        Task_6_48();
+        Task_6_49();
+        Task_6_50();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

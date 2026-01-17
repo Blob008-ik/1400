@@ -1,0 +1,175 @@
+﻿using System;
+class Program9
+{
+    static void Task_6_41()
+    {
+        Console.WriteLine("6.41 - Максимальная и минимальная цифры числа");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int maxDigit = 0;
+        int minDigit = 9;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            if (digit > maxDigit) maxDigit = digit;
+            if (digit < minDigit) minDigit = digit;
+
+            temp /= 10;
+        }
+
+        Console.WriteLine($"а) Максимальная цифра: {maxDigit}");
+        Console.WriteLine($"б) Минимальная цифра: {minDigit}");
+    }
+
+    static void Task_6_42()
+    {
+        Console.WriteLine("\n6.42 - Анализ максимальной и минимальной цифр (один цикл)");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int maxDigit = 0;
+        int minDigit = 9;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            if (digit > maxDigit) maxDigit = digit;
+            if (digit < minDigit) minDigit = digit;
+
+            temp /= 10;
+        }
+
+        Console.WriteLine($"а) Максимальная цифра: {maxDigit}, минимальная: {minDigit}");
+        Console.WriteLine($"б) Максимальная превышает минимальную на: {maxDigit - minDigit}");
+        Console.WriteLine($"в) Сумма максимальной и минимальной: {maxDigit + minDigit}");
+    }
+
+    static void Task_6_43()
+    {
+        Console.WriteLine("\n6.43 - Сумма max и min цифр кратна ли a?");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+        Console.Write("Введите a: ");
+        int a = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int maxDigit = 0;
+        int minDigit = 9;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            if (digit > maxDigit) maxDigit = digit;
+            if (digit < minDigit) minDigit = digit;
+
+            temp /= 10;
+        }
+
+        int sum = maxDigit + minDigit;
+        bool isMultiple = sum % a == 0;
+
+        Console.WriteLine($"Максимальная цифра: {maxDigit}, минимальная: {minDigit}");
+        Console.WriteLine($"Их сумма: {sum}");
+        Console.WriteLine($"Сумма {sum} {(isMultiple ? "кратна" : "не кратна")} {a}");
+    }
+
+    static void Task_6_44()
+    {
+        Console.WriteLine("\n6.44 - Разность max и min цифр четная?");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int maxDigit = 0;
+        int minDigit = 9;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            if (digit > maxDigit) maxDigit = digit;
+            if (digit < minDigit) minDigit = digit;
+
+            temp /= 10;
+        }
+
+        int difference = maxDigit - minDigit;
+        bool isEven = difference % 2 == 0;
+
+        Console.WriteLine($"Максимальная цифра: {maxDigit}, минимальная: {minDigit}");
+        Console.WriteLine($"Их разность: {difference}");
+        Console.WriteLine($"Разность {difference} {(isEven ? "четная" : "нечетная")}");
+    }
+
+    static void Task_6_45()
+    {
+        Console.WriteLine("\n6.45 - Порядковые номера max и min цифр (все цифры различны)");
+        Console.Write("Введите натуральное число (все цифры различны): ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int maxDigit = 0;
+        int minDigit = 9;
+        int maxPosFromEnd = 0;
+        int minPosFromEnd = 0;
+        int maxPosFromStart = 0;
+int minPosFromStart = 0;
+        int positionFromEnd = 0;
+
+        // Сначала найдем позиции от конца
+        while (temp > 0)
+        {
+            positionFromEnd++;
+            int digit = temp % 10;
+
+            if (digit > maxDigit)
+            {
+                maxDigit = digit;
+                maxPosFromEnd = positionFromEnd;
+            }
+
+            if (digit < minDigit)
+            {
+                minDigit = digit;
+                minPosFromEnd = positionFromEnd;
+            }
+
+            temp /= 10;
+        }
+
+        // Находим позиции от начала
+        int totalDigits = positionFromEnd;
+        maxPosFromStart = totalDigits - maxPosFromEnd + 1;
+        minPosFromStart = totalDigits - minPosFromEnd + 1;
+
+        Console.WriteLine($"Максимальная цифра {maxDigit}:");
+        Console.WriteLine($"  - от конца числа: позиция {maxPosFromEnd}");
+        Console.WriteLine($"  - от начала числа: позиция {maxPosFromStart}");
+
+        Console.WriteLine($"\nМинимальная цифра {minDigit}:");
+        Console.WriteLine($"  - от конца числа: позиция {minPosFromEnd}");
+        Console.WriteLine($"  - от начала числа: позиция {minPosFromStart}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 6.41-6.45");
+        Console.WriteLine("======================");
+
+        Task_6_41();
+        Task_6_42();
+        Task_6_43();
+        Task_6_44();
+        Task_6_45();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

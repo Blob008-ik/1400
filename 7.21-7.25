@@ -1,0 +1,156 @@
+﻿using System;
+
+class Program5
+{
+    static void Task_7_21()
+    {
+        Console.WriteLine("7.21 - Лучший результат десятиборцев");
+
+        int[,] scores = new int[2, 10];
+        int total1 = 0, total2 = 0;
+
+        Console.WriteLine("Введите результаты спортсменов по 10 видам спорта:");
+
+        for (int athlete = 0; athlete < 2; athlete++)
+        {
+            Console.WriteLine($"\nДесятиборец {athlete + 1}:");
+            for (int sport = 0; sport < 10; sport++)
+            {
+                Console.Write($"  Вид {sport + 1}: ");
+                scores[athlete, sport] = int.Parse(Console.ReadLine());
+
+                if (athlete == 0)
+                    total1 += scores[athlete, sport];
+                else
+                    total2 += scores[athlete, sport];
+            }
+        }
+
+        Console.WriteLine($"\nСумма баллов десятиборца 1: {total1}");
+        Console.WriteLine($"Сумма баллов десятиборца 2: {total2}");
+
+        if (total1 > total2)
+            Console.WriteLine("Десятиборец 1 показал лучший результат");
+        else if (total2 > total1)
+            Console.WriteLine("Десятиборец 2 показал лучший результат");
+        else
+            Console.WriteLine("Результаты равны");
+    }
+
+    static void Task_7_22()
+    {
+        Console.WriteLine("\n7.22 - Сравнение стоимости двух наборов");
+
+        double[] set1 = new double[8];
+        double[] set2 = new double[8];
+        double sum1 = 0, sum2 = 0;
+
+        Console.WriteLine("Введите стоимость 8 предметов первого набора:");
+        for (int i = 0; i < 8; i++)
+        {
+            Console.Write($"Предмет {i + 1}: ");
+            set1[i] = double.Parse(Console.ReadLine());
+            sum1 += set1[i];
+        }
+
+        Console.WriteLine("\nВведите стоимость 8 предметов второго набора:");
+        for (int i = 0; i < 8; i++)
+        {
+            Console.Write($"Предмет {i + 1}: ");
+            set2[i] = double.Parse(Console.ReadLine());
+            sum2 += set2[i];
+        }
+
+        Console.WriteLine($"\nСтоимость первого набора: {sum1:F2} руб.");
+        Console.WriteLine($"Стоимость второго набора: {sum2:F2} руб.");
+
+        if (sum1 < sum2)
+            Console.WriteLine("Первый набор дешевле");
+        else if (sum2 < sum1)
+            Console.WriteLine("Второй набор дешевле");
+        else
+            Console.WriteLine("Наборы стоят одинаково");
+    }
+
+    static void Task_7_23()
+    {
+        Console.WriteLine("\n7.23 - Проверка произведения 8 чисел");
+
+        int[] numbers = new int[8];
+        long product = 1;
+
+        Console.WriteLine("Введите 8 чисел:");
+        for (int i = 0; i < 8; i++)
+        {
+            Console.Write($"a{i + 1}: ");
+            numbers[i] = int.Parse(Console.ReadLine());
+            product *= numbers[i];
+        }
+
+        bool isLess = product < 10000;
+
+        Console.WriteLine($"\nПроизведение чисел: {product}");
+        Console.WriteLine($"Произведение меньше 10000: {isLess}");
+    }
+
+    static void Task_7_24()
+    {
+        Console.WriteLine("\n7.24 - Проверка произведения n вещественных чисел");
+        Console.Write("Введите количество чисел n: ");
+        int n = int.Parse(Console.ReadLine());
+        Console.Write("Введите s для сравнения: ");
+        double s = double.Parse(Console.ReadLine());
+
+        double[] numbers = new double[n];
+        double product = 1;
+
+        Console.WriteLine($"Введите {n} вещественных чисел:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"d{i + 1}: ");
+            numbers[i] = double.Parse(Console.ReadLine());
+            product *= numbers[i];
+        }
+
+        bool isGreater = product > s;
+
+Console.WriteLine($"\nПроизведение чисел: {product:F2}");
+        Console.WriteLine($"Произведение больше {s}: {isGreater}");
+    }
+
+    static void Task_7_25()
+    {
+        Console.WriteLine("\n7.25 - Среднее арифметическое 10 чисел");
+
+        double[] numbers = new double[10];
+        double sum = 0;
+
+        Console.WriteLine("Введите 10 чисел:");
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"a{i + 1}: ");
+            numbers[i] = double.Parse(Console.ReadLine());
+            sum += numbers[i];
+        }
+
+        double average = sum / 10;
+
+        Console.WriteLine($"\nСумма чисел: {sum}");
+        Console.WriteLine($"Среднее арифметическое: {average:F2}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 7.21-7.25");
+        Console.WriteLine("======================");
+
+        Task_7_21();
+        Task_7_22();
+        Task_7_23();
+        Task_7_24();
+        Task_7_25();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

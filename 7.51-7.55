@@ -1,0 +1,184 @@
+﻿using System;
+
+class Program11
+{
+    static void Task_7_51()
+    {
+        Console.WriteLine("7.51 - Сумма первых нечетных чисел в последовательности");
+
+        int[] numbers = new int[100];
+        int count = 0;
+        int sum = 0;
+        int number;
+        bool stop = false;
+
+        Console.WriteLine("Вводите целые числа (первое должно быть нечетным):");
+        Console.WriteLine("Ввод прекратится при вводе четного числа:");
+
+        do
+        {
+            Console.Write($"Число {count + 1}: ");
+            number = int.Parse(Console.ReadLine());
+
+            if (number % 2 != 0) // нечетное
+            {
+                numbers[count] = number;
+                sum += number;
+                count++;
+            }
+            else
+            {
+                stop = true; // встретили четное - останавливаемся
+            }
+        } while (!stop && count < 100);
+
+        Console.WriteLine($"\nПервых нечетных чисел: {count}");
+        Console.WriteLine($"Их сумма: {sum}");
+
+        if (count > 0)
+        {
+            Console.Write("Эти числа: ");
+            for (int i = 0; i < count; i++)
+            {
+                Console.Write(numbers[i] + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    static void Task_7_52()
+    {
+        Console.WriteLine("\n7.52 - Проверки суммы 14 целых чисел");
+
+        int[] numbers = new int[14];
+        int sumGreater20 = 0;
+        int sumLess50 = 0;
+
+        Console.WriteLine("Введите 14 целых чисел:");
+        for (int i = 0; i < 14; i++)
+        {
+            Console.Write($"b{i + 1}: ");
+            numbers[i] = int.Parse(Console.ReadLine());
+
+            if (numbers[i] > 20)
+                sumGreater20 += numbers[i];
+
+            if (numbers[i] < 50)
+                sumLess50 += numbers[i];
+        }
+
+        bool a = sumGreater20 > 100;
+        bool b = sumLess50 % 2 == 0;
+
+        Console.WriteLine($"\nа) Сумма чисел > 20: {sumGreater20}");
+        Console.WriteLine($"   Эта сумма > 100: {a}");
+
+        Console.WriteLine($"\nб) Сумма чисел < 50: {sumLess50}");
+        Console.WriteLine($"   Эта сумма четная: {b}");
+    }
+
+    static void Task_7_53()
+    {
+        Console.WriteLine("\n7.53 - Проверки суммы n целых чисел");
+        Console.Write("Введите количество чисел n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int[] numbers = new int[n];
+        int sumLess25 = 0;
+        int sumNotExceed20 = 0;
+
+        Console.WriteLine($"Введите {n} целых чисел:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"m{i + 1}: ");
+            numbers[i] = int.Parse(Console.ReadLine());
+
+            if (numbers[i] < 25)
+                sumLess25 += numbers[i];
+
+            if (numbers[i] <= 20)
+                sumNotExceed20 += numbers[i];
+        }
+
+        bool a = sumLess25 <= 50;
+        bool b = sumNotExceed20 % 3 == 0;
+
+        Console.WriteLine($"\nа) Сумма чисел < 25: {sumLess25}");
+        Console.WriteLine($"   Эта сумма ≤ 50: {a}");
+
+        Console.WriteLine($"\nб) Сумма чисел ≤ 20: {sumNotExceed20}");
+        Console.WriteLine($"   Эта сумма кратна 3: {b}");
+    }
+
+    static void Task_7_54()
+    {
+        Console.WriteLine("\n7.54 - Проверка суммы чисел > 20,5");
+        Console.Write("Введите количество чисел n: ");
+        int n = int.Parse(Console.ReadLine());
+        Console.Write("Введите p для сравнения: ");
+        double p = double.Parse(Console.ReadLine());
+
+        double[] numbers = new double[n];
+        double sumGreater20_5 = 0;
+
+        Console.WriteLine($"Введите {n} вещественных чисел:");
+        for (int i = 0; i < n; i++)
+
+{
+            Console.Write($"d{i + 1}: ");
+            numbers[i] = double.Parse(Console.ReadLine());
+
+            if (numbers[i] > 20.5)
+                sumGreater20_5 += numbers[i];
+        }
+
+        bool isLess = sumGreater20_5 < p;
+
+        Console.WriteLine($"\nСумма чисел > 20,5: {sumGreater20_5:F2}");
+        Console.WriteLine($"Эта сумма < {p}: {isLess}");
+    }
+
+    static void Task_7_55()
+    {
+        Console.WriteLine("\n7.55 - Проверка суммы чисел ≤ m");
+        Console.Write("Введите количество чисел n: ");
+        int n = int.Parse(Console.ReadLine());
+        Console.Write("Введите m: ");
+        int m = int.Parse(Console.ReadLine());
+        Console.Write("Введите q: ");
+        int q = int.Parse(Console.ReadLine());
+
+        int[] numbers = new int[n];
+        int sumNotGreaterM = 0;
+
+        Console.WriteLine($"Введите {n} целых чисел:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"a{i + 1}: ");
+            numbers[i] = int.Parse(Console.ReadLine());
+
+            if (numbers[i] <= m)
+                sumNotGreaterM += numbers[i];
+        }
+
+        bool exceeds = sumNotGreaterM > q;
+
+        Console.WriteLine($"\nСумма чисел ≤ {m}: {sumNotGreaterM}");
+        Console.WriteLine($"Эта сумма > {q}: {exceeds}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 7.51-7.55");
+        Console.WriteLine("======================");
+
+        Task_7_51();
+        Task_7_52();
+        Task_7_53();
+        Task_7_54();
+        Task_7_55();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

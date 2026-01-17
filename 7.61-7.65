@@ -1,0 +1,142 @@
+﻿using System;
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("=== ЗАДАЧИ 7.61-7.65 ===\n");
+
+        Task7_61();
+        Task7_62();
+        Task7_63();
+        Task7_64();
+        Task7_65();
+    }
+
+    // 7.61. Рост 12 юношей
+    static void Task7_61()
+    {
+        Console.WriteLine("7.61: Рост юношей (<165 см)");
+
+        int count = 0;
+        Console.WriteLine("Введите рост 12 юношей:");
+
+        for (int i = 1; i <= 12; i++)
+        {
+            Console.Write($"Юноша {i}: ");
+            int height = int.Parse(Console.ReadLine());
+
+            if (height < 165)
+                count++;
+        }
+
+        Console.WriteLine($"Количество юношей с ростом <165 см: {count}\n");
+    }
+
+    // 7.62. Разные условия для чисел
+    static void Task7_62()
+    {
+        Console.WriteLine("7.62: Анализ последовательности чисел");
+
+        Console.Write("Сколько чисел? (n): ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.Write("Число p для сравнения: ");
+        int p = int.Parse(Console.ReadLine());
+
+        Console.Write("Число k для кратности: ");
+        int k = int.Parse(Console.ReadLine());
+
+        int countP = 0;
+        int countEnd5 = 0;
+        int countK = 0;
+
+        Console.WriteLine($"Введите {n} чисел:");
+        for (int i = 0; i < n; i++)
+        {
+            int num = int.Parse(Console.ReadLine());
+
+            if (num > p) countP++;
+            if (num % 10 == 5) countEnd5++;
+            if (num % k == 0) countK++;
+        }
+
+        Console.WriteLine($"а) Больше {p}: {countP}");
+        Console.WriteLine($"б) Оканчиваются на 5: {countEnd5}");
+        Console.WriteLine($"в) Кратны {k}: {countK}\n");
+    }
+
+    // 7.63. Оценки по химии
+    static void Task7_63()
+    {
+        Console.WriteLine("7.63: Оценки по химии");
+
+        Console.Write("Сколько учеников в классе? ");
+        int n = int.Parse(Console.ReadLine());
+
+        int count5 = 0;
+        int count2 = 0;
+
+        Console.WriteLine($"Введите оценки {n} учеников (2-5):");
+        for (int i = 1; i <= n; i++)
+        {
+            Console.Write($"Ученик {i}: ");
+            int grade = int.Parse(Console.ReadLine());
+
+            if (grade == 5) count5++;
+            if (grade == 2) count2++;
+        }
+
+        Console.WriteLine($"Пятерок: {count5}");
+        Console.WriteLine($"Двоек: {count2}\n");
+    }
+
+    // 7.64. Год рождения
+    static void Task7_64()
+    {
+        Console.WriteLine("7.64: Год рождения");
+
+        Console.Write("Сколько людей в группе? ");
+        int n = int.Parse(Console.ReadLine());
+
+        int countBefore1990 = 0;
+        int countAfter2000 = 0;
+
+        Console.WriteLine($"Введите год рождения {n} человек:");
+        for (int i = 1; i <= n; i++)
+        {
+            Console.Write($"Человек {i}: ");
+            int year = int.Parse(Console.ReadLine());
+
+            if (year < 1990) countBefore1990++;
+            if (year > 2000) countAfter2000++;
+        }
+
+        Console.WriteLine($"Родившихся до 1990: {countBefore1990}");
+        Console.WriteLine($"Родившихся после 2000: {countAfter2000}\n");
+    }
+
+    // 7.65. Футбольные команды
+    static void Task7_65()
+    {
+        Console.WriteLine("7.65: Футбольные команды");
+
+        Console.Write("Сколько команд в чемпионате? ");
+        int n = int.Parse(Console.ReadLine());
+
+        int count = 0;
+
+        Console.WriteLine("Введите количество выигрышей и проигрышей для каждой команды:");
+        for (int i = 1; i <= n; i++)
+        {
+            Console.Write($"Команда {i} - выигрыши: ");
+            int wins = int.Parse(Console.ReadLine());
+
+Console.Write($"Команда {i} - проигрыши: ");
+            int losses = int.Parse(Console.ReadLine());
+
+            if (wins > losses) count++;
+        }
+
+        Console.WriteLine($"Команд с больше выигрышей, чем проигрышей: {count}");
+    }
+}

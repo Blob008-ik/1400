@@ -1,0 +1,167 @@
+﻿using System;
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("=== ЗАДАЧИ 7.71-7.75 ===\n");
+
+        Task7_71();
+        Task7_72();
+        Task7_73();
+        Task7_74();
+        Task7_75();
+    }
+
+    // 7.71. Студенты с двойками
+    static void Task7_71()
+    {
+        Console.WriteLine("7.71: Студенты с двойками");
+
+        Console.Write("Сколько студентов? ");
+        int n = int.Parse(Console.ReadLine());
+
+        int count = 0;
+
+        Console.WriteLine($"Введите оценки по двум экзаменам для {n} студентов:");
+        for (int i = 1; i <= n; i++)
+        {
+            Console.Write($"Студент {i}, экзамен 1: ");
+            int grade1 = int.Parse(Console.ReadLine());
+
+            Console.Write($"Студент {i}, экзамен 2: ");
+            int grade2 = int.Parse(Console.ReadLine());
+
+            if (grade1 == 2 || grade2 == 2)
+                count++;
+        }
+
+        Console.WriteLine($"Студентов с двойками: {count}\n");
+    }
+
+    // 7.72. Отрицательные и положительные
+    static void Task7_72()
+    {
+        Console.WriteLine("7.72: Отрицательные и положительные числа");
+
+        Console.Write("Сколько чисел? (n): ");
+        int n = int.Parse(Console.ReadLine());
+
+        int negative = 0;
+        int positive = 0;
+
+        Console.WriteLine($"Введите {n} вещественных чисел:");
+        for (int i = 0; i < n; i++)
+        {
+            double num = double.Parse(Console.ReadLine());
+
+            if (num < 0)
+                negative++;
+            else if (num > 0)
+                positive++;
+        }
+
+        Console.WriteLine($"Отрицательных: {negative}");
+        Console.WriteLine($"Положительных: {positive}\n");
+    }
+
+    // 7.73. Кратные 3 и 7
+    static void Task7_73()
+    {
+        Console.WriteLine("7.73: Кратные 3 и 7");
+
+        Console.Write("Сколько чисел? (m): ");
+        int m = int.Parse(Console.ReadLine());
+
+        int count3 = 0;
+        int count7 = 0;
+
+        Console.WriteLine($"Введите {m} целых чисел:");
+        for (int i = 0; i < m; i++)
+        {
+            int num = int.Parse(Console.ReadLine());
+
+            if (num % 3 == 0) count3++;
+            if (num % 7 == 0) count7++;
+        }
+
+        Console.WriteLine($"Кратных 3: {count3}");
+        Console.WriteLine($"Кратных 7: {count7}\n");
+    }
+
+    // 7.74. Треугольники из троек
+    static void Task7_74()
+    {
+        Console.WriteLine("7.74: Треугольники из троек чисел");
+
+        Console.Write("Сколько троек? (n): ");
+        int n = int.Parse(Console.ReadLine());
+
+        int count = 0;
+
+        Console.WriteLine($"Введите {n} троек (a <= b <= c):");
+        for (int i = 1; i <= n; i++)
+        {
+            Console.Write($"Тройка {i} - a: ");
+            int a = int.Parse(Console.ReadLine());
+
+            Console.Write($"Тройка {i} - b: ");
+            int b = int.Parse(Console.ReadLine());
+
+            Console.Write($"Тройка {i} - c: ");
+            int c = int.Parse(Console.ReadLine());
+
+            // Проверка неравенства треугольника
+            if (a + b > c)
+                count++;
+        }
+
+        Console.WriteLine($"Троек для треугольников: {count}\n");
+    }
+
+    // 7.75. Попадание снаряда в цель
+    static void Task7_75()
+    {
+        Console.WriteLine("7.75: Попадание снаряда в цель");
+
+        Console.Write("Сколько пар (α, v0)? (n): ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.Write("Расстояние до цели R (м): ");
+        double R = double.Parse(Console.ReadLine());
+
+        Console.Write("Высота цели H (м): ");
+        double H = double.Parse(Console.ReadLine());
+
+Console.Write("Высота цели P (м): ");
+        double P = double.Parse(Console.ReadLine());
+
+        const double g = 9.8;
+        int hits = 0;
+
+        Console.WriteLine($"Введите {n} пар (угол в градусах, начальная скорость):");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Пара {i + 1} - α (град): ");
+            double alpha = double.Parse(Console.ReadLine());
+
+            Console.Write($"Пара {i + 1} - v0 (м/с): ");
+            double v0 = double.Parse(Console.ReadLine());
+
+            // Перевод угла в радианы
+            double alphaRad = alpha * Math.PI / 180;
+
+            // Время полета до цели
+            double t = R / (v0 * Math.Cos(alphaRad));
+
+            // Высота снаряда в этот момент
+            double y = v0 * t * Math.Sin(alphaRad) - g * t * t / 2;
+
+            // Проверка попадания
+            if (y >= H && y <= H + P)
+                hits++;
+        }
+
+        double percent = (double)hits / n * 100;
+        Console.WriteLine($"Процент попаданий: {percent:F1}%");
+    }
+}

@@ -1,0 +1,122 @@
+﻿using System;
+
+class Program4
+{
+    static void Task_6_16()
+    {
+        Console.WriteLine("6.16 - Перевод алгоритма на C#");
+
+        Console.WriteLine("Исходный алгоритмический язык:");
+        Console.WriteLine("n := 2");
+        Console.WriteLine("нц пока n <= 12");
+        Console.WriteLine("  вывод n");
+        Console.WriteLine("  n := n + 0.5");
+        Console.WriteLine("кц");
+
+        Console.WriteLine("\nНа C# (цикл for с double):");
+        for (double n = 2; n <= 12; n += 0.5)
+        {
+            Console.WriteLine(n);
+        }
+    }
+
+    static void Task_6_17()
+    {
+        Console.WriteLine("\n6.17 - Числа 1.0, 1.5, 2.0, …, 13.5 (без цикла for)");
+
+        Console.WriteLine("С помощью while:");
+        double number = 1.0;
+        while (number <= 13.5)
+        {
+            Console.WriteLine(number);
+            number += 0.5;
+        }
+    }
+
+    static void Task_6_19()
+    {
+        Console.WriteLine("\n6.19 - Цифры числа столбиком");
+        Console.Write("Введите натуральное число: ");
+        int number = int.Parse(Console.ReadLine());
+
+        Console.WriteLine($"Цифры числа {number}:");
+
+        // Сначала найдем количество цифр
+        int temp = number;
+        int digitCount = 0;
+        while (temp > 0)
+        {
+            digitCount++;
+            temp /= 10;
+        }
+
+        // Выводим цифры слева направо
+        temp = number;
+        int divisor = (int)Math.Pow(10, digitCount - 1);
+
+        while (divisor > 0)
+        {
+            int digit = temp / divisor;
+            Console.WriteLine(digit);
+            temp %= divisor;
+            divisor /= 10;
+        }
+    }
+
+    static void Task_6_20()
+    {
+        Console.WriteLine("\n6.20 - Различные операции с цифрами числа");
+        Console.Write("Введите натуральное число: ");
+        int number = int.Parse(Console.ReadLine());
+
+        int sum = 0;
+        int count = 0;
+        int product = 1;
+        int sumSquares = 0;
+        int sumCubes = 0;
+        int firstDigit = 0;
+        int lastDigit = number % 10;
+        int temp = number;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            sum += digit;
+            count++;
+            if (digit != 0) product *= digit; // избегаем умножения на 0
+            sumSquares += digit * digit;
+            sumCubes += digit * digit * digit;
+
+            if (temp == number) // это последняя итерация (первая цифра)
+            {
+                firstDigit = digit;
+            }
+
+            temp /= 10;
+        }
+
+        Console.WriteLine($"а) Сумма цифр: {sum}");
+        Console.WriteLine($"б) Количество цифр: {count}");
+        Console.WriteLine($"в) Произведение цифр: {product}");
+        Console.WriteLine($"г) Среднее арифметическое: {(double)sum / count:F2}");
+        Console.WriteLine($"д) Сумма квадратов цифр: {sumSquares}");
+        Console.WriteLine($"е) Сумма кубов цифр: {sumCubes}");
+        Console.WriteLine($"ж) Первая цифра: {firstDigit}");
+        Console.WriteLine($"з) Сумма первой и последней цифр: {firstDigit + lastDigit}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 6.16-6.20");
+        Console.WriteLine("======================");
+
+        Task_6_16();
+        Task_6_17();
+        Task_6_19();
+        Task_6_20();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

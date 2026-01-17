@@ -1,0 +1,268 @@
+﻿using System;
+
+class Program13
+{
+    static void Task_6_61()
+    {
+        Console.WriteLine("6.61 - Порядковые номера двух max/min цифр (все цифры различны)");
+        Console.Write("Введите натуральное число (все цифры различны): ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int max1 = 0, max2 = 0;
+        int min1 = 9, min2 = 9;
+        int posMax1 = 0, posMax2 = 0;
+        int posMin1 = 0, posMin2 = 0;
+        int position = 0;
+        int totalDigits = 0;
+
+        // Сначала перевернем число
+        int reversed = 0;
+        while (temp > 0)
+        {
+            reversed = reversed * 10 + (temp % 10);
+            totalDigits++;
+            temp /= 10;
+        }
+
+        // Ищем цифры и их позиции от начала
+        temp = reversed;
+        position = 0;
+        while (temp > 0)
+        {
+            position++;
+            int digit = temp % 10;
+
+            // Обработка максимальных
+            if (digit > max1)
+            {
+                max2 = max1;
+                max1 = digit;
+                posMax2 = posMax1;
+                posMax1 = position;
+            }
+            else if (digit > max2)
+            {
+                max2 = digit;
+                posMax2 = position;
+            }
+
+            // Обработка минимальных
+            if (digit < min1)
+            {
+                min2 = min1;
+                min1 = digit;
+                posMin2 = posMin1;
+                posMin1 = position;
+            }
+            else if (digit < min2)
+            {
+                min2 = digit;
+                posMin2 = position;
+            }
+
+            temp /= 10;
+        }
+
+        Console.WriteLine("а) Порядковые номера двух максимальных цифр:");
+        Console.WriteLine($"   - От начала: {max1}(поз.{posMax1}), {max2}(поз.{posMax2})");
+        Console.WriteLine($"   - От конца: {max1}(поз.{totalDigits - posMax1 + 1}), {max2}(поз.{totalDigits - posMax2 + 1})");
+
+        Console.WriteLine("\nб) Порядковые номера двух минимальных цифр:");
+        Console.WriteLine($"   - От начала: {min1}(поз.{posMin1}), {min2}(поз.{posMin2})");
+        Console.WriteLine($"   - От конца: {min1}(поз.{totalDigits - posMin1 + 1}), {min2}(поз.{totalDigits - posMin2 + 1})");
+    }
+
+    static void Task_6_62()
+    {
+        Console.WriteLine("\n6.62 - Преобразования числа");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.Write("Введите цифру a (для удаления): ");
+        int a = int.Parse(Console.ReadLine());
+
+        // а) Число наоборот
+        int temp = n;
+        int reversed = 0;
+        while (temp > 0)
+        {
+            reversed = reversed * 10 + (temp % 10);
+            temp /= 10;
+        }
+        Console.WriteLine($"а) Число наоборот: {reversed}");
+
+        // б) Приписывание двоек в начало и конец
+        long withTwos = 2;
+        temp = n;
+        while (temp > 0)
+        {
+            withTwos = withTwos * 10 + (temp % 10);
+            temp /= 10;
+        }
+        withTwos = withTwos * 10 + 2;
+
+        // Нужно перевернуть обратно
+        long finalWithTwos = 2;
+        temp = (int)withTwos;
+        while (temp > 0)
+        {
+            finalWithTwos = finalWithTwos * 10 + (temp % 10);
+            temp /= 10;
+        }
+        finalWithTwos = finalWithTwos * 10 + 2;
+
+        temp = (int)finalWithTwos;
+        long result = 0;
+        while (temp > 0)
+        {
+            result = result * 10 + (temp % 10);
+            temp /= 10;
+        }
+        Console.WriteLine($"б) С двойками в начале и конце: {result / 100}"); // убираем лишние двойки
+
+        // в) Удаление всех цифр a
+        temp = n;
+
+int withoutA = 0;
+        int multiplier = 1;
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+            if (digit != a)
+            {
+                withoutA += digit * multiplier;
+                multiplier *= 10;
+            }
+            temp /= 10;
+        }
+        Console.WriteLine($"в) Без цифр {a}: {withoutA}");
+
+        // г) Перестановка первой и последней цифр
+        int lastDigit = n % 10;
+        int firstDigit = 0;
+        temp = n;
+        while (temp > 0)
+        {
+            firstDigit = temp % 10;
+            temp /= 10;
+        }
+
+        // Удаляем первую и последнюю цифры
+        int middle = n / 10;
+        int middleDigits = 0;
+        temp = middle;
+        while (temp >= 10)
+        {
+            middleDigits = middleDigits * 10 + (temp % 10);
+            temp /= 10;
+        }
+
+        // Собираем число заново
+        int swapped = lastDigit;
+        temp = middleDigits;
+        while (temp > 0)
+        {
+            swapped = swapped * 10 + (temp % 10);
+            temp /= 10;
+        }
+        swapped = swapped * 10 + firstDigit;
+        Console.WriteLine($"г) С переставленными первой и последней цифрами: {swapped}");
+
+        // д) Приписывание такого же числа
+        int doubled = n;
+        temp = n;
+        int digitCount = 0;
+        while (temp > 0)
+        {
+            digitCount++;
+            temp /= 10;
+        }
+        doubled = n * (int)Math.Pow(10, digitCount) + n;
+        Console.WriteLine($"д) С приписанным таким же числом: {doubled}");
+    }
+
+    static void Task_6_63()
+    {
+        Console.WriteLine("\n6.63 - Проверка на палиндром");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int reversed = 0;
+
+        while (temp > 0)
+        {
+            reversed = reversed * 10 + (temp % 10);
+            temp /= 10;
+        }
+
+        bool isPalindrome = n == reversed;
+        Console.WriteLine($"Исходное число: {n}");
+        Console.WriteLine($"Число наоборот: {reversed}");
+        Console.WriteLine($"Это палиндром: {isPalindrome}");
+    }
+
+    static void Task_6_64()
+    {
+        Console.WriteLine("\n6.64 - Оплата купюрами 1,2,4,8,16,32,64");
+        Console.Write("Введите сумму n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int[] denominations = { 64, 32, 16, 8, 4, 2, 1 };
+        int remaining = n;
+
+        Console.WriteLine($"Для оплаты суммы {n} нужно:");
+        Console.WriteLine("Купюра  Кол-во");
+        Console.WriteLine("--------------");
+
+        foreach (int denom in denominations)
+        {
+            int count = remaining / denom;
+            if (count > 0)
+            {
+                Console.WriteLine($"{denom,6}  {count,5}");
+                remaining %= denom;
+            }
+        }
+
+        if (remaining > 0)
+            Console.WriteLine($"Остаток: {remaining} (невозможно оплатить данной системой)");
+    }
+
+    static void Task_6_65()
+    {
+        Console.WriteLine("\n6.65 - НОД двух чисел (алгоритм Евклида)");
+        Console.Write("Введите первое число: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите второе число: ");
+        int b = int.Parse(Console.ReadLine());
+
+        int x = Math.Abs(a);
+        int y = Math.Abs(b);
+
+        while (y != 0)
+        {
+            int temp = y;
+            y = x % y;
+            x = temp;
+        }
+
+        Console.WriteLine($"НОД({a}, {b}) = {x}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 6.61-6.65");
+        Console.WriteLine("======================");
+
+        Task_6_61();
+        Task_6_62();
+        Task_6_63();
+        Task_6_64();
+        Task_6_65();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

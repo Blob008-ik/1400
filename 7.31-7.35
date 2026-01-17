@@ -1,0 +1,185 @@
+﻿using System;
+class Program7
+{
+    static void Task_7_31()
+    {
+        Console.WriteLine("7.31 - Среднее арифметическое последовательности");
+
+        int[] numbers = new int[100];
+        int count = 0;
+        int sum = 0;
+        int number;
+
+        Console.WriteLine("Вводите неотрицательные целые числа (отрицательное - конец):");
+
+        do
+        {
+            Console.Write($"Число {count + 1}: ");
+            number = int.Parse(Console.ReadLine());
+
+            if (number >= 0)
+            {
+                numbers[count] = number;
+                sum += number;
+                count++;
+            }
+        } while (number >= 0);
+
+        if (count > 0)
+        {
+            double average = (double)sum / count;
+            Console.WriteLine($"\nКоличество чисел: {count}");
+            Console.WriteLine($"Сумма чисел: {sum}");
+            Console.WriteLine($"Среднее арифметическое: {average:F2}");
+        }
+        else
+        {
+            Console.WriteLine("Не введено ни одного неотрицательного числа");
+        }
+    }
+
+    static void Task_7_32()
+    {
+        Console.WriteLine("\n7.32 - Средний возраст учеников двух классов");
+
+        double[,] ages = new double[2, 20];
+        double[] averages = new double[2];
+
+        for (int Class = 0; Class < 2; Class++)
+        {
+            double sum = 0;
+            Console.WriteLine($"\nКласс {Class + 1} (20 учеников):");
+
+            for (int student = 0; student < 20; student++)
+            {
+                Console.Write($"  Ученик {student + 1} (лет, например 14.5): ");
+                ages[Class, student] = double.Parse(Console.ReadLine());
+                sum += ages[Class, student];
+            }
+
+            averages[Class] = sum / 20;
+        }
+
+        Console.WriteLine($"\nСредний возраст в классе 1: {averages[0]:F1} лет");
+        Console.WriteLine($"Средний возраст в классе 2: {averages[1]:F1} лет");
+    }
+
+    static void Task_7_33()
+    {
+        Console.WriteLine("\n7.33 - Среднедневное количество осадков за январь и март");
+
+        double[] january = new double[31];
+        double[] march = new double[31];
+        double sumJan = 0, sumMar = 0;
+
+        Console.WriteLine("Введите количество осадков за каждый день января:");
+        for (int day = 0; day < 31; day++)
+        {
+            Console.Write($"  Январь, день {day + 1}: ");
+            january[day] = double.Parse(Console.ReadLine());
+            sumJan += january[day];
+        }
+
+        Console.WriteLine("\nВведите количество осадков за каждый день марта:");
+        for (int day = 0; day < 31; day++)
+        {
+            Console.Write($"  Март, день {day + 1}: ");
+            march[day] = double.Parse(Console.ReadLine());
+            sumMar += march[day];
+        }
+
+        double avgJan = sumJan / 31;
+        double avgMar = sumMar / 31;
+
+        Console.WriteLine($"\nЯнварь: всего {sumJan:F1} мм, в среднем {avgJan:F1} мм/день");
+        Console.WriteLine($"Март: всего {sumMar:F1} мм, в среднем {avgMar:F1} мм/день");
+    }
+
+    static void Task_7_34()
+    {
+        Console.WriteLine("\n7.34 - Средний рост учеников двух классов");
+
+        Console.Write("Введите количество учеников в каждом классе: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double[,] heights = new double[2, n];
+        double[] averages = new double[2];
+
+        for (int Class = 0; Class < 2; Class++)
+        {
+            double sum = 0;
+            Console.WriteLine($"\nКласс {Class + 1}:");
+
+            for (int student = 0; student < n; student++)
+            {
+                Console.Write($"  Ученик {student + 1} (см): ");
+                heights[Class, student] = double.Parse(Console.ReadLine());
+
+sum += heights[Class, student];
+            }
+
+            averages[Class] = sum / n;
+        }
+
+        Console.WriteLine($"\nСредний рост в классе 1: {averages[0]:F1} см");
+        Console.WriteLine($"Средний рост в классе 2: {averages[1]:F1} см");
+
+        if (averages[0] > averages[1])
+            Console.WriteLine("В классе 1 ученики в среднем выше");
+        else if (averages[1] > averages[0])
+            Console.WriteLine("В классе 2 ученики в среднем выше");
+        else
+            Console.WriteLine("Средний рост в классах одинаковый");
+    }
+
+    static void Task_7_35()
+    {
+        Console.WriteLine("\n7.35 - Средняя оценка по физике в двух классах");
+
+        Console.Write("Введите количество учеников в каждом классе: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int[,] marks = new int[2, n];
+        double[] averages = new double[2];
+
+        for (int Class = 0; Class < 2; Class++)
+        {
+            int sum = 0;
+            Console.WriteLine($"\nКласс {Class + 1} (оценки 2-5):");
+
+            for (int student = 0; student < n; student++)
+            {
+                Console.Write($"  Ученик {student + 1}: ");
+                marks[Class, student] = int.Parse(Console.ReadLine());
+                sum += marks[Class, student];
+            }
+
+            averages[Class] = (double)sum / n;
+        }
+
+        Console.WriteLine($"\nСредняя оценка в классе 1: {averages[0]:F1}");
+        Console.WriteLine($"Средняя оценка в классе 2: {averages[1]:F1}");
+
+        if (averages[0] > averages[1])
+            Console.WriteLine("В классе 1 успеваемость лучше");
+        else if (averages[1] > averages[0])
+            Console.WriteLine("В классе 2 успеваемость лучше");
+        else
+            Console.WriteLine("Успеваемость в классах одинаковая");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 7.31-7.35");
+        Console.WriteLine("======================");
+
+        Task_7_31();
+        Task_7_32();
+        Task_7_33();
+        Task_7_34();
+        Task_7_35();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

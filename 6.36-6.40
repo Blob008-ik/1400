@@ -1,0 +1,187 @@
+﻿using System;
+class Program8
+{
+    static void Task_6_36()
+    {
+        Console.WriteLine("6.36 - Анализ цифр числа с параметрами");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.Write("Введите цифру a (0 ≤ a ≤ 8): ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите цифру x: ");
+        int x = int.Parse(Console.ReadLine());
+        Console.Write("Введите цифру y: ");
+        int y = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int countA = 0;
+        int sumGreaterThanA = 0;
+        int sumEven = 0;
+        int countXandY = 0;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            // а) сколько раз встречается цифра а
+            if (digit == a) countA++;
+
+            // б) сумма цифр, больших a
+            if (digit > a) sumGreaterThanA += digit;
+
+            // в) сумма четных цифр
+            if (digit % 2 == 0) sumEven += digit;
+
+            // г) сколько раз встречаются цифры x и y
+            if (digit == x || digit == y) countXandY++;
+
+            temp /= 10;
+        }
+
+        Console.WriteLine($"а) Цифра {a} встречается: {countA} раз");
+        Console.WriteLine($"б) Сумма цифр >{a}: {sumGreaterThanA}");
+        Console.WriteLine($"в) Сумма четных цифр: {sumEven}");
+        Console.WriteLine($"г) Цифр {x} и {y} всего: {countXandY}");
+    }
+
+    static void Task_6_37()
+    {
+        Console.WriteLine("\n6.37 - Номер цифры 8 от конца числа");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int position = 0;
+        int eightPosition = 0;
+        int leftmostEightPosition = 0;
+
+        while (temp > 0)
+        {
+            position++;
+            int digit = temp % 10;
+
+            if (digit == 8)
+            {
+                if (eightPosition == 0) // первая найденная (самая правая)
+                {
+                    eightPosition = position;
+                }
+                leftmostEightPosition = position; // обновляем самую левую
+            }
+
+            temp /= 10;
+        }
+
+        // Определяем самую левую цифру 8 от конца
+        int result = leftmostEightPosition;
+
+        Console.WriteLine($"Цифра 8 в числе {n}:");
+        Console.WriteLine($"- Самая правая позиция от конца: {(eightPosition > 0 ? eightPosition.ToString() : "нет")}");
+        Console.WriteLine($"- Самая левая позиция от конца: {(leftmostEightPosition > 0 ? leftmostEightPosition.ToString() : "нет")}");
+        Console.WriteLine($"Ответ (самая левая): {result}");
+    }
+
+    static void Task_6_38()
+    {
+        Console.WriteLine("\n6.38 - Номер цифры 3 от конца числа");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int position = 0;
+        int threePosition = 0;
+
+        while (temp > 0)
+        {
+            position++;
+            int digit = temp % 10;
+
+            if (digit == 3)
+            {
+                threePosition = position; // самая правая цифра 3
+                // не прерываем, чтобы найти самую правую
+            }
+
+            temp /= 10;
+        }
+
+        Console.WriteLine($"Цифра 3 в числе {n}:");
+        Console.WriteLine($"- Позиция от конца: {(threePosition > 0 ? threePosition.ToString() : "0")}");
+        Console.WriteLine($"Ответ: {threePosition}");
+    }
+
+    static void Task_6_39()
+    {
+        Console.WriteLine("\n6.39 - Цифры числа слева направо");
+        Console.Write("Введите натуральное число: ");
+
+int n = int.Parse(Console.ReadLine());
+
+        // Сначала найдем количество цифр
+        int temp = n;
+        int digitCount = 0;
+        while (temp > 0)
+        {
+            digitCount++;
+            temp /= 10;
+        }
+
+        // Выводим цифры слева направо
+        Console.WriteLine($"Цифры числа {n} слева направо:");
+        temp = n;
+        int divisor = (int)Math.Pow(10, digitCount - 1);
+
+        while (divisor > 0)
+        {
+            int digit = temp / divisor;
+            Console.WriteLine(digit);
+            temp %= divisor;
+            divisor /= 10;
+        }
+    }
+
+    static void Task_6_40()
+    {
+        Console.WriteLine("\n6.40 - Сколько раз встречается первая цифра");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        // Находим первую цифру
+        int temp = n;
+        int firstDigit = 0;
+        while (temp > 0)
+        {
+            firstDigit = temp % 10;
+            temp /= 10;
+        }
+
+        // Считаем, сколько раз она встречается
+        temp = n;
+        int count = 0;
+        while (temp > 0)
+        {
+            if (temp % 10 == firstDigit)
+                count++;
+            temp /= 10;
+        }
+
+        Console.WriteLine($"Первая цифра числа {n}: {firstDigit}");
+        Console.WriteLine($"Она встречается в числе: {count} раз");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 6.36-6.40");
+        Console.WriteLine("======================");
+
+        Task_6_36();
+        Task_6_37();
+        Task_6_38();
+        Task_6_39();
+        Task_6_40();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

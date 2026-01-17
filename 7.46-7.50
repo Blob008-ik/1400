@@ -1,0 +1,165 @@
+﻿using System;
+class Program10
+{
+    static void Task_7_46()
+    {
+        Console.WriteLine("7.46 - Операции с n целыми числами");
+        Console.Write("Введите количество чисел n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int[] numbers = new int[n];
+
+        Console.WriteLine($"Введите {n} целых чисел:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"a{i + 1}: ");
+            numbers[i] = int.Parse(Console.ReadLine());
+        }
+
+        // а) a1 + an
+        int sumFirstLast = numbers[0] + numbers[n - 1];
+        Console.WriteLine($"а) a1 + an = {numbers[0]} + {numbers[n - 1]} = {sumFirstLast}");
+
+        // б) a2 - an-1 (если n >= 3)
+        if (n >= 3)
+        {
+            int diff = numbers[1] - numbers[n - 2];
+            Console.WriteLine($"б) a2 - an-1 = {numbers[1]} - {numbers[n - 2]} = {diff}");
+        }
+        else
+        {
+            Console.WriteLine("б) Недостаточно элементов для вычисления a2 - an-1");
+        }
+    }
+
+    static void Task_7_47()
+    {
+        Console.WriteLine("\n7.47 - Стоимость товаров дороже 1000 руб.");
+
+        Console.Write("Введите количество товаров: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double[] prices = new double[n];
+        double totalExpensive = 0;
+        int countExpensive = 0;
+
+        Console.WriteLine($"Введите стоимость каждого товара:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Товар {i + 1} (руб.): ");
+            prices[i] = double.Parse(Console.ReadLine());
+
+            if (prices[i] > 1000)
+            {
+                totalExpensive += prices[i];
+                countExpensive++;
+            }
+        }
+
+        Console.WriteLine($"\nТоваров дороже 1000 руб.: {countExpensive}");
+        Console.WriteLine($"Их общая стоимость: {totalExpensive:F2} руб.");
+    }
+
+    static void Task_7_48()
+    {
+        Console.WriteLine("\n7.48 - Общее число страниц во всех журналах");
+
+        Console.Write("Введите общее количество газет и журналов: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int[] pages = new int[n];
+        int totalJournalPages = 0;
+
+        Console.WriteLine($"Введите количество страниц для каждого издания (газета ≤ 16 стр.):");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Издание {i + 1}: ");
+            pages[i] = int.Parse(Console.ReadLine());
+
+            // Журналы имеют >16 страниц
+            if (pages[i] > 16)
+            {
+                totalJournalPages += pages[i];
+            }
+        }
+
+        Console.WriteLine($"\nОбщее число страниц во всех журналах: {totalJournalPages}");
+    }
+
+    static void Task_7_49()
+    {
+        Console.WriteLine("\n7.49 - Осадки по четным дням месяца");
+
+        int daysInMonth = 31; // например, январь
+        double[] precipitation = new double[daysInMonth];
+        double sumEvenDays = 0;
+
+        Console.WriteLine($"Введите количество осадков за каждый день месяца:");
+        for (int day = 0; day < daysInMonth; day++)
+        {
+            Console.Write($"День {day + 1}: ");
+            precipitation[day] = double.Parse(Console.ReadLine());
+
+            // Дни: 2, 4, 6... (индексы 1, 3, 5...)
+            if ((day + 1) % 2 == 0) // четный день
+            {
+                sumEvenDays += precipitation[day];
+            }
+        }
+
+        Console.WriteLine($"\nОбщее количество осадков по четным дням: {sumEvenDays:F1} мм");
+
+        Console.Write("Четные дни с осадками: ");
+        for (int day = 1; day < daysInMonth; day += 2)
+        {
+            Console.Write($"день {day + 1}:{precipitation[day]}мм ");
+        }
+
+Console.WriteLine();
+    }
+
+    static void Task_7_50()
+    {
+        Console.WriteLine("\n7.50 - Учащиеся в нечетных классах (1-11 классы)");
+
+        int[] students = new int[11]; // 1-11 классы
+        int totalOddClasses = 0;
+
+        Console.WriteLine("Введите число учащихся в каждом классе (1-11):");
+        for (int grade = 0; grade < 11; grade++)
+        {
+            Console.Write($"  {grade + 1} класс: ");
+            students[grade] = int.Parse(Console.ReadLine());
+
+            // Нечетные классы: 1, 3, 5, 7, 9, 11 (индексы 0, 2, 4, 6, 8, 10)
+            if (grade % 2 == 0) // четный индекс = нечетный класс
+            {
+                totalOddClasses += students[grade];
+            }
+        }
+
+        Console.WriteLine($"\nВсего учащихся в нечетных классах (1,3,5,7,9,11): {totalOddClasses}");
+
+        Console.Write("Классы и количество учащихся: ");
+        for (int grade = 0; grade < 11; grade += 2)
+        {
+            Console.Write($"{grade + 1}кл:{students[grade]} ");
+        }
+        Console.WriteLine();
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 7.46-7.50");
+        Console.WriteLine("======================");
+
+        Task_7_46();
+        Task_7_47();
+        Task_7_48();
+        Task_7_49();
+        Task_7_50();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

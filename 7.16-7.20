@@ -1,0 +1,152 @@
+﻿using System;
+class Program4
+{
+    static void Task_7_16()
+    {
+        Console.WriteLine("7.16 - Проверка суммы n целых чисел");
+        Console.Write("Введите количество чисел n: ");
+        int n = int.Parse(Console.ReadLine());
+        Console.Write("Введите p для сравнения: ");
+        int p = int.Parse(Console.ReadLine());
+
+        int[] numbers = new int[n];
+        int sum = 0;
+
+        Console.WriteLine($"Введите {n} целых чисел:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"b{i + 1}: ");
+            numbers[i] = int.Parse(Console.ReadLine());
+            sum += numbers[i];
+        }
+
+        bool isLess = sum < p;
+
+        Console.WriteLine($"\nСумма чисел: {sum}");
+        Console.WriteLine($"Сумма меньше {p}: {isLess}");
+    }
+
+    static void Task_7_17()
+    {
+        Console.WriteLine("\n7.17 - Проверка четности суммы 9 целых чисел");
+
+        int[] numbers = new int[9];
+        int sum = 0;
+
+        Console.WriteLine("Введите 9 целых чисел:");
+        for (int i = 0; i < 9; i++)
+        {
+            Console.Write($"a{i + 1}: ");
+            numbers[i] = int.Parse(Console.ReadLine());
+            sum += numbers[i];
+        }
+
+        bool isEven = sum % 2 == 0;
+
+        Console.WriteLine($"\nСумма чисел: {sum}");
+        Console.WriteLine($"Сумма четная: {isEven}");
+    }
+
+    static void Task_7_18()
+    {
+        Console.WriteLine("\n7.18 - Проверка кратности суммы n чисел");
+        Console.Write("Введите количество чисел n: ");
+        int n = int.Parse(Console.ReadLine());
+        Console.Write("Введите b для проверки кратности: ");
+        int b = int.Parse(Console.ReadLine());
+
+        int[] numbers = new int[n];
+        int sum = 0;
+
+        Console.WriteLine($"Введите {n} целых чисел:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"x{i + 1}: ");
+            numbers[i] = int.Parse(Console.ReadLine());
+            sum += numbers[i];
+        }
+
+        bool isMultiple = sum % b == 0;
+
+        Console.WriteLine($"\nСумма чисел: {sum}");
+        Console.WriteLine($"Сумма кратна {b}: {isMultiple}");
+    }
+
+    static void Task_7_19()
+    {
+        Console.WriteLine("\n7.19 - Сравнение осадков за февраль");
+
+        double[] thisYear = new double[28]; // февраль может быть 28 или 29 дней
+        double[] lastYear = new double[28];
+        double sumThisYear = 0;
+        double sumLastYear = 0;
+
+        Console.WriteLine("Введите количество осадков за каждый день февраля ЭТОГО года:");
+        for (int i = 0; i < 28; i++)
+        {
+            Console.Write($"День {i + 1}: ");
+            thisYear[i] = double.Parse(Console.ReadLine());
+            sumThisYear += thisYear[i];
+        }
+
+        Console.WriteLine("\nВведите количество осадков за каждый день февраля ПРОШЛОГО года:");
+        for (int i = 0; i < 28; i++)
+        {
+            Console.Write($"День {i + 1}: ");
+            lastYear[i] = double.Parse(Console.ReadLine());
+            sumLastYear += lastYear[i];
+        }
+
+        bool exceeds = sumThisYear > sumLastYear;
+
+        Console.WriteLine($"\nОсадков в этом году: {sumThisYear:F1} мм");
+        Console.WriteLine($"Осадков в прошлом году: {sumLastYear:F1} мм");
+        Console.WriteLine($"В этом году больше: {exceeds}");
+    }
+
+    static void Task_7_20()
+    {
+        Console.WriteLine("\n7.20 - Проверка грузоподъемности");
+
+        Console.Write("Введите грузоподъемность автомобиля (кг): ");
+        double capacity = double.Parse(Console.ReadLine());
+        Console.Write("Введите количество грузов: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double[] weights = new double[n];
+
+double totalWeight = 0;
+
+        Console.WriteLine($"Введите массу каждого груза:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Груз {i + 1} (кг): ");
+            weights[i] = double.Parse(Console.ReadLine());
+            totalWeight += weights[i];
+        }
+
+        bool isExceeded = totalWeight > capacity;
+
+        Console.WriteLine($"\nОбщая масса грузов: {totalWeight} кг");
+        Console.WriteLine($"Грузоподъемность: {capacity} кг");
+        Console.WriteLine($"Превышена ли грузоподъемность: {isExceeded}");
+
+        if (isExceeded)
+            Console.WriteLine($"Перегруз: {totalWeight - capacity} кг");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 7.16-7.20");
+        Console.WriteLine("======================");
+
+        Task_7_16();
+        Task_7_17();
+        Task_7_18();
+        Task_7_19();
+        Task_7_20();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

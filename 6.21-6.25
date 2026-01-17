@@ -1,0 +1,185 @@
+﻿using System;
+
+class Program5
+{
+    static void Task_6_21()
+    {
+        Console.WriteLine("6.21 - Вторая цифра числа (n > 9)");
+        Console.Write("Введите натуральное число (n > 9): ");
+        int n = int.Parse(Console.ReadLine());
+
+        if (n <= 9)
+        {
+            Console.WriteLine("Ошибка: число должно быть > 9");
+            return;
+        }
+
+        // Находим количество цифр
+        int temp = n;
+        int digitCount = 0;
+        while (temp > 0)
+        {
+            digitCount++;
+            temp /= 10;
+        }
+
+        // Находим вторую цифру слева
+        temp = n;
+        int divisor = (int)Math.Pow(10, digitCount - 2); // пропускаем первую цифру
+        temp %= (divisor * 10); // убираем первую цифру
+        int secondDigit = temp / divisor;
+
+        Console.WriteLine($"Вторая цифра числа {n}: {secondDigit}");
+    }
+
+    static void Task_6_22()
+    {
+        Console.WriteLine("\n6.22 - Третья цифра числа (n > 99)");
+        Console.Write("Введите натуральное число (n > 99): ");
+        int n = int.Parse(Console.ReadLine());
+
+        if (n <= 99)
+        {
+            Console.WriteLine("Ошибка: число должно быть > 99");
+            return;
+        }
+
+        // Находим количество цифр
+        int temp = n;
+        int digitCount = 0;
+        while (temp > 0)
+        {
+            digitCount++;
+            temp /= 10;
+        }
+
+        // Находим третью цифру слева
+        temp = n;
+        int divisor = (int)Math.Pow(10, digitCount - 3); // пропускаем первые две цифры
+        temp %= (divisor * 100); // убираем первые две цифры
+        int thirdDigit = temp / divisor;
+
+        Console.WriteLine($"Третья цифра числа {n}: {thirdDigit}");
+    }
+
+    static void Task_6_23()
+    {
+        Console.WriteLine("\n6.23 - Сумма m последних цифр");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+        Console.Write("Введите m: ");
+        int m = int.Parse(Console.ReadLine());
+
+        int sum = 0;
+        int count = 0;
+        int temp = n;
+
+        // Суммируем последние m цифр
+        while (temp > 0 && count < m)
+        {
+            int digit = temp % 10;
+            sum += digit;
+            count++;
+            temp /= 10;
+        }
+
+        Console.WriteLine($"Сумма {count} последних цифр числа {n}: {sum}");
+        if (count < m)
+        {
+            Console.WriteLine($"Примечание: в числе только {count} цифр, а не {m}");
+        }
+    }
+
+    static void Task_6_24()
+    {
+        Console.WriteLine("\n6.24 - Знакочередующиеся суммы цифр (без if и степени)");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        // а) a₀ - a₁ + a₂ - ... (с конца)
+        int sum1 = 0;
+        int sign1 = 1;
+        int temp1 = n;
+        int position1 = 0;
+
+        while (temp1 > 0)
+        {
+            int digit = temp1 % 10;
+            sum1 += sign1 * digit;
+            sign1 = -sign1;
+            temp1 /= 10;
+            position1++;
+        }
+
+        // Если количество цифр нечетное, нужно корректировать знак
+        if (position1 % 2 == 0) // если четное количество цифр
+        {
+            sum1 = -sum1; // меняем знак
+        }
+
+        Console.WriteLine($"а) Знакочередующаяся сумма (с конца): {sum1}");
+
+        // б) a_k - a_{k-1} + ... (с начала)
+        // Сначала перевернем число
+        int reversed = 0;
+        int temp2 = n;
+        while (temp2 > 0)
+        {
+            reversed = reversed * 10 + (temp2 % 10);
+            temp2 /= 10;
+        }
+
+        int sum2 = 0;
+        int sign2 = 1;
+        while (reversed > 0)
+        {
+            int digit = reversed % 10;
+
+sum2 += sign2 * digit;
+            sign2 = -sign2;
+            reversed /= 10;
+        }
+
+        Console.WriteLine($"б) Знакочередующаяся сумма (с начала): {sum2}");
+    }
+
+    static void Task_6_25()
+    {
+        Console.WriteLine("\n6.25 - Наименьший делитель, отличный от 1");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        if (n <= 1)
+        {
+            Console.WriteLine("Ошибка: число должно быть > 1");
+            return;
+        }
+
+        int smallestDivisor = n; // начинаем с самого числа
+        for (int i = 2; i * i <= n; i++)
+        {
+            if (n % i == 0)
+            {
+                smallestDivisor = i;
+                break;
+            }
+        }
+
+        Console.WriteLine($"Наименьший делитель числа {n} (кроме 1): {smallestDivisor}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 6.21-6.25");
+        Console.WriteLine("======================");
+
+        Task_6_21();
+        Task_6_22();
+        Task_6_23();
+        Task_6_24();
+        Task_6_25();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

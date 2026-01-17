@@ -1,0 +1,279 @@
+﻿using System;
+
+class Program12
+{
+    static void Task_6_56()
+    {
+        Console.WriteLine("6.56 - Какая цифра левее: 2 или 5?");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int pos2 = 0;
+        int pos5 = 0;
+        int position = 0;
+        int totalDigits = 0;
+
+        // Сначала перевернем число
+        int reversed = 0;
+        while (temp > 0)
+        {
+            reversed = reversed * 10 + (temp % 10);
+            totalDigits++;
+            temp /= 10;
+        }
+
+        // Ищем самые левые позиции цифр 2 и 5
+        temp = reversed;
+        position = 0;
+        while (temp > 0)
+        {
+            position++;
+            int digit = temp % 10;
+
+            // Запоминаем первую встреченную (самую левую)
+            if (digit == 2 && pos2 == 0) pos2 = position;
+            if (digit == 5 && pos5 == 0) pos5 = position;
+
+            temp /= 10;
+        }
+
+        string result;
+        if (pos2 == 0 && pos5 == 0)
+            result = "Нет ни цифры 2, ни цифры 5";
+        else if (pos2 == 0)
+            result = "Нет цифры 2, есть только 5";
+        else if (pos5 == 0)
+            result = "Нет цифры 5, есть только 2";
+        else if (pos2 < pos5)
+            result = "Цифра 2 левее цифры 5";
+        else if (pos5 < pos2)
+            result = "Цифра 5 левее цифры 2";
+        else
+            result = "Цифры на одной позиции";
+
+        Console.WriteLine($"Позиция цифры 2 (слева): {(pos2 > 0 ? pos2.ToString() : "нет")}");
+        Console.WriteLine($"Позиция цифры 5 (слева): {(pos5 > 0 ? pos5.ToString() : "нет")}");
+        Console.WriteLine($"Результат: {result}");
+    }
+
+    static void Task_6_57()
+    {
+        Console.WriteLine("\n6.57 - Какая цифра правее: a или b?");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.Write("Введите цифру a: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите цифру b: ");
+        int b = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int posA = 0;
+        int posB = 0;
+        int position = 0;
+
+        // Ищем самые правые позиции (от конца)
+        while (temp > 0)
+        {
+            position++;
+            int digit = temp % 10;
+
+            // Запоминаем последнюю встреченную (самую правую)
+            if (digit == a) posA = position;
+            if (digit == b) posB = position;
+
+            temp /= 10;
+        }
+
+        string result;
+        if (posA == 0 && posB == 0)
+            result = $"Нет ни цифры {a}, ни цифры {b}";
+        else if (posA == 0)
+            result = $"Нет цифры {a}, есть только {b}";
+        else if (posB == 0)
+            result = $"Нет цифры {b}, есть только {a}";
+        else if (posA < posB) // меньшая позиция от конца = правее
+            result = $"Цифра {a} правее цифры {b}";
+        else if (posB < posA)
+            result = $"Цифра {b} правее цифры {a}";
+        else
+            result = "Цифры на одной позиции";
+
+        Console.WriteLine($"Позиция цифры {a} (от конца): {(posA > 0 ? posA.ToString() : "нет")}");
+        Console.WriteLine($"Позиция цифры {b} (от конца): {(posB > 0 ? posB.ToString() : "нет")}");
+        Console.WriteLine($"Результат: {result}");
+    }
+
+    static void Task_6_58()
+    {
+        Console.WriteLine("\n6.58 - Сколько раз встречается максимальная цифра");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Способ 1 (с двумя циклами):");
+
+        // Первый цикл - находим максимум
+        int temp = n;
+
+int maxDigit = 0;
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+            if (digit > maxDigit) maxDigit = digit;
+            temp /= 10;
+        }
+
+        // Второй цикл - считаем количество
+        temp = n;
+        int count = 0;
+        while (temp > 0)
+        {
+            if (temp % 10 == maxDigit) count++;
+            temp /= 10;
+        }
+
+        Console.WriteLine($"Максимальная цифра: {maxDigit}, встречается: {count} раз");
+
+        Console.WriteLine("\nСпособ 2 (с одним циклом):");
+
+        temp = n;
+        maxDigit = 0;
+        count = 0;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            if (digit > maxDigit)
+            {
+                maxDigit = digit;
+                count = 1; // новый максимум
+            }
+            else if (digit == maxDigit)
+            {
+                count++;
+            }
+
+            temp /= 10;
+        }
+
+        Console.WriteLine($"Максимальная цифра: {maxDigit}, встречается: {count} раз");
+    }
+
+    static void Task_6_59()
+    {
+        Console.WriteLine("\n6.59 - Сколько раз встречается минимальная цифра");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Способ 1 (с двумя циклами):");
+
+        // Первый цикл - находим минимум
+        int temp = n;
+        int minDigit = 9;
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+            if (digit < minDigit) minDigit = digit;
+            temp /= 10;
+        }
+
+        // Второй цикл - считаем количество
+        temp = n;
+        int count = 0;
+        while (temp > 0)
+        {
+            if (temp % 10 == minDigit) count++;
+            temp /= 10;
+        }
+
+        Console.WriteLine($"Минимальная цифра: {minDigit}, встречается: {count} раз");
+
+        Console.WriteLine("\nСпособ 2 (с одним циклом):");
+
+        temp = n;
+        minDigit = 9;
+        count = 0;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            if (digit < minDigit)
+            {
+                minDigit = digit;
+                count = 1; // новый минимум
+            }
+            else if (digit == minDigit)
+            {
+                count++;
+            }
+
+            temp /= 10;
+        }
+
+        Console.WriteLine($"Минимальная цифра: {minDigit}, встречается: {count} раз");
+    }
+
+    static void Task_6_60()
+    {
+        Console.WriteLine("\n6.60 - Две максимальные/минимальные цифры (все цифры различны)");
+        Console.Write("Введите натуральное число (все цифры различны): ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int max1 = 0; // самый большой
+        int max2 = 0; // второй по величине
+        int min1 = 9; // самый маленький
+        int min2 = 9; // второй по малости
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            // Обработка максимальных
+            if (digit > max1)
+            {
+                max2 = max1;
+                max1 = digit;
+            }
+            else if (digit > max2 && digit != max1)
+            {
+                max2 = digit;
+            }
+
+            // Обработка минимальных
+            if (digit < min1)
+            {
+                min2 = min1;
+                min1 = digit;
+            }
+            else if (digit < min2 && digit != min1)
+            {
+                min2 = digit;
+            }
+
+            temp /= 10;
+        }
+
+        Console.WriteLine($"а) Две максимальные цифры: {max1} и {max2}");
+        Console.WriteLine($"б) Две минимальные цифры: {min1} и {min2}");
+
+}
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 6.56-6.60");
+        Console.WriteLine("======================");
+
+        Task_6_56();
+        Task_6_57();
+        Task_6_58();
+        Task_6_59();
+        Task_6_60();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

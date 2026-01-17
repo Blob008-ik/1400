@@ -1,0 +1,124 @@
+﻿using System;
+
+class Program3
+{
+    static void Task_7_11()
+    {
+        Console.WriteLine("7.11 - Произведение 8 чисел");
+
+        int[] numbers = new int[8];
+        long product = 1;
+
+        Console.WriteLine("Введите 8 чисел:");
+        for (int i = 0; i < 8; i++)
+        {
+            Console.Write($"a{i + 1}: ");
+            numbers[i] = int.Parse(Console.ReadLine());
+            product *= numbers[i];
+        }
+
+        Console.WriteLine($"\nПроизведение всех чисел: {product}");
+    }
+
+    static void Task_7_12()
+    {
+        Console.WriteLine("\n7.12 - Произведения последовательности");
+
+        int[] numbers = new int[100];
+        int count = 0;
+        int number;
+        long product = 1;
+
+        Console.WriteLine("Вводите положительные числа (0 - конец ввода):");
+
+        do
+        {
+            Console.Write($"Число {count + 1}: ");
+            number = int.Parse(Console.ReadLine());
+
+            if (number > 0)
+            {
+                numbers[count] = number;
+                product *= number;
+                Console.WriteLine($"  a1·a2·...·a{count + 1} = {product}");
+                count++;
+            }
+        } while (number != 0);
+
+        Console.WriteLine("0");
+    }
+
+    static void Task_7_13()
+    {
+        Console.WriteLine("\n7.13 - Сумма квадратов 10 чисел");
+
+        double[] numbers = new double[10];
+        double sumOfSquares = 0;
+
+        Console.WriteLine("Введите 10 чисел:");
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"a{i + 1}: ");
+            numbers[i] = double.Parse(Console.ReadLine());
+            sumOfSquares += numbers[i] * numbers[i];
+        }
+
+        Console.WriteLine($"\nСумма квадратов: {sumOfSquares}");
+    }
+
+    static void Task_7_14()
+    {
+        Console.WriteLine("\n7.14 - Сумма квадратов n вещественных чисел");
+        Console.Write("Введите количество чисел n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double[] numbers = new double[n];
+        double sumOfSquares = 0;
+
+        Console.WriteLine($"Введите {n} вещественных чисел:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"a{i + 1}: ");
+            numbers[i] = double.Parse(Console.ReadLine());
+            sumOfSquares += numbers[i] * numbers[i];
+        }
+
+        Console.WriteLine($"\nСумма квадратов: {sumOfSquares}");
+    }
+
+    static void Task_7_15()
+    {
+        Console.WriteLine("\n7.15 - Проверка суммы 10 вещественных чисел");
+
+        double[] numbers = new double[10];
+        double sum = 0;
+
+        Console.WriteLine("Введите 10 вещественных чисел:");
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"a{i + 1}: ");
+            numbers[i] = double.Parse(Console.ReadLine());
+            sum += numbers[i];
+        }
+
+        bool exceeds = sum > 100.78;
+
+        Console.WriteLine($"\nСумма чисел: {sum:F2}");
+        Console.WriteLine($"Сумма превышает 100,78: {exceeds}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 7.11-7.15");
+        Console.WriteLine("======================");
+
+        Task_7_11();
+        Task_7_12();
+        Task_7_13();
+        Task_7_14();
+        Task_7_15();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

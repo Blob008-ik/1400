@@ -1,0 +1,196 @@
+﻿using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("=== ЗАДАЧИ 7.76-7.80 ===\n");
+
+        Task7_76();
+        Task7_77();
+        Task7_78();
+        Task7_79();
+        Task7_80();
+    }
+
+    // 7.76. Хоккейные удаления (24 раза)
+    static void Task7_76()
+    {
+        Console.WriteLine("7.76: Хоккейные удаления");
+
+        const int totalRemovals = 24;
+        int team1Removals = 0, team1Time = 0;
+        int team2Removals = 0, team2Time = 0;
+
+        Console.WriteLine($"Введите данные по {totalRemovals} удалениям:");
+        for (int i = 1; i <= totalRemovals; i++)
+        {
+            Console.Write($"Удаление {i} - команда (1 или 2): ");
+            int team = int.Parse(Console.ReadLine());
+
+            Console.Write($"Удаление {i} - время (2, 5 или 10): ");
+            int time = int.Parse(Console.ReadLine());
+
+            if (team == 1)
+            {
+                team1Removals++;
+                team1Time += time;
+            }
+            else
+            {
+                team2Removals++;
+                team2Time += time;
+            }
+        }
+
+        Console.WriteLine($"Команда 1: {team1Removals} удалений, {team1Time} минут");
+        Console.WriteLine($"Команда 2: {team2Removals} удалений, {team2Time} минут\n");
+    }
+
+    // 7.77. Хоккей до конца игры (0)
+    static void Task7_77()
+    {
+        Console.WriteLine("7.77: Хоккей (до ввода 0)");
+
+        int team1Removals = 0, team1Time = 0;
+        int team2Removals = 0, team2Time = 0;
+
+        Console.WriteLine("Вводите данные по удалениям (команда время), для окончания введите команду 0:");
+
+        while (true)
+        {
+            Console.Write("Команда (0 для окончания): ");
+            int team = int.Parse(Console.ReadLine());
+
+            if (team == 0) break;
+
+            Console.Write("Время удаления (2, 5 или 10): ");
+            int time = int.Parse(Console.ReadLine());
+
+            if (team == 1)
+            {
+                team1Removals++;
+                team1Time += time;
+            }
+            else
+            {
+                team2Removals++;
+                team2Time += time;
+            }
+        }
+
+        Console.WriteLine($"Команда 1: {team1Removals} удалений, {team1Time} минут");
+        Console.WriteLine($"Команда 2: {team2Removals} удалений, {team2Time} минут\n");
+    }
+
+    // 7.78. Оценки по физике
+    static void Task7_78()
+    {
+        Console.WriteLine("7.78: Оценки по физике");
+
+        Console.Write("Сколько учеников? ");
+        int n = int.Parse(Console.ReadLine());
+
+        int count5 = 0, count4 = 0, count3 = 0, count2 = 0;
+
+        Console.WriteLine($"Введите оценки {n} учеников:");
+        for (int i = 1; i <= n; i++)
+        {
+            Console.Write($"Ученик {i}: ");
+            int grade = int.Parse(Console.ReadLine());
+
+            switch (grade)
+            {
+                case 5: count5++; break;
+                case 4: count4++; break;
+                case 3: count3++; break;
+                case 2: count2++; break;
+            }
+        }
+
+        Console.WriteLine($"Пятерок: {count5}");
+        Console.WriteLine($"Четверок: {count4}");
+        Console.WriteLine($"Троек: {count3}");
+        Console.WriteLine($"Двоек: {count2}\n");
+    }
+
+    // 7.79. Футбольные очки
+    static void Task7_79()
+    {
+        Console.WriteLine("7.79: Футбольные очки");
+
+        Console.Write("Сколько игр? ");
+        int n = int.Parse(Console.ReadLine());
+
+        int wins = 0, draws = 0, losses = 0;
+
+        Console.WriteLine($"Введите очки за {n} игр (3-выигрыш, 1-ничья, 0-проигрыш):");
+
+for (int i = 1; i <= n; i++)
+        {
+            Console.Write($"Игра {i}: ");
+            int points = int.Parse(Console.ReadLine());
+
+            if (points == 3) wins++;
+            else if (points == 1) draws++;
+            else if (points == 0) losses++;
+        }
+
+        Console.WriteLine($"Выигрышей: {wins}");
+        Console.WriteLine($"Ничьих: {draws}");
+        Console.WriteLine($"Проигрышей: {losses}\n");
+    }
+
+    // 7.80. Футбольные игры (20 пар)
+    static void Task7_80()
+    {
+        Console.WriteLine("7.80: Футбольные игры (20 пар)");
+
+        const int games = 20;
+        int wins = 0, draws = 0, losses = 0;
+        int bigDifferenceGames = 0;
+        int totalPoints = 0;
+
+        Console.WriteLine($"Введите {games} пар (забито, пропущено):");
+        for (int i = 1; i <= games; i++)
+        {
+            Console.Write($"Игра {i} - забито: ");
+            int scored = int.Parse(Console.ReadLine());
+
+            Console.Write($"Игра {i} - пропущено: ");
+            int conceded = int.Parse(Console.ReadLine());
+
+            // а) Словесный результат
+            string result;
+            if (scored > conceded)
+            {
+                result = "выигрыш";
+                wins++;
+                totalPoints += 3;
+            }
+            else if (scored == conceded)
+            {
+                result = "ничья";
+                draws++;
+                totalPoints += 1;
+            }
+            else
+            {
+                result = "проигрыш";
+                losses++;
+            }
+
+            Console.WriteLine($"  Результат: {result}");
+
+            // д) Большая разница
+            if (scored - conceded >= 3)
+                bigDifferenceGames++;
+        }
+
+        Console.WriteLine($"\nб) Выигрышей: {wins}");
+        Console.WriteLine($"в) Выигрышей: {wins}, проигрышей: {losses}");
+        Console.WriteLine($"г) Выигрышей: {wins}, ничьих: {draws}, проигрышей: {losses}");
+        Console.WriteLine($"д) Игр с разностью >=3: {bigDifferenceGames}");
+        Console.WriteLine($"е) Всего очков: {totalPoints}");
+    }
+}

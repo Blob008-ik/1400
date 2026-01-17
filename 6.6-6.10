@@ -1,0 +1,140 @@
+﻿using System;
+
+class Program2
+{
+    static void Task_6_6()
+    {
+        Console.WriteLine("6.6 - Найти число по его факториалу (без цикла for)");
+        Console.Write("Введите значение факториала: ");
+        long factorial = long.Parse(Console.ReadLine());
+
+        if (factorial == 1)
+        {
+            Console.WriteLine("Это 0! или 1!");
+            return;
+        }
+
+        long number = 1;
+        long product = 1;
+
+        while (product < factorial)
+        {
+            number++;
+            product *= number;
+        }
+
+        if (product == factorial)
+        {
+            Console.WriteLine($"Число: {number} ({number}! = {factorial})");
+        }
+        else
+        {
+            Console.WriteLine($"Нет такого натурального числа, чей факториал = {factorial}");
+        }
+    }
+
+    static void Task_6_7()
+    {
+        Console.WriteLine("\n6.7 - Числа, квадрат которых не превышает n");
+        Console.Write("Введите n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.WriteLine($"Числа, квадрат которых ≤ {n}:");
+        int i = 1;
+        while (i * i <= n)
+        {
+            Console.Write(i + $" ({i}² = {i * i}) ");
+            i++;
+        }
+        Console.WriteLine();
+    }
+
+    static void Task_6_8()
+    {
+        Console.WriteLine("\n6.8 - Первое число, квадрат которого > n (разные способы)");
+        Console.Write("Введите n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.WriteLine("Способ 1 (while):");
+        int number1 = 1;
+        while (number1 * number1 <= n && number1 <= 100)
+        {
+            number1++;
+        }
+        if (number1 <= 100)
+            Console.WriteLine($"Первое число: {number1} ({number1}² = {number1 * number1})");
+        else
+            Console.WriteLine("Не найдено среди первых 100 чисел");
+
+        Console.WriteLine("\nСпособ 2 (do-while):");
+        int number2 = 1;
+        do
+        {
+            if (number2 * number2 > n)
+                break;
+            number2++;
+        } while (number2 <= 100);
+
+        if (number2 <= 100)
+            Console.WriteLine($"Первое число: {number2} ({number2}² = {number2 * number2})");
+        else
+            Console.WriteLine("Не найдено среди первых 100 чисел");
+    }
+
+    static void Task_6_9()
+    {
+        Console.WriteLine("\n6.9 - Ввод четного числа с проверкой");
+
+        int number;
+        do
+        {
+            Console.Write("Введите ЧЕТНОЕ число: ");
+            number = int.Parse(Console.ReadLine());
+
+            if (number % 2 != 0)
+            {
+                Console.WriteLine("ОШИБКА: Вы ввели нечетное число!");
+            }
+        } while (number % 2 != 0);
+
+        Console.WriteLine($"Спасибо! Вы ввели четное число: {number}");
+    }
+
+    static void Task_6_10()
+    {
+        Console.WriteLine("\n6.10 - Проверка пароля");
+
+        const int correctPassword = 1234; // установленный пароль
+        int enteredPassword;
+
+        do
+        {
+            Console.Write("Введите пароль (целое число): ");
+            enteredPassword = int.Parse(Console.ReadLine());
+
+            if (enteredPassword != correctPassword)
+            {
+                Console.WriteLine("НЕВЕРНЫЙ ПАРОЛЬ! Попробуйте еще раз.");
+            }
+        } while (enteredPassword != correctPassword);
+
+        Console.WriteLine("=======================================");
+        Console.WriteLine("ПАРОЛЬ ПРИНЯТ! ДОБРО ПОЖАЛОВАТЬ, БРАТ!");
+        Console.WriteLine("=======================================");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 6.6-6.10");
+        Console.WriteLine("======================");
+
+        Task_6_6();
+        Task_6_7();
+        Task_6_8();
+        Task_6_9();
+        Task_6_10();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

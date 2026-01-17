@@ -1,0 +1,188 @@
+﻿using System;
+
+class Program15
+{
+    static void Task_6_73()
+    {
+        Console.WriteLine("6.73 - Проверка члена геометрической прогрессии");
+        Console.Write("Введите число m: ");
+        double m = double.Parse(Console.ReadLine());
+        Console.Write("Введите первый член g: ");
+        double g = double.Parse(Console.ReadLine());
+        Console.Write("Введите знаменатель z: ");
+        double z = double.Parse(Console.ReadLine());
+
+        if (g == 0 || z == 0)
+        {
+            Console.WriteLine("Ошибка: первый член и знаменатель не могут быть 0");
+            return;
+        }
+
+        // Проверяем, является ли m членом прогрессии
+        // m = g * z^k, где k - целое неотрицательное
+        bool isMember = false;
+
+        if (m == g)
+        {
+            isMember = true;
+        }
+        else if (z != 1)
+        {
+            // Логарифмическая проверка
+            double ratio = m / g;
+            double k = Math.Log(ratio, z);
+
+            // Проверяем, целое ли k и неотрицательное
+            if (Math.Abs(k - Math.Round(k)) < 0.000001 && k >= 0)
+            {
+                isMember = true;
+            }
+        }
+
+        Console.WriteLine($"Число {m} {(isMember ? "является" : "не является")} членом геометрической прогрессии");
+    }
+
+    static void Task_6_74()
+    {
+        Console.WriteLine("\n6.74 - Проверка степени числа");
+        Console.Write("Введите число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        // а) Проверка степени 3
+        bool isPowerOf3 = false;
+        if (n > 0)
+        {
+            int temp = n;
+            while (temp % 3 == 0)
+            {
+                temp /= 3;
+            }
+            isPowerOf3 = (temp == 1);
+        }
+
+        // б) Проверка степени 5
+        bool isPowerOf5 = false;
+        if (n > 0)
+        {
+            int temp = n;
+            while (temp % 5 == 0)
+            {
+                temp /= 5;
+            }
+            isPowerOf5 = (temp == 1);
+        }
+
+        Console.WriteLine($"а) Число {n} является степенью 3: {isPowerOf3}");
+        Console.WriteLine($"б) Число {n} является степенью 5: {isPowerOf5}");
+    }
+
+    static void Task_6_77()
+    {
+        Console.WriteLine("\n6.77 - Проверка свойств числа");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int lastDigit = -1;
+        bool allSame = true;
+        bool hasConsecutiveSame = false;
+        int prevDigit = -1;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            // Проверка на одинаковые цифры
+            if (lastDigit == -1)
+            {
+                lastDigit = digit;
+            }
+            else if (digit != lastDigit)
+            {
+                allSame = false;
+            }
+
+            // Проверка на идущие подряд одинаковые цифры
+            if (digit == prevDigit)
+            {
+                hasConsecutiveSame = true;
+            }
+
+            prevDigit = digit;
+            temp /= 10;
+        }
+
+        Console.WriteLine($"а) Все цифры одинаковы: {allSame}");
+        Console.WriteLine($"б) Есть две одинаковые цифры подряд: {hasConsecutiveSame}");
+    }
+
+    static void Task_6_78()
+    {
+        Console.WriteLine("\n6.78 - Упорядоченность цифр справа налево по возрастанию");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int prevDigit = 10; // больше любой цифры
+        bool isOrdered = true;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            if (digit >= prevDigit) // должна быть строго меньше предыдущей
+
+{
+                isOrdered = false;
+                break;
+            }
+
+            prevDigit = digit;
+            temp /= 10;
+        }
+
+        Console.WriteLine($"Цифры упорядочены по возрастанию справа налево: {isOrdered}");
+    }
+
+    static void Task_6_79()
+    {
+        Console.WriteLine("\n6.79 - Упорядоченность цифр справа налево по неубыванию");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int temp = n;
+        int prevDigit = 10; // больше любой цифры
+        bool isOrdered = true;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            if (digit > prevDigit) // должна быть не больше предыдущей
+            {
+                isOrdered = false;
+                break;
+            }
+
+            prevDigit = digit;
+            temp /= 10;
+        }
+
+        Console.WriteLine($"Цифры упорядочены по неубыванию справа налево: {isOrdered}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 6.73-6.79");
+        Console.WriteLine("======================");
+
+        Task_6_73();
+        Task_6_74();
+        Task_6_77();
+        Task_6_78();
+        Task_6_79();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

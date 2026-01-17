@@ -1,0 +1,179 @@
+﻿using System;
+class Program12
+{
+    static void Task_7_56()
+    {
+        Console.WriteLine("7.56 - Проверка кратности суммы чисел ≤ m");
+        Console.Write("Введите количество чисел n: ");
+        int n = int.Parse(Console.ReadLine());
+        Console.Write("Введите m: ");
+        int m = int.Parse(Console.ReadLine());
+        Console.Write("Введите p: ");
+        int p = int.Parse(Console.ReadLine());
+
+        int[] numbers = new int[n];
+        int sumNotExceedM = 0;
+
+        Console.WriteLine($"Введите {n} целых чисел:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"c{i + 1}: ");
+            numbers[i] = int.Parse(Console.ReadLine());
+
+            if (numbers[i] <= m)
+                sumNotExceedM += numbers[i];
+        }
+
+        bool isMultiple = sumNotExceedM % p == 0;
+
+        Console.WriteLine($"\nСумма чисел ≤ {m}: {sumNotExceedM}");
+        Console.WriteLine($"Эта сумма кратна {p}: {isMultiple}");
+    }
+
+    static void Task_7_57()
+    {
+        Console.WriteLine("\n7.57 - Сравнение осадков по четным и нечетным дням февраля");
+
+        int daysInFeb = 28; // невисокосный год
+        double[] precipitation = new double[daysInFeb];
+        double sumEvenDays = 0;
+        double sumOddDays = 0;
+
+        Console.WriteLine("Введите количество осадков за каждый день февраля:");
+        for (int day = 0; day < daysInFeb; day++)
+        {
+            Console.Write($"День {day + 1}: ");
+            precipitation[day] = double.Parse(Console.ReadLine());
+
+            // Один цикл, как требует условие
+            if ((day + 1) % 2 == 0) // четный день
+                sumEvenDays += precipitation[day];
+            else                    // нечетный день
+                sumOddDays += precipitation[day];
+        }
+
+        bool moreOnEvenDays = sumEvenDays > sumOddDays;
+
+        Console.WriteLine($"\nОсадков по четным дням: {sumEvenDays:F1} мм");
+        Console.WriteLine($"Осадков по нечетным дням: {sumOddDays:F1} мм");
+        Console.WriteLine($"По четным дням выпало больше: {moreOnEvenDays}");
+    }
+
+    static void Task_7_58()
+    {
+        Console.WriteLine("\n7.58 - На какой стороне улицы больше жителей");
+
+        Console.Write("Введите количество домов на улице: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int[] residents = new int[n];
+        int sumOddHouses = 0;  // нечетные номера
+        int sumEvenHouses = 0; // четные номера
+
+        Console.WriteLine("Введите число жителей в каждом доме:");
+        for (int house = 0; house < n; house++)
+        {
+            Console.Write($"Дом {house + 1}: ");
+            residents[house] = int.Parse(Console.ReadLine());
+
+            // Один цикл, как требует условие
+            if ((house + 1) % 2 == 0) // четный номер
+                sumEvenHouses += residents[house];
+            else                      // нечетный номер
+                sumOddHouses += residents[house];
+        }
+
+        string result;
+        if (sumOddHouses > sumEvenHouses)
+            result = "Больше жителей на стороне с нечетными номерами";
+        else if (sumEvenHouses > sumOddHouses)
+            result = "Больше жителей на стороне с четными номерами";
+        else
+            result = "На обеих сторонах одинаковое количество жителей";
+
+        Console.WriteLine($"\nНа стороне нечетных домов: {sumOddHouses} чел.");
+        Console.WriteLine($"На стороне четных домов: {sumEvenHouses} чел.");
+        Console.WriteLine($"Результат: {result}");
+    }
+
+    static void Task_7_59()
+    {
+        Console.WriteLine("\n7.59 - Количество пятерок по информатике в классе");
+
+        Console.Write("Введите количество учеников в классе: ");
+int n = int.Parse(Console.ReadLine());
+
+        int[] marks = new int[n];
+        int countFives = 0;
+
+        Console.WriteLine("Введите оценки по информатике (2-5):");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Ученик {i + 1}: ");
+            marks[i] = int.Parse(Console.ReadLine());
+
+            if (marks[i] == 5)
+                countFives++;
+        }
+
+        Console.WriteLine($"\nКоличество пятерок: {countFives}");
+
+        if (countFives > 0)
+        {
+            Console.Write("Ученики с пятерками: ");
+            for (int i = 0; i < n; i++)
+            {
+                if (marks[i] == 5)
+                    Console.Write($"{i + 1} ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    static void Task_7_60()
+    {
+        Console.WriteLine("\n7.60 - Сколько раз температура опускалась ниже 0°C");
+
+        int daysInMonth = 30; // например, апрель
+        double[] temperatures = new double[daysInMonth];
+        int countBelowZero = 0;
+
+        Console.WriteLine("Введите температуру воздуха за каждый день месяца:");
+        for (int day = 0; day < daysInMonth; day++)
+        {
+            Console.Write($"День {day + 1}: ");
+            temperatures[day] = double.Parse(Console.ReadLine());
+
+            if (temperatures[day] < 0)
+                countBelowZero++;
+        }
+
+        Console.WriteLine($"\nТемпература опускалась ниже 0°C: {countBelowZero} раз");
+
+        if (countBelowZero > 0)
+        {
+            Console.Write("Дни с отрицательной температурой: ");
+            for (int day = 0; day < daysInMonth; day++)
+            {
+                if (temperatures[day] < 0)
+                    Console.Write($"день {day + 1}({temperatures[day]}°) ");
+            }
+            Console.WriteLine();
+        }
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 7.56-7.60");
+        Console.WriteLine("======================");
+
+        Task_7_56();
+        Task_7_57();
+        Task_7_58();
+        Task_7_59();
+        Task_7_60();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

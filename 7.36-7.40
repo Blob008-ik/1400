@@ -1,0 +1,197 @@
+﻿using System;
+class Program8
+{
+    static void Task_7_36()
+    {
+        Console.WriteLine("7.36 - Урожайность пшеницы в области (10 районов)");
+
+        double[] areas = new double[10];      // площади в гектарах
+        double[] yields = new double[10];     // урожайность в ц/га
+        double totalWheat = 0;                // общее количество пшеницы
+        double totalArea = 0;                 // общая площадь
+
+        Console.WriteLine("Введите данные по 10 районам:");
+
+        for (int i = 0; i < 10; i++)
+        {
+            Console.WriteLine($"\nРайон {i + 1}:");
+            Console.Write("  Площадь, засеянная пшеницей (га): ");
+            areas[i] = double.Parse(Console.ReadLine());
+
+            Console.Write("  Средняя урожайность (ц/га): ");
+            yields[i] = double.Parse(Console.ReadLine());
+
+            totalArea += areas[i];
+            totalWheat += areas[i] * yields[i];
+        }
+
+        double averageYield = totalWheat / totalArea;
+
+        Console.WriteLine($"\nИтоги по области:");
+        Console.WriteLine($"  Общая площадь: {totalArea} га");
+        Console.WriteLine($"  Общий урожай: {totalWheat} ц");
+        Console.WriteLine($"  Средняя урожайность: {averageYield:F1} ц/га");
+    }
+
+    static void Task_7_37()
+    {
+        Console.WriteLine("\n7.37 - Средняя плотность населения в области (12 районов)");
+
+        double[] populations = new double[12];  // население в тыс. чел.
+        double[] areas = new double[12];        // площадь в км²
+        double totalPopulation = 0;
+        double totalArea = 0;
+
+        Console.WriteLine("Введите данные по 12 районам:");
+
+        for (int i = 0; i < 12; i++)
+        {
+            Console.WriteLine($"\nРайон {i + 1}:");
+            Console.Write("  Население (тыс. чел.): ");
+            populations[i] = double.Parse(Console.ReadLine());
+
+            Console.Write("  Площадь (км²): ");
+            areas[i] = double.Parse(Console.ReadLine());
+
+            totalPopulation += populations[i];
+            totalArea += areas[i];
+        }
+
+        double averageDensity = totalPopulation / totalArea;
+
+        Console.WriteLine($"\nИтоги по области:");
+        Console.WriteLine($"  Общее население: {totalPopulation} тыс. чел.");
+        Console.WriteLine($"  Общая площадь: {totalArea} км²");
+        Console.WriteLine($"  Средняя плотность: {averageDensity:F2} тыс. чел./км²");
+    }
+
+    static void Task_7_38()
+    {
+        Console.WriteLine("\n7.38 - Общая площадь территории области (12 районов)");
+
+        double[] populations = new double[12];  // население в тыс. чел.
+        double[] densities = new double[12];    // плотность в тыс. чел./км²
+        double totalArea = 0;
+
+        Console.WriteLine("Введите данные по 12 районам:");
+
+        for (int i = 0; i < 12; i++)
+        {
+            Console.WriteLine($"\nРайон {i + 1}:");
+            Console.Write("  Население (тыс. чел.): ");
+            populations[i] = double.Parse(Console.ReadLine());
+
+            Console.Write("  Плотность населения (тыс. чел./км²): ");
+            densities[i] = double.Parse(Console.ReadLine());
+
+            // Площадь = Население / Плотность
+            double area = populations[i] / densities[i];
+            totalArea += area;
+
+            Console.WriteLine($"  Площадь района: {area:F1} км²");
+        }
+
+        Console.WriteLine($"\nОбщая площадь области: {totalArea:F1} км²");
+    }
+
+    static void Task_7_39()
+    {
+        Console.WriteLine("\n7.39 - Различные операции с n числами");
+        Console.Write("Введите количество чисел n: ");
+        int n = int.Parse(Console.ReadLine());
+
+double[] numbers = new double[n];
+
+        Console.WriteLine($"Введите {n} чисел:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"a{i + 1}: ");
+            numbers[i] = double.Parse(Console.ReadLine());
+        }
+
+        // а) Сумма модулей
+        double sumAbs = 0;
+        for (int i = 0; i < n; i++)
+        {
+            sumAbs += Math.Abs(numbers[i]);
+        }
+        Console.WriteLine($"а) Сумма модулей: {sumAbs}");
+
+        // б) Произведение модулей
+        double productAbs = 1;
+        for (int i = 0; i < n; i++)
+        {
+            productAbs *= Math.Abs(numbers[i]);
+        }
+        Console.WriteLine($"б) Произведение модулей: {productAbs}");
+
+        // в) Суммы соседних элементов (нужен массив результатов)
+        if (n >= 2)
+        {
+            Console.Write("в) Суммы соседних элементов: ");
+            for (int i = 0; i < n - 1; i++)
+            {
+                double sumNeighbors = numbers[i] + numbers[i + 1];
+                Console.Write($"{sumNeighbors} ");
+            }
+            Console.WriteLine();
+        }
+
+        // г) Знакочередующаяся сумма a1 - a2 + a3 - ... (без if и степени)
+        double alternatingSum = 0;
+        int sign = 1;
+        for (int i = 0; i < n; i++)
+        {
+            alternatingSum += sign * numbers[i];
+            sign = -sign; // меняем знак
+        }
+        Console.WriteLine($"г) Знакочередующаяся сумма: {alternatingSum}");
+    }
+
+    static void Task_7_40()
+    {
+        Console.WriteLine("\n7.40 - Сумма чисел > 10,75 из 12 чисел");
+
+        double[] numbers = new double[12];
+        double sumGreater = 0;
+
+        Console.WriteLine("Введите 12 вещественных чисел:");
+        for (int i = 0; i < 12; i++)
+        {
+            Console.Write($"a{i + 1}: ");
+            numbers[i] = double.Parse(Console.ReadLine());
+
+            if (numbers[i] > 10.75)
+            {
+                sumGreater += numbers[i];
+            }
+        }
+
+        Console.WriteLine($"\nСумма чисел, больших 10,75: {sumGreater:F2}");
+
+        Console.Write("Эти числа: ");
+        for (int i = 0; i < 12; i++)
+        {
+            if (numbers[i] > 10.75)
+            {
+                Console.Write($"{numbers[i]} ");
+            }
+        }
+        Console.WriteLine();
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 7.36-7.40");
+        Console.WriteLine("======================");
+
+        Task_7_36();
+        Task_7_37();
+        Task_7_38();
+        Task_7_39();
+        Task_7_40();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

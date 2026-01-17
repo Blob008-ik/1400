@@ -1,0 +1,102 @@
+﻿using System;
+
+class Program1
+{
+    static void Task_6_1()
+    {
+        Console.WriteLine("6.1 - Целочисленное деление и остаток без стандартных операций");
+        Console.Write("Введите a (a > b): ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите b: ");
+        int b = int.Parse(Console.ReadLine());
+
+        // а) Целочисленное деление
+        int quotient = 0;
+        int temp = a;
+        while (temp >= b)
+        {
+            temp -= b;
+            quotient++;
+        }
+        Console.WriteLine($"а) {a} // {b} = {quotient}");
+
+        // б) Остаток от деления
+        int remainder = a;
+        while (remainder >= b)
+        {
+            remainder -= b;
+        }
+        Console.WriteLine($"б) {a} % {b} = {remainder}");
+    }
+
+    static void Task_6_2()
+    {
+        Console.WriteLine("\n6.2 - Числа до n (без цикла for)");
+        Console.Write("Введите n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        Console.WriteLine($"Числа от 1 до {n}:");
+        int i = 1;
+        while (i <= n)
+        {
+            Console.Write(i + " ");
+            i++;
+        }
+        Console.WriteLine();
+    }
+
+    static void Task_6_3()
+    {
+        Console.WriteLine("\n6.3 - Нечетные числа 10-100 (без цикла for)");
+
+        Console.WriteLine("Нечетные числа от 10 до 100:");
+        int i = 11; // начинаем с первого нечетного после 10
+        while (i <= 99)
+        {
+            Console.Write(i + " ");
+            i += 2;
+        }
+        Console.WriteLine();
+    }
+
+    static void Task_6_4()
+    {
+        Console.WriteLine("\n6.4 - Минимальное число >190, делящееся на 17");
+
+        int number = 191;
+        while (number % 17 != 0)
+        {
+            number++;
+        }
+        Console.WriteLine($"Первое число >190, делящееся на 17: {number}");
+        Console.WriteLine($"Проверка: {number} / 17 = {number / 17}");
+    }
+
+    static void Task_6_5()
+    {
+        Console.WriteLine("\n6.5 - Максимальное число ≤5000, делящееся на 139");
+
+        int number = 5000;
+        while (number % 139 != 0)
+        {
+            number--;
+        }
+        Console.WriteLine($"Максимальное число ≤5000, делящееся на 139: {number}");
+        Console.WriteLine($"Проверка: {number} / 139 = {number / 139}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 6.1-6.5");
+        Console.WriteLine("=====================");
+
+        Task_6_1();
+        Task_6_2();
+        Task_6_3();
+        Task_6_4();
+        Task_6_5();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

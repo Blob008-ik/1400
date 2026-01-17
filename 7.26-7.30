@@ -1,0 +1,132 @@
+﻿using System;
+
+class Program6
+{
+    static void Task_7_26()
+    {
+        Console.WriteLine("7.26 - Среднее арифметическое n вещественных чисел");
+        Console.Write("Введите количество чисел n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double[] numbers = new double[n];
+        double sum = 0;
+
+        Console.WriteLine($"Введите {n} вещественных чисел:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"a{i + 1}: ");
+            numbers[i] = double.Parse(Console.ReadLine());
+            sum += numbers[i];
+        }
+
+        double average = sum / n;
+
+        Console.WriteLine($"\nСумма чисел: {sum}");
+        Console.WriteLine($"Среднее арифметическое: {average:F2}");
+    }
+
+    static void Task_7_27()
+    {
+        Console.WriteLine("\n7.27 - Средняя оценка по физике в классе");
+
+        int[] marks = new int[20];
+        int sum = 0;
+
+        Console.WriteLine("Введите оценки 20 учеников по физике (2-5):");
+        for (int i = 0; i < 20; i++)
+        {
+            Console.Write($"Ученик {i + 1}: ");
+            marks[i] = int.Parse(Console.ReadLine());
+            sum += marks[i];
+        }
+
+        double average = (double)sum / 20;
+
+        Console.WriteLine($"\nСумма оценок: {sum}");
+        Console.WriteLine($"Средняя оценка: {average:F1}");
+    }
+
+    static void Task_7_28()
+    {
+        Console.WriteLine("\n7.28 - Средняя оценка ученика по 10 предметам");
+
+        int[] marks = new int[10];
+        int sum = 0;
+
+        Console.WriteLine("Введите оценки ученика по 10 предметам (2-5):");
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write($"Предмет {i + 1}: ");
+            marks[i] = int.Parse(Console.ReadLine());
+            sum += marks[i];
+        }
+
+        double average = (double)sum / 10;
+
+        Console.WriteLine($"\nСумма оценок: {sum}");
+        Console.WriteLine($"Средняя оценка: {average:F1}");
+    }
+
+    static void Task_7_29()
+    {
+        Console.WriteLine("\n7.29 - Средняя оценка по алгебре в классе");
+
+        Console.Write("Введите количество учеников в классе: ");
+        int n = int.Parse(Console.ReadLine());
+
+        int[] marks = new int[n];
+        int sum = 0;
+
+        Console.WriteLine($"Введите оценки {n} учеников по алгебре (2-5):");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Ученик {i + 1}: ");
+            marks[i] = int.Parse(Console.ReadLine());
+            sum += marks[i];
+        }
+
+        double average = (double)sum / n;
+
+        Console.WriteLine($"\nСумма оценок: {sum}");
+        Console.WriteLine($"Средняя оценка: {average:F1}");
+    }
+
+    static void Task_7_30()
+    {
+        Console.WriteLine("\n7.30 - Средняя масса предметов");
+
+        Console.Write("Введите количество предметов: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double[] weights = new double[n];
+        double sum = 0;
+
+        Console.WriteLine($"Введите массу каждого предмета:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"Предмет {i + 1} (кг): ");
+            weights[i] = double.Parse(Console.ReadLine());
+            sum += weights[i];
+        }
+
+        double average = sum / n;
+
+        Console.WriteLine($"\nОбщая масса: {sum} кг");
+        Console.WriteLine($"Средняя масса: {average:F2} кг");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 7.26-7.30");
+        Console.WriteLine("======================");
+
+        Task_7_26();
+        Task_7_27();
+        Task_7_28();
+        Task_7_29();
+        Task_7_30();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

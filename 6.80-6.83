@@ -1,0 +1,193 @@
+﻿using System;
+class Program16
+{
+    static void Task_6_80()
+    {
+        Console.WriteLine("6.80 - Упорядоченность цифр слева направо по возрастанию");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        // Сначала перевернем число
+        int temp = n;
+        int reversed = 0;
+        while (temp > 0)
+        {
+            reversed = reversed * 10 + (temp % 10);
+            temp /= 10;
+        }
+
+        // Проверяем упорядоченность в перевернутом числе
+        temp = reversed;
+        int prevDigit = -1; // меньше любой цифры
+        bool isOrdered = true;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            if (digit <= prevDigit) // должна быть строго больше предыдущей
+            {
+                isOrdered = false;
+                break;
+            }
+
+            prevDigit = digit;
+            temp /= 10;
+        }
+
+        Console.WriteLine($"Цифры упорядочены по возрастанию слева направо: {isOrdered}");
+    }
+
+    static void Task_6_81()
+    {
+        Console.WriteLine("\n6.81 - Монотонно возрастающая последовательность цифр");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        // Сначала перевернем число
+        int temp = n;
+        int reversed = 0;
+        while (temp > 0)
+        {
+            reversed = reversed * 10 + (temp % 10);
+            temp /= 10;
+        }
+
+        // Проверяем монотонное возрастание в перевернутом числе
+        temp = reversed;
+        int prevDigit = -1;
+        bool isMonotonicIncreasing = true;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            if (digit <= prevDigit) // должна быть строго больше предыдущей
+            {
+                isMonotonicIncreasing = false;
+                break;
+            }
+
+            prevDigit = digit;
+            temp /= 10;
+        }
+
+        Console.WriteLine($"Цифры образуют монотонно возрастающую последовательность: {isMonotonicIncreasing}");
+    }
+
+    static void Task_6_82()
+    {
+        Console.WriteLine("\n6.82 - Упорядоченность цифр слева направо по неубыванию");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        // Сначала перевернем число
+        int temp = n;
+        int reversed = 0;
+        while (temp > 0)
+        {
+            reversed = reversed * 10 + (temp % 10);
+            temp /= 10;
+        }
+
+        // Проверяем упорядоченность в перевернутом числе
+        temp = reversed;
+        int prevDigit = -1;
+        bool isOrdered = true;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            if (digit < prevDigit) // должна быть не меньше предыдущей
+            {
+                isOrdered = false;
+                break;
+            }
+
+            prevDigit = digit;
+            temp /= 10;
+        }
+
+        Console.WriteLine($"Цифры упорядочены по неубыванию слева направо: {isOrdered}");
+    }
+
+    static void Task_6_83()
+    {
+        Console.WriteLine("\n6.83 - Монотонная последовательность (возрастающая или убывающая)");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+        if (n < 10)
+        {
+            Console.WriteLine("Число должно содержать хотя бы 2 цифры");
+            return;
+        }
+
+        // Сначала перевернем число
+        int temp = n;
+        int reversed = 0;
+        while (temp > 0)
+        {
+            reversed = reversed * 10 + (temp % 10);
+            temp /= 10;
+        }
+
+        // Проверяем в перевернутом числе
+
+temp = reversed;
+        int firstDigit = temp % 10;
+        temp /= 10;
+        int secondDigit = temp % 10;
+        temp /= 10;
+
+        bool isIncreasing = (firstDigit < secondDigit);
+        bool isMonotonic = true;
+        int prevDigit = secondDigit;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            if (isIncreasing)
+            {
+                if (digit <= prevDigit) // должна быть строго больше
+                {
+                    isMonotonic = false;
+                    break;
+                }
+            }
+            else
+            {
+                if (digit >= prevDigit) // должна быть строго меньше
+                {
+                    isMonotonic = false;
+                    break;
+                }
+            }
+
+            prevDigit = digit;
+            temp /= 10;
+        }
+
+        Console.WriteLine($"Цифры образуют монотонную последовательность: {isMonotonic}");
+        if (isMonotonic)
+        {
+            Console.WriteLine($"Тип последовательности: {(isIncreasing ? "возрастающая" : "убывающая")}");
+        }
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 6.80-6.83");
+        Console.WriteLine("======================");
+
+        Task_6_80();
+        Task_6_81();
+        Task_6_82();
+        Task_6_83();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

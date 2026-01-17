@@ -1,0 +1,166 @@
+﻿using System;
+
+class Program2
+{
+    static void Task_7_6()
+    {
+        Console.WriteLine("7.6 - Общее сопротивление (последовательное)");
+
+        Console.Write("Введите количество элементов: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double[] resistances = new double[n];
+        double totalResistance = 0;
+
+        Console.WriteLine($"Введите сопротивление каждого элемента:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"R{i + 1} (Ом): ");
+            resistances[i] = double.Parse(Console.ReadLine());
+            totalResistance += resistances[i];
+        }
+
+        Console.WriteLine($"\nОбщее сопротивление цепи: {totalResistance} Ом");
+    }
+
+    static void Task_7_7()
+    {
+        Console.WriteLine("\n7.7 - Общее сопротивление (параллельное)");
+
+        Console.Write("Введите количество элементов: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double[] resistances = new double[n];
+        double inverseSum = 0;
+
+        Console.WriteLine($"Введите сопротивление каждого элемента:");
+        for (int i = 0; i < n; i++)
+        {
+            Console.Write($"R{i + 1} (Ом): ");
+            resistances[i] = double.Parse(Console.ReadLine());
+            if (resistances[i] > 0)
+                inverseSum += 1 / resistances[i];
+        }
+
+        double totalResistance = inverseSum > 0 ? 1 / inverseSum : 0;
+        Console.WriteLine($"\nОбщее сопротивление цепи: {totalResistance:F2} Ом");
+    }
+
+    static void Task_7_8()
+    {
+        Console.WriteLine("\n7.8 - Последовательность чисел, оканчивающаяся нулем");
+
+        int[] numbers = new int[100]; // максимально 100 чисел
+        int count = 0;
+        int sum = 0;
+        int number;
+
+        Console.WriteLine("Вводите целые числа (0 - конец ввода):");
+
+        do
+        {
+            Console.Write($"Число {count + 1}: ");
+            number = int.Parse(Console.ReadLine());
+
+            if (number != 0)
+            {
+                numbers[count] = number;
+                sum += number;
+                count++;
+            }
+        } while (number != 0);
+
+        Console.WriteLine($"\nа) Сумма всех чисел: {sum}");
+        Console.WriteLine($"б) Количество всех чисел: {count}");
+
+        Console.Write("\nВведенные числа: ");
+        for (int i = 0; i < count; i++)
+        {
+            Console.Write(numbers[i] + " ");
+        }
+        Console.WriteLine();
+    }
+
+    static void Task_7_9()
+    {
+        Console.WriteLine("\n7.9 - Сумма оценок двух учеников");
+
+        int[,] marks = new int[2, 4];
+
+        Console.WriteLine("Введите оценки учеников по 4 предметам:");
+
+        for (int student = 0; student < 2; student++)
+        {
+            Console.WriteLine($"\nУченик {student + 1}:");
+            for (int subject = 0; subject < 4; subject++)
+            {
+                Console.Write($"  Предмет {subject + 1}: ");
+                marks[student, subject] = int.Parse(Console.ReadLine());
+            }
+        }
+
+        // Вычисляем суммы
+        int sum1 = 0, sum2 = 0;
+        for (int subject = 0; subject < 4; subject++)
+        {
+            sum1 += marks[0, subject];
+            sum2 += marks[1, subject];
+        }
+
+        Console.WriteLine($"\nСумма оценок ученика 1: {sum1}");
+        Console.WriteLine($"Сумма оценок ученика 2: {sum2}");
+    }
+
+    static void Task_7_10()
+    {
+        Console.WriteLine("\n7.10 - Сумма баллов пятиборцев");
+
+        int[,] scores = new int[2, 5];
+
+        Console.WriteLine("Введите результаты спортсменов по 5 видам спорта:");
+
+        for (int athlete = 0; athlete < 2; athlete++)
+        {
+            Console.WriteLine($"\nСпортсмен {athlete + 1}:");
+
+for (int sport = 0; sport < 5; sport++)
+            {
+                Console.Write($"  Вид спорта {sport + 1}: ");
+                scores[athlete, sport] = int.Parse(Console.ReadLine());
+            }
+        }
+
+        // Вычисляем суммы
+        int sum1 = 0, sum2 = 0;
+        for (int sport = 0; sport < 5; sport++)
+        {
+            sum1 += scores[0, sport];
+            sum2 += scores[1, sport];
+        }
+
+        Console.WriteLine($"\nСумма баллов спортсмена 1: {sum1}");
+        Console.WriteLine($"Сумма баллов спортсмена 2: {sum2}");
+
+        if (sum1 > sum2)
+            Console.WriteLine("Спортсмен 1 показал лучший результат");
+        else if (sum2 > sum1)
+            Console.WriteLine("Спортсмен 2 показал лучший результат");
+        else
+            Console.WriteLine("Результаты равны");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 7.6-7.10");
+        Console.WriteLine("======================");
+
+        Task_7_6();
+        Task_7_7();
+        Task_7_8();
+        Task_7_9();
+        Task_7_10();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}

@@ -1,0 +1,187 @@
+﻿using System;
+class Program7
+{
+    static void Task_6_31()
+    {
+        Console.WriteLine("6.31 - Банковский вклад");
+
+        double deposit = 1000; // начальный вклад
+        double interestRate = 0.02; // 2% в месяц
+        int month = 0;
+
+        // а) Когда прирост превысит 30 руб.
+        double increase;
+        do
+        {
+            month++;
+            increase = deposit * interestRate;
+            deposit += increase;
+        } while (increase <= 30);
+
+        Console.WriteLine($"а) Прирост превысит 30 руб. в {month}-м месяце");
+        Console.WriteLine($"   Прирост в этом месяце: {increase:F2} руб.");
+
+        // б) Когда вклад превысит 1200 руб.
+        deposit = 1000; // сбрасываем
+        month = 0;
+        do
+        {
+            month++;
+            deposit += deposit * interestRate;
+        } while (deposit <= 1200);
+
+        Console.WriteLine($"\nб) Вклад превысит 1200 руб. через {month} месяцев");
+        Console.WriteLine($"   Сумма вклада: {deposit:F2} руб.");
+    }
+
+    static void Task_6_32()
+    {
+        Console.WriteLine("\n6.32 - Тренировки лыжника");
+
+        double dailyDistance = 10; // пробег в первый день
+        double increaseRate = 0.10; // увеличение на 10%
+        int day = 1;
+        double totalDistance = 10;
+
+        // а) Когда пробежит больше 20 км
+        while (dailyDistance <= 20)
+        {
+            day++;
+            dailyDistance += dailyDistance * increaseRate;
+        }
+        Console.WriteLine($"а) Пробежит больше 20 км в {day}-й день");
+        Console.WriteLine($"   Пробег в этот день: {dailyDistance:F1} км");
+
+        // б) Когда суммарный пробег превысит 100 км
+        dailyDistance = 10;
+        totalDistance = 10;
+        day = 1;
+
+        while (totalDistance <= 100)
+        {
+            day++;
+            dailyDistance += dailyDistance * increaseRate;
+            totalDistance += dailyDistance;
+        }
+        Console.WriteLine($"\nб) Суммарный пробег превысит 100 км в {day}-й день");
+        Console.WriteLine($"   Суммарный пробег: {totalDistance:F1} км");
+    }
+
+    static void Task_6_33()
+    {
+        Console.WriteLine("\n6.33 - Урожайность ячменя");
+
+        double area = 100; // га
+        double yield = 20; // ц/га
+        double areaIncrease = 0.05; // 5%
+        double yieldIncrease = 0.02; // 2%
+        int year = 1;
+        double totalHarvest = area * yield;
+
+        // а) Когда урожайность превысит 22 ц/га
+        while (yield <= 22)
+        {
+            year++;
+            yield += yield * yieldIncrease;
+        }
+        Console.WriteLine($"а) Урожайность превысит 22 ц/га в {year}-м году");
+        Console.WriteLine($"   Урожайность: {yield:F1} ц/га");
+
+        // б) Когда площадь превысит 120 га
+        area = 100;
+        year = 1;
+        while (area <= 120)
+        {
+            year++;
+            area += area * areaIncrease;
+        }
+        Console.WriteLine($"\nб) Площадь превысит 120 га в {year}-м году");
+        Console.WriteLine($"   Площадь: {area:F1} га");
+
+        // в) Когда общий урожай превысит 800 ц
+        area = 100;
+        yield = 20;
+        totalHarvest = area * yield;
+        year = 1;
+
+        while (totalHarvest <= 800)
+        {
+            year++;
+            area += area * areaIncrease;
+            yield += yield * yieldIncrease;
+            totalHarvest += area * yield;
+        }
+        Console.WriteLine($"\nв) Общий урожай превысит 800 ц в {year}-м году");
+        Console.WriteLine($"   Общий урожай: {totalHarvest:F0} ц");
+    }
+
+    static void Task_6_35()
+    {
+        Console.WriteLine("\n6.35 - Анализ цифр числа");
+        Console.Write("Введите натуральное число: ");
+        int n = int.Parse(Console.ReadLine());
+
+int temp = n;
+        int count3 = 0;
+        int lastDigit = n % 10;
+        int countLastDigit = 0;
+        int countEven = 0;
+        int sumGreaterThan5 = 0;
+        int productGreaterThan7 = 1;
+        int count0and5 = 0;
+        bool hasDigitsGreaterThan7 = false;
+
+        while (temp > 0)
+        {
+            int digit = temp % 10;
+
+            // а) количество цифр 3
+            if (digit == 3) count3++;
+
+            // б) сколько раз встречается последняя цифра
+            if (digit == lastDigit) countLastDigit++;
+
+            // в) количество четных цифр (без составного условия)
+            if (digit % 2 == 0) countEven++;
+
+            // г) сумма цифр, больших пяти
+            if (digit > 5) sumGreaterThan5 += digit;
+
+            // д) произведение цифр, больших семи
+            if (digit > 7)
+            {
+                productGreaterThan7 *= digit;
+                hasDigitsGreaterThan7 = true;
+            }
+
+            // е) сколько раз встречаются цифры 0 и 5
+            if (digit == 0 || digit == 5) count0and5++;
+
+            temp /= 10;
+        }
+
+        // Если нет цифр >7, произведение = 0
+        if (!hasDigitsGreaterThan7) productGreaterThan7 = 0;
+
+        Console.WriteLine($"а) Цифр 3 в числе: {count3}");
+        Console.WriteLine($"б) Последняя цифра ({lastDigit}) встречается: {countLastDigit} раз");
+        Console.WriteLine($"в) Четных цифр: {countEven}");
+        Console.WriteLine($"г) Сумма цифр >5: {sumGreaterThan5}");
+        Console.WriteLine($"д) Произведение цифр >7: {productGreaterThan7}");
+        Console.WriteLine($"е) Цифр 0 и 5 всего: {count0and5}");
+    }
+
+    static void Main()
+    {
+        Console.WriteLine("Решение задач 6.31-6.35");
+        Console.WriteLine("======================");
+
+        Task_6_31();
+        Task_6_32();
+        Task_6_33();
+        Task_6_35();
+
+        Console.WriteLine("\nНажмите любую клавишу для выхода...");
+        Console.ReadKey();
+    }
+}
